@@ -1,0 +1,30 @@
+theme = "catppuccin_mocha"
+
+[editor]
+line-number = "relative"
+idle-timeout = 200
+bufferline = "always"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "block"
+
+[keys.normal]
+C-s = ":w"
+# C-q = "wclose"
+
+[keys.insert]
+C-s = ":w"
+C-q = "collapse_selection"
+C-p = "move_line_up"
+C-n = "move_line_down"
+C-e = "goto_line_end_newline"
+C-a = "goto_line_start"
+C-f = "move_char_right"
+C-b = "move_char_left"
+# C-q = "wclose"
+
+[keys.select]
+C-s = ":w"
+# C-q = "wclose"
