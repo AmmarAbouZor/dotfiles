@@ -1,0 +1,30 @@
+EasyEffect
+
+----------------------------------------
+GitHub Credential with GitUI
+
+git config --list --show-origin ////////////////// Shows configs
+
+printf "protocol=https\nhost=github.com\n" | git credential fill //////// username and password
+
+printf "protocol=https\nhost=github.com\n" | git credential-store get /// should give the credintial
+
+git config credential.helper store
+
+----------------------------------------------
+External monitor as primary from log in:
+Set the monitor settings in the settings window
+
+This  copy your settings to the global ones
+sudo cp -v ~/.config/monitors.xml /var/lib/gdm/.config/
+
+This tells the system to use them
+sudo chown gdm:gdm /var/lib/gdm/.config/monitors.xml
+
+—-----------------------
+Cargo update:
+>>>> install the updater
+cargo install cargo-update 
+
+>>> check for updates
+cargo install-update -a
