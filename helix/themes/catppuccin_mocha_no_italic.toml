@@ -1,0 +1,11 @@
+
+inherits = "catppuccin_mocha"
+
+# italic removed
+# -------------------
+"comment" = { fg = "overlay1" }
+
+"variable.parameter" = { fg = "maroon" }
+"keyword.control.conditional" = { fg = "mauve" }
+
+"namespace" = { fg = "blue" }
