@@ -12,10 +12,12 @@ select = "block"
 
 [keys.normal]
 C-s = ":w"
+C-y = ":fmt"
 # C-q = "wclose"
 
 [keys.insert]
 C-s = ":w"
+C-y = ":fmt"
 C-q = "collapse_selection"
 C-p = "move_line_up"
 C-n = "move_line_down"
@@ -27,4 +29,5 @@ C-b = "move_char_left"
 
 [keys.select]
 C-s = ":w"
+C-y = ":fmt"
 # C-q = "wclose"
