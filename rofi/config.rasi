@@ -6,7 +6,18 @@ configuration {
 /*	xoffset: 0;*/
 /*	fixed-num-lines: true;*/
 	show-icons: true;
+    icon-theme: "Oranchelo";
 	terminal: "alacritty";
+
+    drun-display-format: "{icon} {name}";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+    display-drun: " Apps ";
+    display-run: "  Run ";
+    display-window: "  Window";
+    sidebar-mode: true;
+	
 /*	ssh-client: "ssh";*/
 /*	ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";*/
 /*	run-command: "{cmd}";*/
@@ -149,3 +160,5 @@ configuration {
       sorting-method:    "name";
   }
 }
+
+@theme "catppuccin-macchiato"
