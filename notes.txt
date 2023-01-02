@@ -28,3 +28,13 @@ cargo install cargo-update
 
 >>> check for updates
 cargo install-update -a
+
+# Keyboard layouts
+localectl --no-convert set-x11-keymap us,de,ar pc105, qwerty grp:alt_shift_toggle
+localectl --no-convert set-x11-keymap us,de,ar pc105, qwerty 
+
+#power manager
+sudo dnf install xfce4-power-manager
+
+#p7zip
+sudo dnf install p7zip p7zip-plugins
