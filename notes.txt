@@ -43,3 +43,6 @@ sudo dnf install p7zip p7zip-plugins
 
 #flatpak theme
 sudo flatpak override --env=GTK_THEME=Adwaita-dark
+
+#install fontawesome
+sudo dnf install fontawesome-fonts

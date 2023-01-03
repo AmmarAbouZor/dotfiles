@@ -235,6 +235,6 @@ bindsym $mod+i  exec --no-startup-id "alacritty"
 bindsym $mod+u  exec --no-startup-id "kitty"
 bindsym $mod+y  exec --no-startup-id "firefox"
 bindsym $mod+Escape  exec --no-startup-id "loginctl lock-session"
-bindsym Ctrl+Mod1+Delete  exec --no-startup-id "systemctl poweroff"
+bindsym Ctrl+Mod1+Delete  exec --no-startup-id "rofi -show power-menu -modi power-menu:rofi-power-menu"
 bindsym Ctrl+Mod1+End  exec --no-startup-id "systemctl suspend"
 
