@@ -38,16 +38,16 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -e -i $HO
 exec --no-startup-id nm-applet
 
 #autotiling
-exec_always --no-startup-id ~/.config/i3/autotiling &
+exec_always --no-startup-id ~/.config/i3/autotiling 
  
 #picom
-exec --no-startup-id picom &
+exec_always --no-startup-id picom 
 
 #polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh 
 
 #nitrogen
-exec_always --no-startup-id nitrogen --restore &
+exec_always --no-startup-id nitrogen --restore 
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -58,7 +58,6 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-
 
 # kill focused window
 bindsym $mod+shift+q kill
@@ -228,11 +227,11 @@ client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
 
 #my keybindings
-bindsym $mod+Return exec rofi -show drun
-bindsym $mod+i exec alacritty
-bindsym $mod+u exec kitty
-bindsym $mod+y exec firefox
-bindsym $mod+Escape exec loginctl lock-session
-bindsym Ctrl+Mod1+Delete exec systemctl poweroff
-bindsym Ctrl+Mod1+End exec systemctl suspend
+bindsym $mod+Return  exec --no-startup-id "rofi -show drun"
+bindsym $mod+i  exec --no-startup-id "alacritty"
+bindsym $mod+u  exec --no-startup-id "kitty"
+bindsym $mod+y  exec --no-startup-id "firefox"
+bindsym $mod+Escape  exec --no-startup-id "loginctl lock-session"
+bindsym Ctrl+Mod1+Delete  exec --no-startup-id "systemctl poweroff"
+bindsym Ctrl+Mod1+End  exec --no-startup-id "systemctl suspend"
 
