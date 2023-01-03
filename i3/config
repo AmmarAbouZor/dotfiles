@@ -31,11 +31,23 @@ exec --no-startup-id dex-autostart --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -e -i $HOME/.config/i3/flatppuccin.png
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
+
+#autotiling
+exec_always --no-startup-id ~/.config/i3/autotiling &
+ 
+#picom
+exec --no-startup-id picom &
+
+#polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
+
+#nitrogen
+exec_always --no-startup-id nitrogen --restore &
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -220,18 +232,7 @@ bindsym $mod+Return exec rofi -show drun
 bindsym $mod+i exec alacritty
 bindsym $mod+u exec kitty
 bindsym $mod+y exec firefox
-bindsym $mod+Escape exec i3lock -e -c 222222
+bindsym $mod+Escape exec loginctl lock-session
 bindsym Ctrl+Mod1+Delete exec systemctl poweroff
 bindsym Ctrl+Mod1+End exec systemctl suspend
 
-#autotiling
-exec_always --no-startup-id ~/.config/i3/autotiling &
- 
-#picom
-exec_always --no-startup-id picom &
-
-#polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
-
-#nitrogen
-exec_always --no-startup-id nitrogen --restore &

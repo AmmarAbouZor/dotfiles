@@ -9,3 +9,4 @@ ln -s $PWD/polybar ~/.config/;
 ln -s $PWD/rofi ~/.config/;
 ln -s $PWD/zellij ~/.config/;
 ln -s $PWD/dunst ~/.config/;
+ln -s $PWD/.bashrc ~/;
