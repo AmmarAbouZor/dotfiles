@@ -20,7 +20,13 @@ font pango:sf pro 11
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
-for_window [class="^.*"] border pixel 2
+#for_window [class="^.*"] border pixel 2
+default_border pixel 2
+
+gaps inner 8
+gaps outer 0
+#smart_gaps on
+
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -41,7 +47,7 @@ exec --no-startup-id nm-applet
 exec_always --no-startup-id ~/.config/i3/autotiling 
  
 #picom
-exec_always --no-startup-id picom 
+exec --no-startup-id picom 
 
 #polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh 
@@ -50,7 +56,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id nitrogen --restore 
 
 #redshift
-exec_always --no-startup-id redshift 
+exec --no-startup-id redshift 
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -223,8 +229,8 @@ set $crust     #11111b
 
 # target                 title     bg    text   indicator  border
 client.focused           $lavender $base $text  $lavender  $lavender
-client.focused_inactive  $overlay0 $base $subtext2  $overlay0  $overlay0
-client.unfocused         $overlay0 $base $subtext2  $overlay0  $overlay0
+client.focused_inactive  $surface1 $base $subtext2  $surface1  $surface1
+client.unfocused         $surface1 $base $subtext2  $surface1  $surface1
 client.urgent            $peach    $base $peach $peach     $peach
 client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
@@ -233,8 +239,8 @@ client.background        $base
 bindsym $mod+Return  exec --no-startup-id "rofi -show drun"
 bindsym $mod+i  exec --no-startup-id "alacritty"
 bindsym $mod+u  exec --no-startup-id "kitty"
+bindsym $mod+n  exec --no-startup-id "google-chrome"
 bindsym $mod+y  exec --no-startup-id "firefox"
 bindsym $mod+Escape  exec --no-startup-id "loginctl lock-session"
 bindsym Ctrl+Mod1+Delete  exec --no-startup-id "rofi -show power-menu -modi power-menu:rofi-power-menu"
 bindsym Ctrl+Mod1+End  exec --no-startup-id "systemctl suspend"
-

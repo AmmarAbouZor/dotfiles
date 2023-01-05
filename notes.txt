@@ -46,3 +46,13 @@ sudo flatpak override --env=GTK_THEME=Adwaita-dark
 
 #install fontawesome
 sudo dnf install fontawesome-fonts
+
+-------------------------------------------
+#nvidia on x11
+/usr/share/X11/xorg.conf.d/...
+# I use this only
+	Option         "ForceFullCompositionPipeline" "on"
+
+#These are other options
+    Option         "AllowIndirectGLXProtocol" "off"
+    Option         "TripleBuffer" "on"

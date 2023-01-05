@@ -13,6 +13,8 @@ fi
 export PATH
 EDITOR="hx"
 export EDITOR
+AOC_TEST_PATH="/home/ammar/Desktop/test_proj"
+export AOC_TEST_PATH
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=

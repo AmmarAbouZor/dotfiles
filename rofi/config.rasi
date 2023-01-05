@@ -1,5 +1,5 @@
 configuration {
-	modes: "window,drun,run";
+	modes: "drun,run,window";
 	font: "sf pro 12";
 /*	location: 0;*/
 /*	yoffset: 0;*/
@@ -13,9 +13,9 @@ configuration {
     location: 0;
     disable-history: false;
     hide-scrollbar: true;
-    display-drun: " Apps ";
-    display-run: "  Run ";
-    display-window: "  Window";
+    display-drun: " Apps ";
+    display-run: " Run ";
+    display-window: "﩯 Window";
     sidebar-mode: true;
 	
 /*	ssh-client: "ssh";*/
