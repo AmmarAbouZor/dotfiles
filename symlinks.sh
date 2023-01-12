@@ -11,4 +11,5 @@ ln -s $PWD/polybar ~/.config/;
 ln -s $PWD/rofi ~/.config/;
 ln -s $PWD/rofi/rofi-power-menu ~/.local/bin/;
 ln -s $PWD/zellij ~/.config/;
+ln -s $PWD/zathura ~/.config/;
 ln -s $PWD/dunst ~/.config/;

@@ -1,0 +1,9 @@
+include catppuccin-mocha
+
+set recolor true
+
+set font "sf mono; 12"
+
+
+map [normal] d scroll half-down
+map [normal] u scroll half-up

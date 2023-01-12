@@ -1,5 +1,7 @@
 EasyEffect
 
+pavucontrol to control devices
+
 ----------------------------------------
 GitHub Credential with GitUI
 

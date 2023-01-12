@@ -46,7 +46,7 @@ exec --no-startup-id nm-applet
 
 #autotiling
 exec_always --no-startup-id ~/.config/i3/autotiling 
- 
+
 #picom
 exec --no-startup-id picom 
 
@@ -238,6 +238,7 @@ client.background        $base
 
 #my keybindings
 bindsym $mod+Return  exec --no-startup-id "rofi -show drun"
+bindsym $mod+Shift+Return  exec --no-startup-id "rofi -show run"
 bindsym $mod+i  exec --no-startup-id "alacritty"
 bindsym $mod+u  exec --no-startup-id "kitty"
 bindsym $mod+n  exec --no-startup-id "google-chrome"
@@ -245,3 +246,7 @@ bindsym $mod+y  exec --no-startup-id "firefox"
 bindsym $mod+Escape  exec --no-startup-id "loginctl lock-session"
 bindsym Ctrl+Mod1+Delete  exec --no-startup-id "rofi -show power-menu -modi power-menu:rofi-power-menu"
 bindsym Ctrl+Mod1+End  exec --no-startup-id "systemctl suspend"
+
+bindsym $mod+Shift+m move scratchpad
+bindsym $mod+m scratchpad show
+
