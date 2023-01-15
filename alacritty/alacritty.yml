@@ -562,7 +562,6 @@ shell:
 #  - { mouse: Right,                 action: ExpandSelection }
 #  - { mouse: Right,  mods: Control, action: ExpandSelection }
 #  - { mouse: Middle, mode: ~Vi,     action: PasteSelection  }
-
 # Key bindings
 #
 # Key bindings are specified as a list of objects. For example, this is the
@@ -771,7 +770,8 @@ shell:
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
-#key_bindings:
+key_bindings:
+  - { key: N,         mods: Control|Shift,              action: SpawnNewInstance }
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }

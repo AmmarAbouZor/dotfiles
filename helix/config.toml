@@ -13,10 +13,14 @@ select = "block"
 [editor.statusline]
 right = ["diagnostics", "selections", "position","position-percentage", "file-encoding"]
 
+[editor.lsp]
+auto-signature-help = false
+
 [keys.normal]
 C-s = ":w"
 C-y = ":fmt"
 C-q = ":bclose"
+C-space = "signature_help"
 
 [keys.insert]
 C-s = ":w"
@@ -28,6 +32,7 @@ C-e = "goto_line_end_newline"
 C-a = "goto_line_start"
 C-f = "move_char_right"
 C-b = "move_char_left"
+C-space = "signature_help"
 
 [keys.select]
 C-s = ":w"
