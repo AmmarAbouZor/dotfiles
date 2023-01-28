@@ -13,6 +13,8 @@ fi
 export PATH
 EDITOR="hx"
 export EDITOR
+VISUAL="hx"
+export VISUAL
 AOC_TEST_PATH="/home/ammar/Desktop/test_proj"
 export AOC_TEST_PATH
 

@@ -4,6 +4,7 @@ theme = "catppuccin_mocha_no_italic"
 line-number = "relative"
 idle-timeout = 200
 bufferline = "always"
+color-modes = true
 
 [editor.cursor-shape]
 insert = "bar"
@@ -21,6 +22,8 @@ C-s = ":w"
 C-y = ":fmt"
 C-q = ":bclose"
 C-space = "signature_help"
+a = ["append_mode", "collapse_selection"]
+X = "extend_line_above"
 
 [keys.insert]
 C-s = ":w"

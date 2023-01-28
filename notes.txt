@@ -33,6 +33,10 @@ cargo install-update -a
 
 ------------------------------------
 
+rustup component add rust-analyzer
+
+------------------------------------
+
 # Keyboard layouts
 localectl --no-convert set-x11-keymap us,de,ar pc105, qwerty grp:alt_shift_toggle
 localectl --no-convert set-x11-keymap us,de,ar pc105, qwerty 
@@ -62,3 +66,17 @@ fc-cache ~/.local/share/fonts/
 #These are other options
     Option         "AllowIndirectGLXProtocol" "off"
     Option         "TripleBuffer" "on"
+-----------------------------------------------------
+
+Lightdm-gtk-greeter:
+[greeter]
+background = /usr/share/backgrounds/spooky_spill.jpg
+theme-name = Adwaita-dark
+icon-theme-name = Adwaita
+
+cursor-theme-name = Bibata_Ice
+cursor-theme-size = 16
+
+Lighdm.conf:
+[Seat:*]
+greeter-setup-script=/usr/bin/numlockx on

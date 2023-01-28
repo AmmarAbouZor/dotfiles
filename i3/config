@@ -44,8 +44,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -e -i $HO
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-#autotiling
-exec_always --no-startup-id ~/.config/i3/autotiling 
+#nitrogen
+exec_always --no-startup-id nitrogen --restore 
 
 #picom
 exec --no-startup-id picom 
@@ -53,8 +53,8 @@ exec --no-startup-id picom
 #polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh 
 
-#nitrogen
-exec_always --no-startup-id nitrogen --restore 
+#autotiling
+exec_always --no-startup-id ~/.config/i3/autotiling 
 
 #redshift
 exec --no-startup-id redshift 
