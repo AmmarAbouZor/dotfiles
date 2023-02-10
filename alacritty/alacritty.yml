@@ -128,10 +128,12 @@ font:
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
     #family: SF Mono
-    family: SF Mono Nerd Font
+    #family: SF Mono Nerd Font
     #family: JetBrains mono
     #family: JetBrains mono NL 
-    #family: Fira Code
+    family: Fira Code
+    #family: CasKaydia Cove NFM
+    #family: Consola Mono
     #family: monaco
     #family: DejaVu sans Mono
     #family: meslolgl nf

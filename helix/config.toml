@@ -23,7 +23,11 @@ C-y = ":fmt"
 C-q = ":bclose"
 C-space = "signature_help"
 a = ["append_mode", "collapse_selection"]
-X = "extend_line_above"
+i = ["insert_mode", "collapse_selection"]
+# V = ["goto_first_nonwhitespace", "extend_to_line_end"]
+V = ["extend_line", "trim_selections"]
+x = "extend_line"
+D = ["move_prev_word_start" ,"move_next_word_end", "search_selection", "select_mode"]
 
 [keys.insert]
 C-s = ":w"
@@ -40,6 +44,8 @@ C-space = "signature_help"
 [keys.select]
 C-s = ":w"
 C-y = ":fmt"
+i = ["insert_mode", "collapse_selection"]
+V = ["goto_first_nonwhitespace", "extend_to_line_end"]
 
 [keys.normal.space]
 q = ":quit"
