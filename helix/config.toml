@@ -18,7 +18,7 @@ right = ["diagnostics", "selections", "position","position-percentage", "file-en
 auto-signature-help = false
 
 [keys.normal]
-C-s = ":w"
+# C-s = ":w"
 C-y = ":fmt"
 C-q = ":bclose"
 C-space = "signature_help"
@@ -28,9 +28,11 @@ i = ["insert_mode", "collapse_selection"]
 V = ["extend_line", "trim_selections"]
 x = "extend_line"
 D = ["move_prev_word_start" ,"move_next_word_end", "search_selection", "select_mode"]
+A-k = ["extend_line", "delete_selection", "move_line_up", "move_line_up", "paste_after", "collapse_selection"]
+A-j = ["extend_line", "delete_selection", "paste_after", "collapse_selection"]
 
 [keys.insert]
-C-s = ":w"
+# C-s = ":w"
 C-y = ":fmt"
 C-q = "collapse_selection"
 C-p = "move_line_up"
@@ -42,10 +44,12 @@ C-b = "move_char_left"
 C-space = "signature_help"
 
 [keys.select]
-C-s = ":w"
+# C-s = ":w"
 C-y = ":fmt"
 i = ["insert_mode", "collapse_selection"]
 V = ["goto_first_nonwhitespace", "extend_to_line_end"]
+D = ["search_selection", "select_mode"]
 
 [keys.normal.space]
 q = ":quit"
+e = ":write"
