@@ -17,6 +17,8 @@ VISUAL="hx"
 export VISUAL
 AOC_TEST_PATH="/home/ammar/Desktop/test_proj"
 export AOC_TEST_PATH
+HELIX_RUNTIME=~/repos/helix/runtime
+export HELIX_RUNTIME
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=

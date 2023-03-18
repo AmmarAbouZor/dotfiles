@@ -1,4 +1,5 @@
-theme = "catppuccin_mocha_no_italic"
+theme = "catppuccin_mocha"
+# theme = "catppuccin_mocha_no_italic"
 
 [editor]
 line-number = "relative"
@@ -13,9 +14,14 @@ select = "block"
 
 [editor.statusline]
 right = ["diagnostics", "selections", "position","position-percentage", "file-encoding"]
+left = ["mode", "spinner", "version-control", "file-name"]
 
-[editor.lsp]
-auto-signature-help = false
+# [editor.lsp]
+# auto-signature-help = false
+# display-inlay-hints = true
+
+[editor.soft-wrap]
+enable = true
 
 [keys.normal]
 # C-s = ":w"
@@ -27,6 +33,8 @@ i = ["insert_mode", "collapse_selection"]
 # V = ["goto_first_nonwhitespace", "extend_to_line_end"]
 V = ["extend_line", "trim_selections"]
 x = "extend_line"
+'{' = "select_prev_sibling"
+'}' = "select_next_sibling"
 D = ["move_prev_word_start" ,"move_next_word_end", "search_selection", "select_mode"]
 A-k = ["extend_line", "delete_selection", "move_line_up", "move_line_up", "paste_after", "collapse_selection"]
 A-j = ["extend_line", "delete_selection", "paste_after", "collapse_selection"]
@@ -53,3 +61,5 @@ D = ["search_selection", "select_mode"]
 [keys.normal.space]
 q = ":quit"
 e = ":write"
+n = ":set lsp.display-inlay-hints true"
+m = ":set lsp.display-inlay-hints false"
