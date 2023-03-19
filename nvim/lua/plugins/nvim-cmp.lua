@@ -4,5 +4,10 @@ return {
     mapping = require("cmp").mapping.preset.insert({
       ["<Tab>"] = require("cmp").mapping.confirm({ select = true }),
     }),
+    sources = require("cmp").config.sources({
+      { name = "nvim_lsp" },
+      { name = "buffer" },
+      { name = "path" },
+    }),
   },
 }

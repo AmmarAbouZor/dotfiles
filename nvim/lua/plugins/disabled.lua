@@ -11,6 +11,10 @@ return {
   { "folke/neoconf.nvim", enabled = false },
   { "folke/persistence.nvim", enabled = false },
 
+  -- I don't have this in visual studio
+  { "ggandor/leap.nvim", enabled = false },
+  { "ggandor/flit.nvim", enabled = false },
+
   -- { "rcarriga/nvim-notify", enabled = false },
   -- { "stevearc/dressing.nvim", enabled = false },
   -- { "folke/noice.nvim", enabled = false },
