@@ -1,9 +1,9 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export --path AOC_TEST_PATH:/home/ammar/Desktop/test_proj
-SETUVAR --export EDITOR:hx
+SETUVAR --export EDITOR:nvim
 SETUVAR --export HELIX_RUNTIME:/home/ammar/repos/helix/runtime
-SETUVAR --export VISUAL:hx
+SETUVAR --export VISUAL:nvim
 SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:555
 SETUVAR fish_color_cancel:\x2d\x2dreverse

@@ -6,14 +6,13 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # User specific environment
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
-then
-    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
+	PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 export PATH
-EDITOR="hx"
+EDITOR="nvim"
 export EDITOR
-VISUAL="hx"
+VISUAL="nvim"
 export VISUAL
 AOC_TEST_PATH="/home/ammar/Desktop/test_proj"
 export AOC_TEST_PATH
@@ -36,9 +35,6 @@ fi
 alias adv="cd ~/Desktop/advent_of_code/ ; hx ."
 alias upup="sudo dnf update"
 alias la="ls -a"
-
-# My funcs
-function ctest() { cargo test year_16::day_"$1"; }
 
 unset rc
 . "$HOME/.cargo/env"

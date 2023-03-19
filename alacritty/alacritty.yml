@@ -127,7 +127,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: monospace
+    #family: monospace
     #family: SF Mono
     #family: SF Mono Nerd Font
     #family: JetBrains mono
@@ -136,7 +136,7 @@ font:
     #family: Blex Mono Nerd Font
     #family: Cascadia Code
     #family: Consola Mono
-    #family: monaco
+    family: monaco
     #family: roboto mono
     #family: DejaVu sans Mono
 

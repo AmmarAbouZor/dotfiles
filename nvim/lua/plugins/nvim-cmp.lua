@@ -1,0 +1,8 @@
+return {
+  "hrsh7th/nvim-cmp",
+  opts = {
+    mapping = require("cmp").mapping.preset.insert({
+      ["<Tab>"] = require("cmp").mapping.confirm({ select = true }),
+    }),
+  },
+}
