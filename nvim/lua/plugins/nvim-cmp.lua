@@ -9,5 +9,9 @@ return {
       { name = "buffer" },
       { name = "path" },
     }),
+
+    -- completion = {
+    --   autocomplete = false,
+    -- },
   },
 }
