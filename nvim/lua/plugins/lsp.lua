@@ -1,26 +1,35 @@
-local lspconfig = require("lspconfig")
+return {
+  "neovim/nvim-lspconfig",
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+  init = function()
+    local lspconfig = require("lspconfig")
 
-lspconfig.rust_analyzer.setup({
-  capabilities = capabilities,
+    local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-  cmd = {
-    "rustup",
-    "run",
-    "stable",
-    "rust-analyzer",
-  },
+    lspconfig.rust_analyzer.setup({
+      capabilities = capabilities,
 
-  settings = {
-    ["rust-analyzer"] = {
-      completion = {
-        callable = {
-          snippets = "add_parentheses",
+      cmd = {
+        "rustup",
+        "run",
+        "stable",
+        "rust-analyzer",
+      },
+
+      settings = {
+        ["rust-analyzer"] = {
+          completion = {
+            callable = {
+              snippets = "add_parentheses",
+            },
+          },
         },
       },
-    },
-  },
-})
+    })
+  end,
 
-return {}
+  keys = {
+    { "<leader>k", vim.lsp.buf.hover, desc = "Hover", silent = true },
+    { "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Code Action", silent = true },
+  },
+}

@@ -36,3 +36,8 @@ end
 map_bs("<C-h>", "v:lua.MiniPairs.bs()")
 map_bs("<C-w>", 'v:lua.MiniPairs.bs("\23")')
 map_bs("<C-u>", 'v:lua.MiniPairs.bs("\21")')
+
+-- remove current buffer
+vim.keymap.set("n", "<leader>wq", function()
+  require("mini.bufremove").delete(0, false)
+end, { desc = "Delete current buffer" })
