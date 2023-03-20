@@ -1,10 +1,18 @@
+local cmp = require("cmp")
 return {
   "hrsh7th/nvim-cmp",
   opts = {
-    mapping = require("cmp").mapping.preset.insert({
-      ["<Tab>"] = require("cmp").mapping.confirm({ select = true }),
+    mapping = cmp.mapping.preset.insert({
+      ["<Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.confirm()
+        else
+          fallback()
+        end
+      end, { "i", "s", "c" }),
     }),
-    sources = require("cmp").config.sources({
+
+    sources = cmp.config.sources({
       { name = "nvim_lsp" },
       { name = "buffer" },
       { name = "path" },

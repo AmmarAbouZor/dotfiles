@@ -15,7 +15,7 @@ return {
   { "ggandor/leap.nvim", enabled = false },
   { "ggandor/flit.nvim", enabled = false },
 
-  -- { "rcarriga/nvim-notify", enabled = false },
+  { "rcarriga/nvim-notify", enabled = false },
   -- { "stevearc/dressing.nvim", enabled = false },
   -- { "folke/noice.nvim", enabled = false },
 }
