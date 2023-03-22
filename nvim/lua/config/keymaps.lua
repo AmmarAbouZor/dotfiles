@@ -5,6 +5,9 @@
 -- replace without losing clipboard content
 vim.keymap.set("x", "<leader>p", '"_dP')
 
+-- redo to shift U
+vim.keymap.set({ "n", "v" }, "<S-u>", "<C-r>")
+
 -- emacs keybindings in insert mod
 -- backward-char
 vim.keymap.set("!", "<C-b>", "<Left>", { silent = true })
@@ -41,3 +44,8 @@ map_bs("<C-u>", 'v:lua.MiniPairs.bs("\21")')
 vim.keymap.set("n", "<leader>wq", function()
   require("mini.bufremove").delete(0, false)
 end, { desc = "Delete current buffer" })
+
+-- Dismiss Notifications
+vim.keymap.set("n", "<leader>d", function()
+  require("notify").dismiss({})
+end, { desc = "Dismiss notifies" })
