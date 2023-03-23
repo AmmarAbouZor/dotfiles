@@ -41,6 +41,21 @@ if vim.g.neovide then
     -- { "stevearc/dressing.nvim", enabled = false },
     { "folke/noice.nvim", enabled = false },
 
+    -- alternative to nocie lsp progress
+    { "arkav/lualine-lsp-progress" },
+    {
+      "nvim-lualine/lualine.nvim",
+      event = "VeryLazy",
+      opts = {
+        sections = {
+          lualine_y = {
+            { "progress", separator = " ", padding = { left = 1, right = 0 } },
+            { "location", padding = { left = 0, right = 1 } },
+            { "lsp_progress" },
+          },
+        },
+      },
+    },
     -- See how it feel without alpha vim
     -- { "goolord/alpha-nvim", enabled = false },
   }
