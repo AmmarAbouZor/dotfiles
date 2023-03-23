@@ -32,6 +32,12 @@ vim.keymap.set("c", "<M-f>", "<S-Right>", { silent = true })
 -- delete-char
 vim.keymap.set("!", "<C-d>", "<Del>", { silent = true })
 
+-- Resize window using <ctrl> <shift> hjkl
+vim.keymap.set("n", "<C-S-k>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+vim.keymap.set("n", "<C-S-j>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+vim.keymap.set("n", "<C-S-h>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+vim.keymap.set("n", "<C-S-l>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+
 -- Backspace with MiniPairs
 local map_bs = function(lhs, rhs)
   vim.keymap.set("i", lhs, rhs, { expr = true, replace_keycodes = false })
@@ -49,3 +55,16 @@ end, { desc = "Delete current buffer" })
 vim.keymap.set("n", "<leader>d", function()
   require("notify").dismiss({})
 end, { desc = "Dismiss notifies" })
+
+-- Toggle Show errors only
+local show_errors_only = false
+vim.keymap.set("n", "<leader>ue", function()
+  show_errors_only = not show_errors_only
+  if show_errors_only then
+    vim.diagnostic.config({ virtual_text = {
+      severity = vim.diagnostic.severity.ERROR,
+    } })
+  else
+    vim.diagnostic.config({ virtual_text = true })
+  end
+end, { desc = "Toggle show errors only" })
