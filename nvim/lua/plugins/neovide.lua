@@ -1,6 +1,6 @@
 if vim.g.neovide then
   -- FONTS
-  vim.o.guifont = "Monaco:h12"
+  vim.o.guifont = "Monaco:h12.0"
   -- vim.o.guifont = "Fira code:h12"
   -- vim.o.guifont = "SF Mono:h12"
   -- vim.o.guifont = "JetBrains mono:h12"
@@ -9,15 +9,14 @@ if vim.g.neovide then
   -- vim.o.guifont = "DejaVu sans Mono:h12"
   -- vim.o.guifont = "Blex Mono Nerd Font:h12"
   -- vim.o.guifont = "monospace:h12"
-  -- nocie doesn't play well with neovide
 
   -- Conigurations
 
   -- vim.g.neovide_transparency = 0.7
   -- vim.g.transparency = 0.7
 
-  -- vim.g.neovide_floating_blur_amount_x = 10.0
-  -- vim.g.neovide_floating_blur_amount_y = 10.0
+  -- vim.g.neovide_floating_blur_amount_x = 3.0
+  -- vim.g.neovide_floating_blur_amount_y = 3.0
   -- vim.g.neovide_scroll_animation_length = 0.3
   -- vim.g.neovide_refresh_rate = 60
 
@@ -37,6 +36,7 @@ if vim.g.neovide then
 
   return {
 
+    -- nocie doesn't play well with neovide
     -- { "rcarriga/nvim-notify", enabled = false },
     -- { "stevearc/dressing.nvim", enabled = false },
     { "folke/noice.nvim", enabled = false },
