@@ -16,3 +16,4 @@ ln -s $PWD/dunst ~/.config/
 ln -s $PWD/nvim ~/.config/
 ln -s $PWD/sway ~/.config/
 ln -s $PWD/waybar ~/.config/
+ln -s $PWD/foot ~/.config/

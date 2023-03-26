@@ -37,10 +37,12 @@ output * bg ~/Pictures/Wallpapers/Tokio_1.png fill
 #
 # Example configuration:
 #
+# just sleep after 600 seconds without locking
 exec swayidle -w \
-         timeout 300 'swaylock -f -e -i $HOME/.config/i3/flatppuccin.png' \
-         timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -e -i $HOME/.config/i3/flatppuccin.png'
+         timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
+         # timeout 300 'swaylock -f -e -i $HOME/.config/i3/flatppuccin.png' \
+         # timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+         # before-sleep 'swaylock -f -e -i $HOME/.config/i3/flatppuccin.png'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -52,7 +54,7 @@ exec swayidle -w \
 input "1133:16520:Logitech_ERGO_K860" {
     xkb_layout us,de,ar
     xkb_variant ,nodeadkeys
-    xkb_options grp:alt_shift_toggle
+    # xkb_options grp:alt_shift_toggle
     xkb_numlock enabled
  }
 
@@ -232,8 +234,8 @@ bindsym $mod+Return  exec --no-startup-id "rofi -show drun"
 bindsym $mod+Shift+Return  exec --no-startup-id "rofi -show run"
 bindsym $mod+i  exec --no-startup-id "alacritty"
 bindsym $mod+u  exec --no-startup-id "kitty"
-bindsym $mod+o  exec --no-startup-id "neovide"
-bindsym $mod+p  exec --no-startup-id "neovide --multigrid"
+bindsym $mod+o  exec --no-startup-id "foot"
+bindsym $mod+p  exec --no-startup-id "neovide"
 bindsym $mod+n  exec --no-startup-id "google-chrome"
 bindsym $mod+y  exec --no-startup-id "firefox"
 bindsym Ctrl+Mod1+Delete  exec --no-startup-id "rofi -show power-menu -modi power-menu:rofi-power-menu"

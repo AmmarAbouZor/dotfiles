@@ -7,7 +7,22 @@
   "sway/workspaces": {
     "disable-scroll": false,
     "on-click": "activate",
-    "sort-by-number": true
+    "sort-by-number": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "Ⅰ",
+      "2": "Ⅱ",
+      "3": "Ⅲ",
+      "4": "Ⅳ",
+      "5": "Ⅴ",
+      "6": "Ⅵ",
+      "7": "Ⅶ",
+      "8": "Ⅷ",
+      "9": "Ⅸ",
+      "urgent": "",
+      "active": "",
+      "default": ""
+    },
   },
 
   "sway/window": {
@@ -54,9 +69,10 @@
 		"format": "{icon} {volume}%",
 		"format-muted": "{icon} {volume}%",
 		"on-click":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"on-click-right":"pavucontrol",
 		"format-icons": {
 			"default": ["", "", ""]
-		}
+		},
 	},
 
 	"network": {
@@ -90,7 +106,7 @@
 
   "cpu": {
     "interval": 15,
-    "format": " {}%",
+    "format": " {usage}%",
     "max-length": 10
   },
 

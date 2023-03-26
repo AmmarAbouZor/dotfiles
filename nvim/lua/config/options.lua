@@ -10,3 +10,5 @@ opt.foldenable = false
 
 opt.hlsearch = false
 opt.incsearch = true
+
+opt.shell = "fish"
