@@ -38,8 +38,8 @@ output * bg ~/Pictures/Wallpapers/Tokio_1.png fill
 # Example configuration:
 #
 # just sleep after 600 seconds without locking
-exec swayidle -w \
-         timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
+# exec swayidle -w \
+#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
          # timeout 300 'swaylock -f -e -i $HOME/.config/i3/flatppuccin.png' \
          # timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          # before-sleep 'swaylock -f -e -i $HOME/.config/i3/flatppuccin.png'
@@ -47,6 +47,11 @@ exec swayidle -w \
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
+
+exec swayidle \
+        timeout 600 'swaymsg "output * dpms off"' \
+        timeout 900 'swaymsg "output * dpms on"; sleep 1; systemctl suspend' \
+        resume 'swaymsg "output * dpms on"'
 
 ### Input configuration
 # You can get the names of your inputs by running: swaymsg -t get_inputs
@@ -240,6 +245,8 @@ bindsym $mod+n  exec --no-startup-id "google-chrome"
 bindsym $mod+y  exec --no-startup-id "firefox"
 bindsym Ctrl+Mod1+Delete  exec --no-startup-id "rofi -show power-menu -modi power-menu:rofi-power-menu"
 bindsym Ctrl+Mod1+End  exec --no-startup-id "systemctl suspend"
+bindsym $mod+Escape  exec --no-startup-id "swaylock -f -e -i $HOME/.config/i3/flatppuccin.png"
+bindsym $mod+Shift+w  exec --no-startup-id 'swaymsg "output * dpms on"'
 
 # Gnome Theme
 set $gnome-schema org.gnome.desktop.interface

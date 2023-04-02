@@ -12,3 +12,6 @@ opt.hlsearch = false
 opt.incsearch = true
 
 opt.shell = "fish"
+
+opt.undofile = false
+opt.timeoutlen = 600
