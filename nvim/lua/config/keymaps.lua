@@ -10,27 +10,27 @@ vim.keymap.set({ "n", "v" }, "<S-u>", "<C-r>")
 
 -- emacs keybindings in insert mod
 -- backward-char
-vim.keymap.set("!", "<C-b>", "<Left>", { silent = true })
+vim.keymap.set("!", "<C-b>", "<Left>")
 
 -- forward-char
-vim.keymap.set("!", "<C-f>", "<Right>", { silent = true })
+vim.keymap.set("!", "<C-f>", "<Right>")
 
 -- move-beginning-of-line
-vim.keymap.set("!", "<C-a>", "<Home>", { silent = true })
+vim.keymap.set("!", "<C-a>", "<Home>")
 
 -- move-end-of-line
-vim.keymap.set("!", "<C-e>", "<End>", { silent = true })
+vim.keymap.set("!", "<C-e>", "<End>")
 
 -- backward-word
-vim.keymap.set("i", "<M-b>", "<C-Left>", { silent = true })
-vim.keymap.set("c", "<M-b>", "<S-Left>", { silent = true })
+vim.keymap.set("i", "<M-b>", "<C-Left>")
+vim.keymap.set("c", "<M-b>", "<S-Left>")
 
 -- forward-word
-vim.keymap.set("i", "<M-f>", "<C-o>e<Right>", { silent = true })
-vim.keymap.set("c", "<M-f>", "<S-Right>", { silent = true })
+vim.keymap.set("i", "<M-f>", "<C-o>e<Right>")
+vim.keymap.set("c", "<M-f>", "<S-Right>")
 --
 -- delete-char
-vim.keymap.set("!", "<C-d>", "<Del>", { silent = true })
+vim.keymap.set("!", "<C-d>", "<Del>")
 
 -- Resize window using <ctrl> <shift> hjkl
 vim.keymap.set("n", "<C-S-k>", "<cmd>resize +2<cr>", { desc = "Increase window height" })

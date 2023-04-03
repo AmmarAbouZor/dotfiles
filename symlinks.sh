@@ -17,3 +17,4 @@ ln -s $PWD/nvim ~/.config/
 ln -s $PWD/sway ~/.config/
 ln -s $PWD/waybar ~/.config/
 ln -s $PWD/foot ~/.config/
+ln -s $PWD/wezterm ~/.config/

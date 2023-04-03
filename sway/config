@@ -37,9 +37,7 @@ output * bg ~/Pictures/Wallpapers/Tokio_1.png fill
 #
 # Example configuration:
 #
-# just sleep after 600 seconds without locking
 # exec swayidle -w \
-#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
          # timeout 300 'swaylock -f -e -i $HOME/.config/i3/flatppuccin.png' \
          # timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          # before-sleep 'swaylock -f -e -i $HOME/.config/i3/flatppuccin.png'
@@ -48,9 +46,9 @@ output * bg ~/Pictures/Wallpapers/Tokio_1.png fill
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
+# just suspend after 900 seconds without locking
 exec swayidle \
-        timeout 600 'swaymsg "output * dpms off"' \
-        timeout 900 'swaymsg "output * dpms on"; sleep 1; systemctl suspend' \
+        timeout 900 'systemctl suspend' \
         resume 'swaymsg "output * dpms on"'
 
 ### Input configuration
@@ -240,6 +238,7 @@ bindsym $mod+Shift+Return  exec --no-startup-id "rofi -show run"
 bindsym $mod+i  exec --no-startup-id "alacritty"
 bindsym $mod+u  exec --no-startup-id "kitty"
 bindsym $mod+o  exec --no-startup-id "foot"
+bindsym $mod+t  exec --no-startup-id "flatpak run org.wezfurlong.wezterm"
 bindsym $mod+p  exec --no-startup-id "neovide"
 bindsym $mod+n  exec --no-startup-id "google-chrome"
 bindsym $mod+y  exec --no-startup-id "firefox"

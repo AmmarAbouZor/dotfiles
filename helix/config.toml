@@ -24,9 +24,8 @@ left = ["mode", "spinner", "version-control", "file-name"]
 enable = true
 
 [keys.normal]
-# C-s = ":w"
+C-s = ":w"
 C-y = ":fmt"
-C-q = ":bclose"
 C-space = "signature_help"
 a = ["append_mode", "collapse_selection"]
 i = ["insert_mode", "collapse_selection"]
@@ -38,6 +37,13 @@ x = "extend_line"
 D = ["move_prev_word_start" ,"move_next_word_end", "search_selection", "select_mode"]
 A-k = ["extend_line", "delete_selection", "move_line_up", "move_line_up", "paste_after", "collapse_selection"]
 A-j = ["extend_line", "delete_selection", "paste_after", "collapse_selection"]
+C-q = ":buffer-close"
+H = ":buffer-previous"
+L = ":buffer-next"
+C-h = "jump_view_left"
+C-l = "jump_view_right"
+C-j = "jump_view_down"
+C-k = "jump_view_up"
 
 [keys.insert]
 # C-s = ":w"
