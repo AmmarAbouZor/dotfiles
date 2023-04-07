@@ -10,10 +10,10 @@ vim.keymap.set({ "n", "v" }, "<S-u>", "<C-r>")
 
 -- emacs keybindings in insert mod
 -- backward-char
-vim.keymap.set("!", "<C-b>", "<Left>")
+vim.keymap.set("c", "<C-b>", "<Left>")
 
 -- forward-char
-vim.keymap.set("!", "<C-f>", "<Right>")
+vim.keymap.set("c", "<C-f>", "<Right>")
 
 -- move-beginning-of-line
 vim.keymap.set("!", "<C-a>", "<Home>")
@@ -32,11 +32,9 @@ vim.keymap.set("c", "<M-f>", "<S-Right>")
 -- delete-char
 vim.keymap.set("!", "<C-d>", "<Del>")
 
--- Resize window using <ctrl> <shift> hjkl
-vim.keymap.set("n", "<C-S-k>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
-vim.keymap.set("n", "<C-S-j>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
-vim.keymap.set("n", "<C-S-h>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
-vim.keymap.set("n", "<C-S-l>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+-- Move buffers in bufferline
+vim.keymap.set("n", "<C-S-h>", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer to left" })
+vim.keymap.set("n", "<C-S-l>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer to right" })
 
 -- Backspace with MiniPairs
 local map_bs = function(lhs, rhs)
@@ -68,3 +66,14 @@ vim.keymap.set("n", "<leader>ue", function()
     vim.diagnostic.config({ virtual_text = true })
   end
 end, { desc = "Toggle show errors only" })
+
+local Util = require("lazyvim.util")
+-- lazygit
+vim.keymap.set("n", "<leader>gu", function()
+  Util.float_term({ "gitui" }, { cwd = Util.get_root() })
+end, { desc = "Gitui (root dir)" })
+vim.keymap.set("n", "<leader>gU", function()
+  Util.float_term({ "gitui" })
+end, { desc = "Gitui (cwd)" })
+
+vim.keymap.set("n", "<leader>s'", require("telescope.builtin").resume, { desc = "Resume" })

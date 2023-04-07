@@ -21,8 +21,13 @@ return {
           fallback()
         end
       end, { "i", "s" }),
-    }),
 
+      -- switch <Ctrl-c> and <Ctrl-e>
+      -- ["<C-c>"] = cmp.mapping.abort(),
+      -- ["<C-e>"] = cmp.mapping(function(fallback)
+      --   fallback()
+      -- end),
+    }),
     sources = cmp.config.sources({
       { name = "nvim_lsp" },
       { name = "buffer" },

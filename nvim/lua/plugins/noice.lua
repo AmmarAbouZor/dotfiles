@@ -1,3 +1,8 @@
+-- I'll try not to use emaces <C-f> <C-b> anymore
+if true then
+  return {}
+end
+
 -- Neovide disable noice completely
 if vim.g.neovide then
   return {}

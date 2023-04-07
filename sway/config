@@ -60,6 +60,13 @@ input "1133:16520:Logitech_ERGO_K860" {
     # xkb_options grp:alt_shift_toggle
     xkb_numlock enabled
  }
+ 
+input "13364:785:Keychron_Keychron_V1" {
+    xkb_layout us,de,ar
+    xkb_variant ,nodeadkeys
+    # xkb_options grp:alt_shift_toggle
+    xkb_numlock enabled
+ }
 
 ### Key bindings
 #
@@ -113,6 +120,8 @@ input "1133:16520:Logitech_ERGO_K860" {
 #
 # Workspaces:
 #
+    bindsym $mod+Ctrl+$left workspace prev
+    bindsym $mod+Ctrl+$right workspace next
     # Switch to workspace
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
@@ -125,16 +134,16 @@ input "1133:16520:Logitech_ERGO_K860" {
     bindsym $mod+9 workspace number 9
     bindsym $mod+0 workspace number 10
     # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
+    bindsym $mod+Shift+1 move container to workspace number 1, workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2, workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3, workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4, workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5, workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6, workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7,, workspace number 7,
+    bindsym $mod+Shift+8 move container to workspace number 8, workspace number 8
+    bindsym $mod+Shift+9 move container to workspace number 9, workspace number 9
+    bindsym $mod+Shift+0 move container to workspace number 10, workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 #
@@ -218,10 +227,15 @@ exec --no-startup-id dex-autostart --autostart --environment sway
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet --indicator
+exec  nm-applet --indicator
+
+# Bluetooth Monitor
+exec blueman-applet
 
 # redshift for wayland
-exec --no-startup-id gammastep
+# exec  gammastep
+# This was taken from folke
+exec pgrep gammastep || gammastep-indicator 
 
 # keyoard volume keys
 bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -243,9 +257,16 @@ bindsym $mod+p  exec --no-startup-id "neovide"
 bindsym $mod+n  exec --no-startup-id "google-chrome"
 bindsym $mod+y  exec --no-startup-id "firefox"
 bindsym Ctrl+Mod1+Delete  exec --no-startup-id "rofi -show power-menu -modi power-menu:rofi-power-menu"
-bindsym Ctrl+Mod1+End  exec --no-startup-id "systemctl suspend"
+bindsym Ctrl+Mod1+Home  exec --no-startup-id "systemctl suspend"
 bindsym $mod+Escape  exec --no-startup-id "swaylock -f -e -i $HOME/.config/i3/flatppuccin.png"
 bindsym $mod+Shift+w  exec --no-startup-id 'swaymsg "output * dpms on"'
+
+bindsym $mod+shift+o  exec --no-startup-id "foot --title='foot_scratchpad'"
+
+for_window [title="foot_scratchpad"] {
+   move scratchpad
+   scratchpad show
+}
 
 # Gnome Theme
 set $gnome-schema org.gnome.desktop.interface
@@ -281,3 +302,8 @@ client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
 
 
+#################################################################
+## Layout Rules
+#################################################################
+for_window [app_id="nm-connection-editor"] floating enable 
+for_window [app_id="blueman-manager"] floating enable,  resize set width 40 ppt height 30 ppt

@@ -1,7 +1,7 @@
 if vim.g.neovide then
   -- FONTS
-  vim.o.guifont = "Monaco:h12.0"
-  -- vim.o.guifont = "Fira code:h12"
+  -- vim.o.guifont = "Monaco:h12.0"
+  vim.o.guifont = "Fira code:h12"
   -- vim.o.guifont = "SF Mono:h12"
   -- vim.o.guifont = "JetBrains mono:h12"
   -- vim.o.guifont = "Cascadia Code:h13"
@@ -12,7 +12,7 @@ if vim.g.neovide then
 
   -- Conigurations
 
-  -- vim.g.neovide_transparency = 0.7
+  vim.g.neovide_transparency = 0.9
   -- vim.g.transparency = 0.7
 
   -- vim.g.neovide_floating_blur_amount_x = 3.0
@@ -42,16 +42,26 @@ if vim.g.neovide then
     { "folke/noice.nvim", enabled = false },
 
     -- alternative to nocie lsp progress
-    { "arkav/lualine-lsp-progress" },
+    {
+      "arkav/lualine-lsp-progress",
+      opts = {
+        display_components = { "spinner" },
+      },
+    },
     {
       "nvim-lualine/lualine.nvim",
       event = "VeryLazy",
       opts = {
         sections = {
           lualine_y = {
+            {
+              "lsp_progress",
+              display_components = { "spinner" },
+              spinner_symbols = { "🌑 ", "🌒 ", "🌓 ", "🌔 ", "🌕 ", "🌖 ", "🌗 ", "🌘 " },
+              -- spinner_symbols = { "⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷" },
+            },
             { "progress", separator = " ", padding = { left = 1, right = 0 } },
             { "location", padding = { left = 0, right = 1 } },
-            { "lsp_progress" },
           },
         },
       },
