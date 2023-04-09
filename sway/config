@@ -233,9 +233,9 @@ exec  nm-applet --indicator
 exec blueman-applet
 
 # redshift for wayland
-# exec  gammastep
+exec  gammastep
 # This was taken from folke
-exec pgrep gammastep || gammastep-indicator 
+# exec pgrep gammastep || gammastep-indicator 
 
 # keyoard volume keys
 bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle

@@ -68,7 +68,7 @@ vim.keymap.set("n", "<leader>ue", function()
 end, { desc = "Toggle show errors only" })
 
 local Util = require("lazyvim.util")
--- lazygit
+-- Gitui
 vim.keymap.set("n", "<leader>gu", function()
   Util.float_term({ "gitui" }, { cwd = Util.get_root() })
 end, { desc = "Gitui (root dir)" })
