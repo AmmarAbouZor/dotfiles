@@ -4,9 +4,10 @@
 
 local opt = vim.opt
 
-opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
-opt.foldenable = false
+-- I use nvim ufo for folding
+-- opt.foldmethod = "expr"
+-- opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- opt.foldenable = false
 
 opt.hlsearch = false
 opt.incsearch = true

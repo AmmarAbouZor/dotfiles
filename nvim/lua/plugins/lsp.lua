@@ -30,6 +30,6 @@ return {
 
   keys = {
     { "<leader>k", vim.lsp.buf.hover, desc = "Hover", silent = true },
-    { "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Code Action", silent = true },
+    { "<leader>a", vim.lsp.buf.code_action, desc = "Code Action", silent = true },
   },
 }

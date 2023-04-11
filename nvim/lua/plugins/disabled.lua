@@ -1,7 +1,7 @@
 return {
   -- I don't need them right now
   -- { "L3MON4D3/LuaSnip", enabled = false },
-  { "saadparwaiz1/cmp_luasnip", enabled = false },
+  -- { "saadparwaiz1/cmp_luasnip", enabled = false },
   { "rafamadriz/friendly-snippets", enabled = false },
 
   -- I don't have this in visual studio

@@ -6,7 +6,7 @@
 vim.keymap.set("x", "<leader>p", '"_dP')
 
 -- redo to shift U
-vim.keymap.set({ "n", "v" }, "<S-u>", "<C-r>")
+vim.keymap.set({ "n", "x" }, "<S-u>", "<C-r>")
 
 -- emacs keybindings in insert mod
 -- backward-char
@@ -77,3 +77,7 @@ vim.keymap.set("n", "<leader>gU", function()
 end, { desc = "Gitui (cwd)" })
 
 vim.keymap.set("n", "<leader>s'", require("telescope.builtin").resume, { desc = "Resume" })
+
+-- Helix
+vim.keymap.set({ "n", "x" }, "gh", "^")
+vim.keymap.set({ "n", "x" }, "gl", "$")
