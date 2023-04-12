@@ -1,3 +1,9 @@
+-- trying to hunt the memory leak
+if true then
+  return {}
+end
+
+-- remember the keybindigs.lua
 return {
   "neovim/nvim-lspconfig",
 
