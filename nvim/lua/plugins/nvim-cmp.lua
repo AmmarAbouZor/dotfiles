@@ -1,10 +1,10 @@
+local cmp = require("cmp")
+local luasnip = require("luasnip")
 return {
   "hrsh7th/nvim-cmp",
-  opts = function(_, opts)
+  opts = {
     -- Tab makes problem with the autocompletion in cmd
-    local cmp = require("cmp")
-    local luasnip = require("luasnip")
-    opts.mapping = cmp.mapping.preset.insert({
+    mapping = cmp.mapping.preset.insert({
       ["<C-j>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.confirm()
@@ -27,15 +27,15 @@ return {
       -- ["<C-e>"] = cmp.mapping(function(fallback)
       --   fallback()
       -- end),
-    })
-    opts.sources = cmp.config.sources({
+    }),
+    sources = cmp.config.sources({
       { name = "nvim_lsp" },
       { name = "buffer" },
       { name = "path" },
-    })
+    }),
 
-    -- completion = {
-    --   autocomplete = false,
-    -- },
-  end,
+    experimental = {
+      ghost_text = false,
+    },
+  },
 }
