@@ -10,7 +10,7 @@ return {
   -- I don't need to manage local projects local & global settings yet
   { "folke/neoconf.nvim", enabled = false },
 
-  -- { "folke/persistence.nvim", enabled = false },
+  { "folke/persistence.nvim", enabled = false },
 
   -- I don't have this in visual studio
   { "ggandor/leap.nvim", enabled = false },
