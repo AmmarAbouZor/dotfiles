@@ -39,33 +39,9 @@ if vim.g.neovide then
     -- nocie doesn't play well with neovide
     -- { "rcarriga/nvim-notify", enabled = false },
     -- { "stevearc/dressing.nvim", enabled = false },
-    { "folke/noice.nvim", enabled = false },
+    -- noice disabled globally
+    -- { "folke/noice.nvim", enabled = false },
 
-    -- alternative to nocie lsp progress
-    {
-      "arkav/lualine-lsp-progress",
-      opts = {
-        display_components = { "spinner" },
-      },
-    },
-    {
-      "nvim-lualine/lualine.nvim",
-      event = "VeryLazy",
-      opts = {
-        sections = {
-          lualine_y = {
-            {
-              "lsp_progress",
-              display_components = { "spinner" },
-              spinner_symbols = { "🌑 ", "🌒 ", "🌓 ", "🌔 ", "🌕 ", "🌖 ", "🌗 ", "🌘 " },
-              -- spinner_symbols = { "⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷" },
-            },
-            { "progress", separator = " ", padding = { left = 1, right = 0 } },
-            { "location", padding = { left = 0, right = 1 } },
-          },
-        },
-      },
-    },
     -- See how it feel without alpha vim
     -- { "goolord/alpha-nvim", enabled = false },
   }
