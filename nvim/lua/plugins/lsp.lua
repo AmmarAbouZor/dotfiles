@@ -1,6 +1,15 @@
 -- trying to hunt the memory leak
 if true then
-  return {}
+  return {
+    "neovim/nvim-lspconfig",
+    opts = {
+      diagnostics = {
+        underline = {
+          severity = vim.diagnostic.severity.ERROR,
+        },
+      },
+    },
+  }
 end
 
 -- remember the keybindigs.lua
