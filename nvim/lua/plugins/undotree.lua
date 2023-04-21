@@ -5,5 +5,6 @@ end
 
 return {
   "mbbill/undotree",
+  event = "BufReadPost",
   keys = { { "<leader>y", "<cmd>UndotreeToggle<cr>", desc = "Toggle undo tree" } },
 }

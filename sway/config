@@ -216,7 +216,7 @@ include /etc/sway/config.d/*
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
-exec --no-startup-id dex-autostart --autostart --environment sway
+exec dex-autostart --autostart --environment sway
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -229,8 +229,9 @@ exec --no-startup-id dex-autostart --autostart --environment sway
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec  nm-applet --indicator
 
+# I don't use the bluetooth currently
 # Bluetooth Monitor
-exec blueman-applet
+# exec blueman-applet
 
 # redshift for wayland
 exec  gammastep

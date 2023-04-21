@@ -12,7 +12,7 @@ if vim.g.neovide then
 
   -- Conigurations
 
-  vim.g.neovide_transparency = 0.9
+  -- vim.g.neovide_transparency = 0.9
   -- vim.g.transparency = 0.7
 
   -- vim.g.neovide_floating_blur_amount_x = 3.0
