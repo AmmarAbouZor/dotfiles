@@ -1,4 +1,4 @@
--- Noice disabled becouse of memry leak
+-- Noice disabled becouse of memory leak
 if true then
   return {}
 end

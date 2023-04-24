@@ -67,5 +67,4 @@ D = ["search_selection", "select_mode"]
 [keys.normal.space]
 q = ":quit"
 e = ":write"
-n = ":set lsp.display-inlay-hints true"
-m = ":set lsp.display-inlay-hints false"
+n = ":toggle-option lsp.display-inlay-hints"

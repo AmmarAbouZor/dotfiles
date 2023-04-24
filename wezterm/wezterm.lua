@@ -15,4 +15,5 @@ return {
 	-- font = wezterm.font("roboto mono"),
 	-- font = wezterm.font("JetBrains mono"),
 	-- font = wezterm.font("DejaVu sans mono"),
+	font_size = 13,
 }

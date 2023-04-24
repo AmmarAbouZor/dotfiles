@@ -2,6 +2,26 @@
 if true then
   return {
     "neovim/nvim-lspconfig",
+    dependencies = {
+      "j-hui/fidget.nvim",
+      opts = {
+        text = {
+          spinner = "dots",
+          -- spinner = "grow_vertical",
+          -- spinner = "clock",
+          -- spinner = "moon",
+        },
+        window = {
+          blend = 0, -- &winblend for the window
+        },
+        fmt = {
+          -- function to format each task line
+          task = function(task_name, message, percentage)
+            return nil
+          end,
+        },
+      },
+    },
     opts = {
       diagnostics = {
         underline = {
