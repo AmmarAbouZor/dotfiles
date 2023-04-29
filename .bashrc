@@ -9,6 +9,11 @@ fi
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
 	PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
+#ruby
+if ! [[ "$PATH" =~ "$HOME/.local/share/gem/ruby/:" ]]; then
+	PATH="$HOME/.local/share/gem/ruby/:$PATH"
+fi
+
 export PATH
 EDITOR="nvim"
 export EDITOR
