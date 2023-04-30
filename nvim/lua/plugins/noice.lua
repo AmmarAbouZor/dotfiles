@@ -1,3 +1,8 @@
+-- noice disabled due to memory leak
+if true then
+  return {}
+end
+
 -- Neovide disable noice completely
 if vim.g.neovide then
   return {}

@@ -20,7 +20,7 @@ return {
   -- { "stevearc/dressing.nvim", enabled = false },
 
   -- Memory-leak could be from here
-  -- { "folke/noice.nvim", enabled = false },
+  { "folke/noice.nvim", enabled = false },
 
   -- search and replace is disabled until I need it
   { "windwp/nvim-spectre", enabled = false },

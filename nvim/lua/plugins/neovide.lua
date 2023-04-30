@@ -39,47 +39,11 @@ if vim.g.neovide then
     -- nocie doesn't play well with neovide
     -- { "rcarriga/nvim-notify", enabled = false },
     -- { "stevearc/dressing.nvim", enabled = false },
-    { "folke/noice.nvim", enabled = false },
+    -- noice disabled globally
+    -- { "folke/noice.nvim", enabled = false },
 
     -- See how it feel without alpha vim
     -- { "goolord/alpha-nvim", enabled = false },
-
-    -- lsp progress
-    {
-      "neovim/nvim-lspconfig",
-      dependencies = {
-        "j-hui/fidget.nvim",
-        opts = {
-          text = {
-            spinner = "dots",
-            -- spinner = "grow_vertical",
-            -- spinner = "clock",
-            -- spinner = "moon",
-          },
-          window = {
-            blend = 0, -- &winblend for the window
-          },
-          fmt = {
-            -- function to format each task line
-            task = function(_)
-              return nil
-            end,
-          },
-        },
-      },
-    },
-
-    -- signature help
-    {
-      "ray-x/lsp_signature.nvim",
-      event = "VeryLazy",
-      opts = {
-        bind = true,
-        handler_opts = {
-          border = "rounded",
-        },
-      },
-    },
   }
 end
 
