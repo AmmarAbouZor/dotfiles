@@ -1,6 +1,6 @@
 if vim.g.neovide then
   -- FONTS
-  -- vim.o.guifont = "Monaco:h12.0"
+  -- vim.o.guifont = "Monaco:h12"
   vim.o.guifont = "Fira code:h12"
   -- vim.o.guifont = "SF Mono:h12"
   -- vim.o.guifont = "JetBrains mono:h12"
