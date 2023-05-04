@@ -10,10 +10,10 @@ return {
 	window_close_confirmation = "NeverPrompt",
 
 	-- font = wezterm.font("Monaco"),
-	-- font = wezterm.font("fira code"),
+	-- font = wezterm.font("fira code", { weight = "Medium" }),
 	-- font = wezterm.font("Sf mono"),
 	-- font = wezterm.font("roboto mono"),
-	-- font = wezterm.font("JetBrains mono"),
+	font = wezterm.font("JetBrains mono", { weight = "Medium" }),
 	-- font = wezterm.font("DejaVu sans mono"),
 	font_size = 13,
 }

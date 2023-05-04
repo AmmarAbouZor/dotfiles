@@ -9,6 +9,7 @@ return {
   opts = {
     layout = {
       default_direction = "prefer_right",
+      min_width = 25,
     },
     lazy_load = true,
 
@@ -27,6 +28,11 @@ return {
       "NvimTree",
       "neo-tree",
       "Trouble",
+    },
+
+    keymaps = {
+      ["<C-n>"] = "actions.down_and_scroll",
+      ["<C-p>"] = "actions.up_and_scroll",
     },
 
     use_treesitter = true,
