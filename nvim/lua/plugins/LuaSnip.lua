@@ -1,7 +1,24 @@
 return {
   {
     "L3MON4D3/LuaSnip",
-    -- install jsregexp (optional!).
-    build = "make install_jsregexp LUAJIT_OSX_PATH=/usr/bin",
+    -- I need that for the supertab
+    keys = function()
+      return {
+        {
+          "<tab>",
+          function()
+            require("luasnip").jump(1)
+          end,
+          mode = "s",
+        },
+        {
+          "<s-tab>",
+          function()
+            require("luasnip").jump(-1)
+          end,
+          mode = { "i", "s" },
+        },
+      }
+    end,
   },
 }
