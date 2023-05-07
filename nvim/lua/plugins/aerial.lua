@@ -8,7 +8,7 @@ return {
   },
   opts = {
     layout = {
-      default_direction = "prefer_right",
+      default_direction = "prefer_left",
       min_width = 25,
     },
     lazy_load = true,

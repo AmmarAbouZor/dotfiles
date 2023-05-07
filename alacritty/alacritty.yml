@@ -132,11 +132,11 @@ font:
     #family: SF Mono Nerd Font
     #family: JetBrains mono
     #family: JetBrains mono NL 
-    #family: Fira Code
+    family: Fira Code
     #family: Blex Mono Nerd Font
     #family: Cascadia Code
     #family: Consola Mono
-    family: monaco
+    #family: monaco
     #family: roboto mono
     #family: DejaVu sans Mono
 
@@ -777,7 +777,7 @@ shell:
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
 key_bindings:
-  - { key: N,         mods: Super|Shift,              action: SpawnNewInstance }
+  - { key: N,         mods: alt|Shift,              action: SpawnNewInstance }
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }

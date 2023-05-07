@@ -59,6 +59,8 @@ input "1133:16520:Logitech_ERGO_K860" {
     xkb_variant ,nodeadkeys
     # xkb_options grp:alt_shift_toggle
     xkb_numlock enabled
+    # caps lock control
+    xkb_options ctrl:nocaps
  }
  
 input "13364:785:Keychron_Keychron_V1" {
@@ -66,6 +68,17 @@ input "13364:785:Keychron_Keychron_V1" {
     xkb_variant ,nodeadkeys
     # xkb_options grp:alt_shift_toggle
     xkb_numlock enabled
+    # caps lock control
+    xkb_options ctrl:nocaps
+ }
+
+input "1:1:AT_Translated_Set_2_keyboard" {
+    xkb_layout us,de,ar
+    xkb_variant ,nodeadkeys
+    # xkb_options grp:alt_shift_toggle
+    xkb_numlock enabled
+    # caps lock control
+    xkb_options ctrl:nocaps
  }
 
 ### Key bindings

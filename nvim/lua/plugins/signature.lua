@@ -10,6 +10,8 @@ return {
       },
       hint_enable = false,
       toggle_key = "<C-k>",
+      toggle_key_flip_floatwin_setting = true,
+      floating_window = false,
     },
   },
 }

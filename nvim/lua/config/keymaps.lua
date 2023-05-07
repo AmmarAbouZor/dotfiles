@@ -82,9 +82,5 @@ vim.keymap.set("n", "<leader>s'", require("telescope.builtin").resume, { desc = 
 vim.keymap.set({ "n", "x" }, "gh", "^")
 vim.keymap.set({ "n", "x" }, "gl", "$")
 
--- I disabled lsp configs to hunt the memory leak
-vim.keymap.set({ "n", "x" }, "<leader>k", vim.lsp.buf.hover, { desc = "Hover", silent = true })
-vim.keymap.set({ "n", "x" }, "<leader>a", vim.lsp.buf.code_action, { desc = "Code Action", silent = true })
-
 -- aerial
 vim.keymap.set("n", "<leader>r", "<cmd>AerialToggle<CR>")
