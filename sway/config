@@ -270,8 +270,8 @@ bindsym $mod+t  exec --no-startup-id "flatpak run org.wezfurlong.wezterm"
 bindsym $mod+p  exec --no-startup-id "neovide"
 bindsym $mod+n  exec --no-startup-id "google-chrome"
 bindsym $mod+y  exec --no-startup-id "firefox"
-bindsym Ctrl+Mod1+Delete  exec --no-startup-id "rofi -show power-menu -modi power-menu:rofi-power-menu"
-bindsym Ctrl+Mod1+Home  exec --no-startup-id "systemctl suspend"
+bindsym $mod+Delete  exec --no-startup-id "rofi -show power-menu -modi power-menu:rofi-power-menu"
+bindsym $mod+Home  exec --no-startup-id "systemctl suspend"
 bindsym $mod+Escape  exec --no-startup-id "swaylock -f -e -i $HOME/.config/i3/flatppuccin.png"
 bindsym $mod+Shift+w  exec --no-startup-id 'swaymsg "output * dpms on"'
 

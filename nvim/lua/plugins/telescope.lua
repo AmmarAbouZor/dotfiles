@@ -9,6 +9,13 @@ return {
           prompt_position = "top",
         },
       },
+      mappings = {
+        n = {
+          ["x"] = function(...)
+            return require("telescope.actions").delete_buffer(...)
+          end,
+        },
+      },
     },
   },
 }

@@ -1,5 +1,6 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
+
 return {
   "hrsh7th/nvim-cmp",
   opts = {
@@ -30,12 +31,34 @@ return {
     }),
     sources = cmp.config.sources({
       { name = "nvim_lsp" },
-      { name = "buffer" },
+      { name = "buffer", keyword_length = 2 },
       { name = "path" },
     }),
 
     experimental = {
       ghost_text = false,
+    },
+
+    sorting = {
+      comparators = {
+        cmp.config.compare.recently_used,
+        cmp.config.compare.score,
+        cmp.config.compare.offset,
+        cmp.config.compare.order,
+        -- type
+        function(entry1, entry2)
+          local kind1 = entry1:get_kind()
+          local kind2 = entry2:get_kind()
+          if kind1 ~= kind2 then
+            local diff = kind1 - kind2
+            if diff < 0 then
+              return true
+            elseif diff > 0 then
+              return false
+            end
+          end
+        end,
+      },
     },
   },
 }
