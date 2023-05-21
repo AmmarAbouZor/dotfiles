@@ -41,10 +41,11 @@ return {
 
     sorting = {
       comparators = {
-        cmp.config.compare.recently_used,
+        -- cmp.config.compare.recently_used,
         cmp.config.compare.score,
         cmp.config.compare.offset,
         cmp.config.compare.order,
+        cmp.config.compare.exact,
         -- type
         function(entry1, entry2)
           local kind1 = entry1:get_kind()

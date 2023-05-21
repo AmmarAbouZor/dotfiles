@@ -30,7 +30,7 @@ vim.keymap.set("i", "<M-f>", "<C-o>e<Right>")
 vim.keymap.set("c", "<M-f>", "<S-Right>")
 --
 -- delete-char
-vim.keymap.set("!", "<C-d>", "<Del>")
+-- vim.keymap.set("!", "<C-d>", "<Del>")
 
 -- Move buffers in bufferline
 vim.keymap.set("n", "<C-S-h>", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer to left" })
