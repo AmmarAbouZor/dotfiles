@@ -1,4 +1,5 @@
-[[language]]
+[language-server.rust-analyzer]
 name = "rust"
-language-server = {command = "rustup", args = ["run", "stable", "rust-analyzer"]}
+command = "rustup"
+args = ["run", "stable", "rust-analyzer"]
 config = {"rust-analyzer.completion.callable.snippets" = "add_parentheses"}
