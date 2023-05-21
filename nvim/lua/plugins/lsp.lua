@@ -45,6 +45,15 @@ return {
           },
         },
       },
+      gopls = {
+        settings = {
+          gopls = {
+            analyses = {
+              unusedparams = true,
+            },
+          },
+        },
+      },
     },
   },
   -- keybindings

@@ -23,6 +23,7 @@ return {
         "typescript",
         "vim",
         "yaml",
+        "go",
       },
 
       incremental_selection = {
