@@ -68,8 +68,13 @@ input "13364:785:Keychron_Keychron_V1" {
     xkb_variant ,nodeadkeys
     # xkb_options grp:alt_shift_toggle
     xkb_numlock enabled
-    # caps lock control
-    xkb_options ctrl:nocaps
+ }
+
+input "13364:480:Keychron_Keychron_Q11" {
+    xkb_layout us,de,ar
+    xkb_variant ,nodeadkeys
+    # xkb_options grp:alt_shift_toggle
+    xkb_numlock enabled
  }
 
 input "1:1:AT_Translated_Set_2_keyboard" {
@@ -135,6 +140,8 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 #
     bindsym $mod+Ctrl+$left workspace prev
     bindsym $mod+Ctrl+$right workspace next
+    bindsym $mod+Ctrl+Left workspace prev
+    bindsym $mod+Ctrl+Right workspace next
     # Switch to workspace
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2

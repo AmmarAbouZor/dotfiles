@@ -47,7 +47,7 @@ C-k = "jump_view_up"
 K = "hover"
 
 [keys.insert]
-# C-s = ":w"
+C-s = [":w", "normal_mode"]
 C-y = ":fmt"
 C-q = "collapse_selection"
 C-p = "move_line_up"
@@ -59,11 +59,11 @@ C-b = "move_char_left"
 C-space = "signature_help"
 
 [keys.select]
-# C-s = ":w"
 C-y = ":fmt"
 i = ["insert_mode", "collapse_selection"]
 V = ["goto_first_nonwhitespace", "extend_to_line_end"]
 D = ["search_selection", "select_mode"]
+c = ["trim_selections", "change_selection"]
 
 [keys.normal.space]
 q = ":quit"
