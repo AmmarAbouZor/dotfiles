@@ -283,8 +283,13 @@ bindsym $mod+Escape  exec --no-startup-id "swaylock -f -e -i $HOME/.config/i3/fl
 bindsym $mod+Shift+w  exec --no-startup-id 'swaymsg "output * dpms on"'
 
 bindsym $mod+shift+o  exec --no-startup-id "foot --title='foot_scratchpad'"
+bindsym $mod+shift+i  exec --no-startup-id "alacritty --title='alacritty_scratchpad'"
 
 for_window [title="foot_scratchpad"] {
+   move scratchpad
+   scratchpad show
+}
+for_window [title="alacritty_scratchpad"] {
    move scratchpad
    scratchpad show
 }

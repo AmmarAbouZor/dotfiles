@@ -3,17 +3,17 @@
 -- Add any additional keyvim.keymap.sets here
 
 -- replace without losing clipboard content
-vim.keymap.set("x", "<leader>p", '"_dP')
+vim.keymap.set("x", "<leader>p", '"_dp')
 
 -- redo to shift U
 vim.keymap.set({ "n", "x" }, "<S-u>", "<C-r>")
 
 -- emacs keybindings in insert mod
 -- backward-char
-vim.keymap.set("c", "<C-b>", "<Left>")
+-- vim.keymap.set("c", "<C-b>", "<Left>")
 
 -- forward-char
-vim.keymap.set("c", "<C-f>", "<Right>")
+-- vim.keymap.set("c", "<C-f>", "<Right>")
 
 -- move-beginning-of-line
 vim.keymap.set("!", "<C-a>", "<Home>")
