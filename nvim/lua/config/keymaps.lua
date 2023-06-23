@@ -83,7 +83,9 @@ vim.keymap.set({ "n", "x" }, "gh", "^")
 vim.keymap.set({ "n", "x" }, "gl", "$")
 
 -- aerial
-vim.keymap.set("n", "<leader>r", "<cmd>AerialToggle<CR>")
+vim.keymap.set("n", "<leader>r", function()
+  require("aerial").toggle()
+end)
 
 -- Toggle spell
 vim.keymap.set("n", "<leader>uq", function()
