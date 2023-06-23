@@ -43,7 +43,7 @@ return {
       comparators = {
         -- cmp.config.compare.recently_used,
         cmp.config.compare.score,
-        cmp.config.compare.offset,
+        -- cmp.config.compare.offset,
         cmp.config.compare.order,
         cmp.config.compare.exact,
         -- type

@@ -31,12 +31,12 @@ a = ["append_mode", "collapse_selection"]
 i = ["insert_mode", "collapse_selection"]
 # V = ["goto_first_nonwhitespace", "extend_to_line_end"]
 V = ["extend_line", "trim_selections"]
-x = "extend_line"
+x = ["extend_line", "select_mode"]
 '{' = "select_prev_sibling"
 '}' = "select_next_sibling"
 D = ["move_prev_word_start" ,"move_next_word_end", "search_selection", "select_mode"]
-A-k = ["extend_line", "delete_selection", "move_line_up", "move_line_up", "paste_after", "collapse_selection"]
-A-j = ["extend_line", "delete_selection", "paste_after", "collapse_selection"]
+# A-k = ["extend_line", "delete_selection", "move_line_up", "move_line_up", "paste_after", "collapse_selection"]
+# A-j = ["extend_line", "delete_selection", "paste_after", "collapse_selection"]
 C-q = ":buffer-close"
 H = ":buffer-previous"
 L = ":buffer-next"
@@ -45,6 +45,8 @@ C-l = "jump_view_right"
 C-j = "jump_view_down"
 C-k = "jump_view_up"
 K = "hover"
+A-k = ["goto_line_end","extend_line_below", "delete_selection", "move_line_up", "paste_before"]
+A-j = ["goto_line_end","extend_line_below", "delete_selection", "paste_after"]
 
 [keys.insert]
 C-s = [":w", "normal_mode"]
@@ -64,6 +66,8 @@ i = ["insert_mode", "collapse_selection"]
 V = ["goto_first_nonwhitespace", "extend_to_line_end"]
 D = ["search_selection", "select_mode"]
 c = ["trim_selections", "change_selection"]
+A-k = ["goto_line_end","extend_line_below",  "delete_selection", "move_line_up", "paste_before", "select_mode"]
+A-j = ["goto_line_end","extend_line_below",  "delete_selection", "paste_after", "select_mode" ]
 
 [keys.normal.space]
 q = ":quit"
