@@ -1,7 +1,7 @@
 -- noice disabled due to memory leak
-if true then
-  return {}
-end
+-- if true then
+--   return {}
+-- end
 
 -- Neovide disable noice completely
 if vim.g.neovide then
@@ -43,5 +43,9 @@ return {
     presets = {
       lsp_doc_border = true, -- add a border to hover docs and signature help
     },
+
+    -- messages = {
+    --   view_search = false, -- view for search count messages. Set to `false` to disable
+    -- },
   },
 }
