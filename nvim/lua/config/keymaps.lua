@@ -84,3 +84,18 @@ vim.keymap.set({ "n", "x" }, "gl", "$")
 
 -- aerial
 vim.keymap.set("n", "<leader>r", "<cmd>AerialToggle<CR>")
+
+-- Toggle spell
+vim.keymap.set("n", "<leader>uq", function()
+  vim.notify("Toggle CSpell", 2, { title = "option" })
+  local nls = require("null-ls")
+  if nls.is_registered("cspell") then
+    nls.toggle("cspell")
+  else
+    local cspell = require("cspell")
+    nls.register({
+      cspell.diagnostics,
+      cspell.code_actions,
+    })
+  end
+end, { desc = "Toggle CSpell" })
