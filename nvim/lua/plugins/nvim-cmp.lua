@@ -39,17 +39,23 @@ return {
       ghost_text = false,
     },
 
+    preselect = cmp.PreselectMode.None,
+
     sorting = {
       comparators = {
-        -- cmp.config.compare.recently_used,
-        cmp.config.compare.score,
         -- cmp.config.compare.offset,
-        cmp.config.compare.order,
         cmp.config.compare.exact,
-        -- type
+        cmp.config.compare.score,
+        -- cmp.config.compare.locality,
+        -- cmp.config.compare.recently_used,
+
+        ---- type
         function(entry1, entry2)
+          -- local types = require("cmp.types")
           local kind1 = entry1:get_kind()
+          -- kind1 = kind1 == types.lsp.CompletionItemKind.Text and 100 or kind1
           local kind2 = entry2:get_kind()
+          -- kind2 = kind2 == types.lsp.CompletionItemKind.Text and 100 or kind2
           if kind1 ~= kind2 then
             local diff = kind1 - kind2
             if diff < 0 then
@@ -59,6 +65,8 @@ return {
             end
           end
         end,
+        cmp.config.compare.length,
+        -- cmp.config.compare.order,
       },
     },
   },
