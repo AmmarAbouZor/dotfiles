@@ -4,7 +4,7 @@ return {
     ensure_installed = {
       "stylua",
       "shfmt",
-      "gopls",
+      -- "gopls",
     },
   },
 }

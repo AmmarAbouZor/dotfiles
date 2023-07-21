@@ -46,15 +46,16 @@ return {
           },
         },
       },
-      gopls = {
-        settings = {
-          gopls = {
-            analyses = {
-              unusedparams = true,
-            },
-          },
-        },
-      },
+      -- I'm not using golang at the momment
+      -- gopls = {
+      --   settings = {
+      --     gopls = {
+      --       analyses = {
+      --         unusedparams = true,
+      --       },
+      --     },
+      --   },
+      -- },
     },
   },
   -- keybindings
