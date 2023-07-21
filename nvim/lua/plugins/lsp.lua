@@ -46,6 +46,7 @@ return {
           },
         },
       },
+      pyright = {},
       -- I'm not using golang at the momment
       -- gopls = {
       --   settings = {

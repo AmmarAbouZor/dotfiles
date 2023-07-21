@@ -5,6 +5,8 @@ return {
       "stylua",
       "shfmt",
       -- "gopls",
+      "pyright",
+      "black",
     },
   },
 }
