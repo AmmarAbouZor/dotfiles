@@ -33,18 +33,6 @@ if vim.g.neovide then
   -- vim.g.neovide_cursor_antialiasing = true
 
   vim.g.neovide_cursor_animate_command_line = false
-
-  return {
-
-    -- nocie doesn't play well with neovide
-    -- { "rcarriga/nvim-notify", enabled = false },
-    -- { "stevearc/dressing.nvim", enabled = false },
-    -- noice disabled globally
-    -- { "folke/noice.nvim", enabled = false },
-
-    -- See how it feel without alpha vim
-    -- { "goolord/alpha-nvim", enabled = false },
-  }
 end
 
 return {}
