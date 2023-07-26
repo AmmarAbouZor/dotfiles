@@ -2,11 +2,14 @@ if vim.g.neovide then
   return {}
 end
 
-require("notify").setup({
-  background_colour = "#00000000",
-})
-
 return {
+  {
+    "rcarriga/nvim-notify",
+    opts = {
+      background_colour = "#00000000",
+    },
+  },
+
   {
     "catppuccin",
     opts = {
