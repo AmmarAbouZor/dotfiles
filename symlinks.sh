@@ -19,3 +19,4 @@ ln -s $PWD/waybar ~/.config/
 ln -s $PWD/foot ~/.config/
 ln -s $PWD/wezterm ~/.config/
 ln -s $PWD/ranger ~/.config/
+ln -s $PWD/tmux/.tmux.conf ~/
