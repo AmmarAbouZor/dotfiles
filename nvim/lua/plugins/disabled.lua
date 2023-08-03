@@ -24,4 +24,7 @@ return {
 
   -- search and replace is disabled until I need it
   { "windwp/nvim-spectre", enabled = false },
+
+  -- I didn't like to navigate like this
+  { "folke/flash.nvim", enabled = false },
 }
