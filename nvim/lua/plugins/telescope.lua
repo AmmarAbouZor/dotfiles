@@ -1,5 +1,18 @@
 return {
   "nvim-telescope/telescope.nvim",
+  keys = {
+    {
+      "<leader>uC",
+      function()
+        -- Load all themes
+        require("tokyonight")
+        require("github-theme")
+        -- Then Open telescope themes picker
+        require("lazyvim.util").telescope("colorscheme", { enable_preview = true })()
+      end,
+      desc = "Colorscheme with preview",
+    },
+  },
   opts = {
     defaults = {
       layout_strategy = "horizontal",
