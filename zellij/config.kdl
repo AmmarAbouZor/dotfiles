@@ -3,13 +3,16 @@ keybinds clear-defaults=true{
     shared {
         bind "Alt Q" { Quit; }
         bind "Alt W" { Detach; }
+        bind "Alt ?" { EditScrollback; }
+        bind "Alt Up" { HalfPageScrollUp; }
+        bind "Alt Down" { HalfPageScrollDown; }
 
         // Panes
         bind "Alt N" { NewPane; }
-        bind "Alt H" "Alt Left" { MoveFocusOrTab "Left"; }
-        bind "Alt L" "Alt Right" { MoveFocusOrTab "Right"; }
-        bind "Alt J" "Alt Down" { MoveFocus "Down"; }
-        bind "Alt K" "Alt Up" { MoveFocus "Up"; }
+        bind "Alt H" { MoveFocusOrTab "Left"; }
+        bind "Alt L" { MoveFocusOrTab "Right"; }
+        bind "Alt J" { MoveFocus "Down"; }
+        bind "Alt K" { MoveFocus "Up"; }
         bind "Alt M" { ToggleFloatingPanes; }
         bind "Alt P" { TogglePaneEmbedOrFloating; }
         bind "Alt +" { Resize "Increase"; }
@@ -21,8 +24,8 @@ keybinds clear-defaults=true{
 
         // Tabs
         bind "Alt T" { NewTab; }
-        bind "Alt <" { GoToPreviousTab; }
-        bind "Alt >" { GoToNextTab; }
+        bind "Alt <" "Alt Left" { GoToPreviousTab; }
+        bind "Alt >" "Alt Right" { GoToNextTab; }
         bind "Alt 1" { GoToTab 1; }
         bind "Alt 2" { GoToTab 2; }
         bind "Alt 3" { GoToTab 3; }
