@@ -43,6 +43,7 @@ pane_frames false
 theme "catppuccin-mocha"
 copy_on_select false
 default_layout "compact"
+default_mode "locked"
 
 ui {
     pane_frames {
