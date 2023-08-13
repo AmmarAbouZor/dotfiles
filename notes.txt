@@ -57,6 +57,15 @@ sudo dnf install fontawesome-fonts
 unzip NerdFontsSymbolsOnly.zip -d ~/.local/share/fonts/
 fc-cache ~/.local/share/fonts/
 
+#apple Fonts.
+install 7z: install p7zip p7zip-plugins
+For each font (SF-MONO for example):
+7z x SF-Mono.dmg
+cd SFMonoFonts/
+7z x SF\ Mono\ Fonts.pkg
+7z x Payload\~
+Then move the files and clean up
+
 -------------------------------------------
 #nvidia on x11
 /usr/share/X11/xorg.conf.d/...
