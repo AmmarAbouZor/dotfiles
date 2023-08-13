@@ -1,4 +1,4 @@
-# dotfiles
+# Dot-Files
 
 My dotfiles among different Fedora Setups...
 - Gnome
