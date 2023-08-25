@@ -86,6 +86,13 @@ vim.keymap.set({ "n", "x" }, "gl", "$")
 vim.keymap.set("n", "<leader>r", function()
   require("aerial").toggle()
 end)
+-- I have the same bindings in Visual Studio
+vim.keymap.set("n", "[f", function()
+  require("aerial").prev_up()
+end)
+vim.keymap.set("n", "]f", function()
+  require("aerial").next_up()
+end)
 
 -- Toggle spell
 vim.keymap.set("n", "<leader>uq", function()
