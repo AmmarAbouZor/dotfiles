@@ -42,7 +42,9 @@ local map_bs = function(lhs, rhs)
 end
 map_bs("<C-h>", "v:lua.MiniPairs.bs()")
 map_bs("<C-w>", 'v:lua.MiniPairs.bs("\23")')
+map_bs("<C-Bs>", 'v:lua.MiniPairs.bs("\23")')
 map_bs("<C-u>", 'v:lua.MiniPairs.bs("\21")')
+vim.keymap.set("c", "<C-Bs>", "<C-w>")
 
 -- remove current buffer
 vim.keymap.set("n", "<leader>wq", function()
@@ -51,7 +53,7 @@ end, { desc = "Delete current buffer" })
 
 -- Dismiss Notifications
 vim.keymap.set("n", "<leader>d", function()
-  require("notify").dismiss({})
+  require("notify").dismiss({ pending = true, silent = true })
 end, { desc = "Dismiss notifies" })
 
 -- Toggle Show errors only
