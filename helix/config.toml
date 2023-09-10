@@ -6,6 +6,7 @@ line-number = "relative"
 idle-timeout = 200
 bufferline = "always"
 color-modes = true
+cursorline = true
 
 [editor.cursor-shape]
 insert = "bar"
@@ -22,6 +23,9 @@ left = ["mode", "spinner", "version-control", "file-name"]
 
 [editor.soft-wrap]
 enable = true
+
+[editor.indent-guides]
+render = true
 
 [keys.normal]
 C-s = ":w"

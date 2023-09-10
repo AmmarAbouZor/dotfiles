@@ -7,6 +7,7 @@ return {
         -- Load all themes
         require("tokyonight")
         require("github-theme")
+        require("gruvbox")
         -- Then Open telescope themes picker
         require("lazyvim.util").telescope("colorscheme", { enable_preview = true })()
       end,
