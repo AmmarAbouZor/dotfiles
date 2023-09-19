@@ -24,6 +24,7 @@ return {
         "vim",
         "yaml",
         "go",
+        "ruby",
       },
 
       incremental_selection = {

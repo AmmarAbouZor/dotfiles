@@ -47,6 +47,7 @@ return {
         },
       },
       pyright = {},
+      solargraph = {},
       -- I'm not using golang at the momment
       -- gopls = {
       --   settings = {

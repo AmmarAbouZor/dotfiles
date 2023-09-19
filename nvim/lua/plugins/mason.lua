@@ -7,6 +7,7 @@ return {
       -- "gopls",
       "pyright",
       "black",
+      "solargraph",
     },
   },
 }
