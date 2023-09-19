@@ -7,7 +7,7 @@ return {
       -- "gopls",
       "pyright",
       "black",
-      "solargraph",
+      -- "solargraph", I installed it directly as gem so it's reachable from other programs as well
     },
   },
 }
