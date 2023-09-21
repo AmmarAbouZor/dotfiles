@@ -26,7 +26,7 @@ vim.keymap.set("i", "<M-b>", "<C-Left>")
 vim.keymap.set("c", "<M-b>", "<S-Left>")
 
 -- forward-word
-vim.keymap.set("i", "<M-f>", "<C-o>e<Right>")
+vim.keymap.set("i", "<M-f>", "<C-Right>")
 vim.keymap.set("c", "<M-f>", "<S-Right>")
 --
 -- delete-char
