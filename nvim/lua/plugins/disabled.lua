@@ -27,4 +27,10 @@ return {
 
   -- I didn't like to navigate like this
   { "folke/flash.nvim", enabled = false },
+
+  -- This makes the light animation for the indentations lines
+  {
+    "echasnovski/mini.indentscope",
+    enabled = false,
+  },
 }

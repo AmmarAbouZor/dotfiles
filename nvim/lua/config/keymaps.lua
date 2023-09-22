@@ -4,6 +4,7 @@
 
 -- replace without losing clipboard content
 vim.keymap.set("x", "<leader>p", '"_dp')
+vim.keymap.set("x", "<leader>P", '"_dP')
 
 -- redo to shift U
 vim.keymap.set({ "n", "x" }, "<S-u>", "<C-r>")
