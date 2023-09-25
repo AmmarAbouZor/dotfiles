@@ -36,6 +36,8 @@ vim.keymap.set("c", "<M-f>", "<S-Right>")
 -- Move buffers in bufferline
 vim.keymap.set("n", "<C-S-h>", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer to left" })
 vim.keymap.set("n", "<C-S-l>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer to right" })
+vim.keymap.set("n", "<S-Left>", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer to left" })
+vim.keymap.set("n", "<S-Right>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer to right" })
 
 -- Backspace with MiniPairs
 local map_bs = function(lhs, rhs)

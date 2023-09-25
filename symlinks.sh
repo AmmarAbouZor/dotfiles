@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ln -s $PWD/.bashrc ~/
 ln -s $PWD/alacritty ~/.config/
 ln -s $PWD/fish ~/.config/
