@@ -37,7 +37,6 @@ if [ -d ~/.bashrc.d ]; then
 fi
 
 # My aliases
-alias adv="cd ~/Desktop/advent_of_code/ ; hx ."
 alias upup="sudo dnf update"
 alias la="ls -a"
 
