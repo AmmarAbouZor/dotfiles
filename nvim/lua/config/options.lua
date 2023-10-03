@@ -4,11 +4,17 @@
 
 local opt = vim.opt
 
--- I use nvim ufo for folding
+-- {{{ Fold setting
+-- old setting
 -- opt.foldmethod = "expr"
 -- opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- opt.foldenable = false
-
+--
+-- this should work on newer version of neovim
+-- for now I'll still use nvim-ufo
+-- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
+-- {{{
 opt.hlsearch = false
 opt.incsearch = true
 
