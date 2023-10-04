@@ -5,7 +5,7 @@ return {
 
   init = function()
     vim.cmd("let g:VM_maps = {}")
-    vim.cmd("let g:VM_maps['Find Under'] = '<A-n>'")
-    vim.cmd("let g:VM_maps['Find Subword Under'] = '<A-n>'")
+    vim.cmd("let g:VM_maps['Find Under'] = '<A-m>'")
+    vim.cmd("let g:VM_maps['Find Subword Under'] = '<A-m>'")
   end,
 }
