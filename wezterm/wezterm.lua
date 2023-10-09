@@ -4,12 +4,12 @@ local act = wezterm.action
 return {
 	default_prog = { "/usr/bin/fish" },
 	color_scheme = "Catppuccin Mocha",
-	window_background_opacity = 0.93,
+	-- window_background_opacity = 0.95,
 	window_decorations = "RESIZE",
 	enable_tab_bar = true,
 	hide_tab_bar_if_only_one_tab = true,
 	enable_scroll_bar = false,
-	window_close_confirmation = "NeverPrompt",
+	window_close_confirmation = "AlwaysPrompt",
 	enable_wayland = true,
 	force_reverse_video_cursor = true,
 	initial_cols = 110,
@@ -20,6 +20,9 @@ return {
 	term = "wezterm",
 	integrated_title_buttons = { "Maximize", "Close" },
 
+	front_end = "WebGpu",
+	-- webgpu_power_preference = "HighPerformance",
+
 	-- font = wezterm.font("Monaco"),
 	-- font = wezterm.font("fira code", { weight = "Medium" }),
 	-- font = wezterm.font("fira code"),
@@ -28,11 +31,13 @@ return {
 	-- font = wezterm.font("roboto mono"),
 	-- font = wezterm.font("JetBrains mono", { weight = "Medium" }),
 	-- font = wezterm.font("DejaVu sans mono"),
-	font_size = 12.7,
-	line_height = 1.05,
+	font_size = 12.5,
+	-- font_size = 12.7,
+	-- line_height = 1.05,
 	default_cursor_style = "SteadyBlock",
 	-- TODO: Check the best fps for my computer
 	max_fps = 30,
+	-- freetype_load_flags = "NO_HINTING",
 
 	-- This rules only applies when using FiraCode
 	font_rules = {
@@ -133,9 +138,8 @@ return {
 		{ key = "V", mods = "SHIFT|CTRL", action = act.PasteFrom("Clipboard") },
 		{ key = "V", mods = "SHIFT|ALT", action = act.PasteFrom("Clipboard") },
 
-		-- I close tab by mistake like that
-		-- { key = "W", mods = "ALT", action = act.CloseCurrentTab({ confirm = true }) },
-		-- { key = "W", mods = "SHIFT|ALT", action = act.CloseCurrentTab({ confirm = true }) },
+		{ key = "W", mods = "ALT", action = act.CloseCurrentTab({ confirm = true }) },
+		{ key = "W", mods = "SHIFT|ALT", action = act.CloseCurrentTab({ confirm = true }) },
 
 		{ key = "?", mods = "ALT", action = act.ActivateCopyMode },
 		{ key = "?", mods = "SHIFT|ALT", action = act.ActivateCopyMode },
@@ -145,10 +149,10 @@ return {
 
 		{ key = "phys:Space", mods = "SHIFT|CTRL", action = act.QuickSelect },
 
-		{ key = "{", mods = "ALT", action = act.ScrollByPage(-1) },
-		{ key = "{", mods = "SHIFT|ALT", action = act.ScrollByPage(-1) },
-		{ key = "}", mods = "ALT", action = act.ScrollByPage(1) },
-		{ key = "}", mods = "SHIFT|ALT", action = act.ScrollByPage(1) },
+		{ key = "}", mods = "ALT", action = act.ScrollByPage(-1) },
+		{ key = "}", mods = "SHIFT|ALT", action = act.ScrollByPage(-1) },
+		{ key = "{", mods = "ALT", action = act.ScrollByPage(1) },
+		{ key = "{", mods = "SHIFT|ALT", action = act.ScrollByPage(1) },
 
 		{ key = "<", mods = "SHIFT|ALT", action = act.MoveTabRelative(-1) },
 		{ key = ">", mods = "SHIFT|ALT", action = act.MoveTabRelative(1) },
@@ -157,6 +161,7 @@ return {
 		{ key = "L", mods = "SHIFT|ALT", action = act.ActivatePaneDirection("Right") },
 		{ key = "K", mods = "SHIFT|ALT", action = act.ActivatePaneDirection("Up") },
 		{ key = "J", mods = "SHIFT|ALT", action = act.ActivatePaneDirection("Down") },
+		{ key = ":", mods = "SHIFT|ALT", action = act.RotatePanes("Clockwise") },
 
 		{ key = "LeftArrow", mods = "SHIFT|ALT", action = act.AdjustPaneSize({ "Left", 1 }) },
 		{ key = "RightArrow", mods = "SHIFT|ALT", action = act.AdjustPaneSize({ "Right", 1 }) },
