@@ -6,32 +6,20 @@ return {
   -- If you'd rather extend the default config, use the code below instead:
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        "bash",
-        "vimdoc",
-        "html",
-        "javascript",
-        "json",
-        "lua",
-        "markdown",
-        "markdown_inline",
+    opts = function(_, opts)
+      vim.list_extend(opts.ensure_installed, {
         "python",
-        "query",
-        "regex",
         "rust",
-        "typescript",
-        "vim",
         "yaml",
         "go",
         "ruby",
-      },
+      })
 
-      indent = {
+      opts.indent = {
         enable = true,
-      },
+      }
 
-      incremental_selection = {
+      opts.incremental_selection = {
         enable = true,
         keymaps = {
           init_selection = "<M-o>",
@@ -39,9 +27,9 @@ return {
           scope_incremental = "<nop>",
           node_decremental = "<M-i>",
         },
-      },
+      }
 
-      textobjects = {
+      opts.textobjects = {
         move = {
           enable = true,
           goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer" },
@@ -49,7 +37,7 @@ return {
           goto_previous_start = { ["[f"] = "@function.outer", ["[c"] = "@class.outer" },
           goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer" },
         },
-      },
-    },
+      }
+    end,
   },
 }
