@@ -29,6 +29,9 @@ opt.incsearch = true
 
 opt.shell = "fish"
 
+-- TODO: Check if this is usefull
+opt.jumpoptions = "stack"
+
 opt.undofile = false
 opt.timeoutlen = 600
 
