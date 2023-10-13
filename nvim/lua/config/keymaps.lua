@@ -75,10 +75,10 @@ end, { desc = "Toggle show errors only" })
 local Util = require("lazyvim.util")
 -- Gitui
 vim.keymap.set("n", "<leader>gu", function()
-  Util.float_term({ "gitui" }, { cwd = Util.get_root() })
+  Util.terminal.open({ "gitui" }, { cwd = Util.root.get() })
 end, { desc = "Gitui (root dir)" })
 vim.keymap.set("n", "<leader>gU", function()
-  Util.float_term({ "gitui" })
+  Util.terminal.open({ "gitui" })
 end, { desc = "Gitui (cwd)" })
 
 vim.keymap.set("n", "<leader>s'", require("telescope.builtin").resume, { desc = "Resume" })
@@ -100,16 +100,14 @@ vim.keymap.set("n", "<M-n>", function()
 end)
 
 -- Toggle spell
+local spell_enabled = false
 vim.keymap.set("n", "<leader>uq", function()
-  vim.notify("Toggle CSpell", 2, { title = "option" })
-  local nls = require("null-ls")
-  if nls.is_registered("cspell") then
-    nls.toggle("cspell")
+  spell_enabled = not spell_enabled
+  if spell_enabled then
+    vim.notify("Activate CSpell", 2, { title = "option" })
+    require("lint").try_lint("cspell")
   else
-    local cspell = require("cspell")
-    nls.register({
-      cspell.diagnostics,
-      cspell.code_actions,
-    })
+    vim.notify("Reset buffer diagnostic", 2, { title = "option" })
+    vim.diagnostic.reset(nil, 0)
   end
 end, { desc = "Toggle CSpell" })
