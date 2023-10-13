@@ -1,33 +1,16 @@
 return {
   "stevearc/aerial.nvim",
-  lazy = true,
-  -- Optional dependencies
-  dependencies = {
-    "nvim-treesitter/nvim-treesitter",
-    "nvim-tree/nvim-web-devicons",
-  },
+  -- Plugin is handled automatically since it's an extra on LazyVim
+  -- lazy = true,
+  -- -- Optional dependencies
+  -- dependencies = {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   "nvim-tree/nvim-web-devicons",
+  -- },
   opts = {
     layout = {
       default_direction = "prefer_left",
-      min_width = 25,
-    },
-    lazy_load = true,
-
-    buftype_exclude = {
-      "nofile",
-      "terminal",
-    },
-    filetype_exclude = {
-      "help",
-      "startify",
-      "aerial",
-      "alpha",
-      "dashboard",
-      "lazy",
-      "neogitstatus",
-      "NvimTree",
-      "neo-tree",
-      "Trouble",
+      min_width = 30,
     },
 
     keymaps = {
@@ -35,12 +18,11 @@ return {
       ["<C-p>"] = "actions.up_and_scroll",
     },
 
-    use_treesitter = true,
-    -- backends = { "treesitter", "lsp", "markdown", "man" },
-    backends = { "treesitter", "markdown", "man" },
-
-    -- autojump = true,
-
     close_on_select = true,
+  },
+  keys = {
+    { "<leader>r", "<cmd>AerialToggle<cr>", desc = "Aerial (Symbols)" },
+    { "<M-p>", "<cmd>AerialPrev<cr>", desc = "Previous Symbol" },
+    { "<M-n>", "<cmd>AerialNext<cr>", desc = "Next Symbol" },
   },
 }

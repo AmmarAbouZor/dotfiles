@@ -9,13 +9,7 @@ vim.keymap.set("x", "<leader>P", '"_dP')
 -- redo to shift U
 vim.keymap.set({ "n", "x" }, "<S-u>", "<C-r>")
 
--- emacs keybindings in insert mod
--- backward-char
--- vim.keymap.set("c", "<C-b>", "<Left>")
-
--- forward-char
--- vim.keymap.set("c", "<C-f>", "<Right>")
-
+-- emacs keybindings in insert mod --
 -- move-beginning-of-line
 vim.keymap.set("!", "<C-a>", "<Home>")
 
@@ -29,9 +23,6 @@ vim.keymap.set("c", "<M-b>", "<S-Left>")
 -- forward-word
 vim.keymap.set("i", "<M-f>", "<C-Right>")
 vim.keymap.set("c", "<M-f>", "<S-Right>")
---
--- delete-char
--- vim.keymap.set("!", "<C-d>", "<Del>")
 
 -- Move buffers in bufferline
 vim.keymap.set("n", "<C-S-h>", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer to left" })
@@ -86,18 +77,6 @@ vim.keymap.set("n", "<leader>s'", require("telescope.builtin").resume, { desc = 
 -- Helix
 vim.keymap.set({ "n", "x" }, "gh", "^")
 vim.keymap.set({ "n", "x" }, "gl", "$")
-
--- aerial
-vim.keymap.set("n", "<leader>r", function()
-  require("aerial").toggle()
-end)
--- I have the same bindings in Visual Studio
-vim.keymap.set("n", "<M-p>", function()
-  require("aerial").prev()
-end)
-vim.keymap.set("n", "<M-n>", function()
-  require("aerial").next()
-end)
 
 -- Toggle spell
 local spell_enabled = false
