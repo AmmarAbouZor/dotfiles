@@ -78,15 +78,19 @@ vim.keymap.set("n", "<leader>s'", require("telescope.builtin").resume, { desc = 
 vim.keymap.set({ "n", "x" }, "gh", "^")
 vim.keymap.set({ "n", "x" }, "gl", "$")
 
--- Toggle spell
-local spell_enabled = false
+-- Apply CSpell
 vim.keymap.set("n", "<leader>uq", function()
-  spell_enabled = not spell_enabled
-  if spell_enabled then
-    vim.notify("Activate CSpell", 2, { title = "option" })
-    require("lint").try_lint("cspell")
-  else
-    vim.notify("Reset buffer diagnostic", 2, { title = "option" })
-    vim.diagnostic.reset(nil, 0)
-  end
-end, { desc = "Toggle CSpell" })
+  vim.notify("Activate CSpell", 2, { title = "option" })
+  require("lint").try_lint("cspell")
+end, { desc = "Apply CSpell lint" })
+
+-- Reset buffer diagnostic
+vim.keymap.set("n", "<leader>ut", function()
+  vim.notify("Reset buffer diagnostic", 2, { title = "option" })
+  vim.diagnostic.reset(nil, 0)
+end, { desc = "Reset Diagnostic" })
+
+-- Show buffer type (For debugging purposes)
+vim.keymap.set("n", "<leader>bt", function()
+  print(vim.bo.filetype)
+end, { desc = "Show buffer type" })
