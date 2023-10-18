@@ -4,7 +4,7 @@ local act = wezterm.action
 return {
 	default_prog = { "/usr/bin/fish" },
 	color_scheme = "Catppuccin Mocha",
-	-- window_background_opacity = 0.95,
+	window_background_opacity = 0.95,
 	window_decorations = "RESIZE",
 	enable_tab_bar = true,
 	hide_tab_bar_if_only_one_tab = true,
@@ -20,13 +20,17 @@ return {
 	term = "wezterm",
 	integrated_title_buttons = { "Maximize", "Close" },
 
+	-- front_end = "OpenGL",
 	front_end = "WebGpu",
 	-- webgpu_power_preference = "HighPerformance",
 
 	-- font = wezterm.font("Monaco"),
 	-- font = wezterm.font("fira code", { weight = "Medium" }),
 	-- font = wezterm.font("fira code"),
-	font = wezterm.font("fira code Retina"),
+	font = wezterm.font_with_fallback({
+		"fira code Retina",
+		{ family = "Symbols Nerd Font Mono Regular", scale = 0.85 },
+	}),
 	-- font = wezterm.font("Sf mono"),
 	-- font = wezterm.font("roboto mono"),
 	-- font = wezterm.font("JetBrains mono", { weight = "Medium" }),
@@ -39,6 +43,16 @@ return {
 	max_fps = 30,
 	-- freetype_load_flags = "NO_HINTING",
 
+	webgpu_preferred_adapter = {
+		backend = "Vulkan",
+		device = 16032,
+		device_type = "IntegratedGpu",
+		driver = "Intel open-source Mesa driver",
+		driver_info = "Mesa 23.1.8",
+		name = "Intel(R) UHD Graphics 620 (WHL GT2)",
+		vendor = 32902,
+	},
+	--
 	-- This rules only applies when using FiraCode
 	font_rules = {
 		{

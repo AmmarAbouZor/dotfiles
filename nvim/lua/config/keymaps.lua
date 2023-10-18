@@ -94,3 +94,12 @@ end, { desc = "Reset Diagnostic" })
 vim.keymap.set("n", "<leader>bt", function()
   print(vim.bo.filetype)
 end, { desc = "Show buffer type" })
+
+-- NOTE: This function is helpful when I need to use cspell linters with autocmds
+--  -- get filetype of current buffer
+-- local ft = vim.filetype.match({buf = 0})
+--
+-- -- empty out the linter table for current filetype
+-- require('lint').linters_by_ft[ft] = {}
+-- -- add linters to the current buffer
+-- require('lint').linters_by_ft[ft] = {"CSpell"}
