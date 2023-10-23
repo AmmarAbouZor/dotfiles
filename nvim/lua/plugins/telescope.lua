@@ -14,6 +14,11 @@ return {
       end,
       desc = "Colorscheme with preview",
     },
+    {
+      "<leader>gf",
+      "<cmd>Telescope git_bcommits<cr>",
+      desc = "Current file history",
+    },
   },
   opts = {
     defaults = {
