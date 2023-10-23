@@ -14,11 +14,12 @@ return {
       end,
       desc = "Colorscheme with preview",
     },
-    {
-      "<leader>gf",
-      "<cmd>Telescope git_bcommits<cr>",
-      desc = "Current file history",
-    },
+    -- I'm using Diffview for that
+    -- {
+    --   "<leader>gf",
+    --   "<cmd>Telescope git_bcommits<cr>",
+    --   desc = "Current file history",
+    -- },
   },
   opts = {
     defaults = {
