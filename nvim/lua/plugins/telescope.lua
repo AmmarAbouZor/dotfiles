@@ -7,8 +7,9 @@ return {
         -- Load all themes
         require("tokyonight")
         require("github-theme")
-        require("gruvbox")
         require("everforest")
+        require("lazy").load({ plugins = { "gruvbox-material" } })
+
         -- Then Open telescope themes picker
         require("lazyvim.util").telescope("colorscheme", { enable_preview = true })()
       end,

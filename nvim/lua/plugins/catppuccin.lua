@@ -4,16 +4,18 @@ end
 
 return {
   {
-    "rcarriga/nvim-notify",
-    opts = {
-      background_colour = "#00000000",
-    },
-  },
-
-  {
     "catppuccin",
+    priority = 1000,
     opts = {
       transparent_background = true,
+      -- transparent background mode sets the background to none
+      -- which invoke a warning nvim-notify
+      custom_highlights = function(_)
+        return {
+          NotifyBackground = { bg = "#000000" },
+        }
+      end,
+
       integrations = {
         indent_blankline = false,
         -- indent_blankline = {
