@@ -30,15 +30,19 @@ vim.keymap.set("n", "<C-S-l>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buf
 vim.keymap.set("n", "<S-Left>", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer to left" })
 vim.keymap.set("n", "<S-Right>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer to right" })
 
--- Backspace with MiniPairs
-local map_bs = function(lhs, rhs)
+-- MiniPairs
+local map_MiniPairs = function(lhs, rhs)
   vim.keymap.set("i", lhs, rhs, { expr = true, replace_keycodes = false })
 end
-map_bs("<C-h>", "v:lua.MiniPairs.bs()")
-map_bs("<C-w>", 'v:lua.MiniPairs.bs("\23")')
-map_bs("<C-Bs>", 'v:lua.MiniPairs.bs("\23")')
-map_bs("<C-u>", 'v:lua.MiniPairs.bs("\21")')
-vim.keymap.set("c", "<C-Bs>", "<C-w>")
+-- Backspace
+map_MiniPairs("<C-h>", "v:lua.MiniPairs.bs()")
+map_MiniPairs("<C-w>", 'v:lua.MiniPairs.bs("\23")')
+map_MiniPairs("<C-BS>", 'v:lua.MiniPairs.bs("\23")')
+map_MiniPairs("<C-u>", 'v:lua.MiniPairs.bs("\21")')
+-- Ctrl-j
+map_MiniPairs("<C-j>", "v:lua.MiniPairs.cr()")
+
+vim.keymap.set("c", "<C-BS>", "<C-w>")
 
 -- remove current buffer
 vim.keymap.set("n", "<leader>wq", function()

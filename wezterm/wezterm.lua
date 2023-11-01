@@ -21,7 +21,7 @@ return {
 	integrated_title_buttons = { "Maximize", "Close" },
 
 	-- front_end = "OpenGL",
-	front_end = "WebGpu",
+	-- front_end = "WebGpu",
 	-- webgpu_power_preference = "HighPerformance",
 
 	-- font = wezterm.font("Monaco"),
@@ -40,18 +40,18 @@ return {
 	-- line_height = 1.05,
 	default_cursor_style = "SteadyBlock",
 	-- TODO: Check the best fps for my computer
-	max_fps = 30,
+	-- max_fps = 30,
 	-- freetype_load_flags = "NO_HINTING",
 
-	webgpu_preferred_adapter = {
-		backend = "Vulkan",
-		device = 16032,
-		device_type = "IntegratedGpu",
-		driver = "Intel open-source Mesa driver",
-		driver_info = "Mesa 23.1.8",
-		name = "Intel(R) UHD Graphics 620 (WHL GT2)",
-		vendor = 32902,
-	},
+	-- webgpu_preferred_adapter = {
+	-- 	backend = "Vulkan",
+	-- 	device = 16032,
+	-- 	device_type = "IntegratedGpu",
+	-- 	driver = "Intel open-source Mesa driver",
+	-- 	driver_info = "Mesa 23.1.8",
+	-- 	name = "Intel(R) UHD Graphics 620 (WHL GT2)",
+	-- 	vendor = 32902,
+	-- },
 	--
 	-- This rules only applies when using FiraCode
 	font_rules = {
