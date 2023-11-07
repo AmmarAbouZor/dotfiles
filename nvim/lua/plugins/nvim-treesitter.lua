@@ -10,13 +10,14 @@ return {
       vim.list_extend(opts.ensure_installed, {
         "python",
         "rust",
-        "yaml",
         "go",
         "ruby",
       })
 
       opts.indent = {
         enable = true,
+        -- Ruby indentation isn't working correctly with treesitter and I'm getting indentation from somewhere else
+        disable = { "ruby" },
       }
 
       opts.incremental_selection = {

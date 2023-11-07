@@ -8,6 +8,7 @@ return {
   --   "nvim-tree/nvim-web-devicons",
   -- },
   opts = {
+    backends = { "treesitter", "lsp", "markdown", "man" },
     layout = {
       default_direction = "prefer_left",
       min_width = 30,
