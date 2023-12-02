@@ -1,0 +1,404 @@
+#include <dt-bindings/zmk/keys.h>
+
+// Glove80 key positions index for positional hold-tap
+// - https://discord.com/channels/877392805654306816/937645688244826154/1066713913351221248
+// - https://media.discordapp.net/attachments/937645688244826154/1066713913133121556/image.png
+//
+// |------------------------|------------------------|
+// | LEFT_HAND_KEYS         |        RIGHT_HAND_KEYS |
+// |                        |                        |
+// |  0  1  2  3  4         |          5  6  7  8  9 |
+// | 10 11 12 13 14 15      |      16 17 18 19 20 21 |
+// | 22 23 24 25 26 27      |      28 29 30 31 32 33 |
+// | 34 35 36 37 38 39      |      40 41 42 43 44 45 |
+// | 46 47 48 49 50 51      |      58 59 60 61 62 63 |
+// | 64 65 66 67 68         |         75 76 77 78 79 |
+// |                69 52   |   57 74                |
+// |                 70 53  |  56 73                 |
+// |                  71 54 | 55 72                  |
+// |------------------------|------------------------|
+//
+    
+#define HOME_ROW_REQUIRE_PRIOR_IDLE_MS 170
+#define HOME_ROW_REQUIRE_PRIOR_IDLE_SHORT 70
+
+behavior {
+    #define LEFT_HAND_KEYS      \
+          0  1  2  3  4         \
+         10 11 12 13 14 15      \
+         22 23 24 25 26 27      \
+         34 35 36 37 38 39      \
+         46 47 48 49 50 51      \
+         64 65 66 67 68
+    #define RIGHT_HAND_KEYS     \
+                                           5  6  7  8  9 \
+                                       16 17 18 19 20 21 \
+                                       28 29 30 31 32 33 \
+                                       40 41 42 43 44 45 \
+                                       58 59 60 61 62 63 \
+                                          75 76 77 78 79
+    #define THUMB_KEYS          \
+                        69 52       57 74                \
+                         70 53     56 73                 \
+                          71 54   55 72
+
+
+
+    #define HOME_HOLDING_TYPE_IM "balanced"
+    #define HOME_HOLDING_TYPE_RP "tap-preferred"
+
+    #define HOME_ROW_TAPPING_TERM_IM 170
+    #define HOME_ROW_TAPPING_TERM_RP 240
+
+    #define HOME_ROW_QUICK_TAP_MS 300
+
+    // Home row mod-tap keys 
+    //
+    hmlim: miryoku_home_row_mods_left_hand_index_middle {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HOME_ROW_MODS_LEFT_HAND_INDEX_MIDDLE";
+        flavor = HOME_HOLDING_TYPE_IM;
+        hold-trigger-key-positions = <RIGHT_HAND_KEYS THUMB_KEYS>;
+        hold-trigger-on-release; // wait for other home row mods
+        tapping-term-ms = <HOME_ROW_TAPPING_TERM_IM>;
+        quick-tap-ms = <HOME_ROW_QUICK_TAP_MS>;
+        require-prior-idle-ms = <HOME_ROW_REQUIRE_PRIOR_IDLE_SHORT>;
+        #binding-cells = <2>;
+        bindings = <&kp>, <&kp>;
+    };
+
+    hmrim: miryoku_home_row_mods_right_hand_index_middle {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HOME_ROW_MODS_RIGHT_HAND_INDEX_MIDDLE";
+        flavor = HOME_HOLDING_TYPE_IM;
+        hold-trigger-key-positions = <LEFT_HAND_KEYS THUMB_KEYS>;
+        hold-trigger-on-release; // wait for other home row mods
+        tapping-term-ms = <HOME_ROW_TAPPING_TERM_IM>;
+        quick-tap-ms = <HOME_ROW_QUICK_TAP_MS>;
+        require-prior-idle-ms = <HOME_ROW_REQUIRE_PRIOR_IDLE_SHORT>;
+        #binding-cells = <2>;
+        bindings = <&kp>, <&kp>;
+    };
+
+    hmlrp: miryoku_home_row_mods_left_hand_ring_pinky {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HOME_ROW_MODS_LEFT_HAND_RING_PINKY";
+        flavor = HOME_HOLDING_TYPE_RP;
+        hold-trigger-key-positions = <RIGHT_HAND_KEYS THUMB_KEYS>;
+        hold-trigger-on-release; // wait for other home row mods
+        tapping-term-ms = <HOME_ROW_TAPPING_TERM_RP>;
+        quick-tap-ms = <HOME_ROW_QUICK_TAP_MS>;
+        require-prior-idle-ms = <HOME_ROW_REQUIRE_PRIOR_IDLE_MS>;
+        #binding-cells = <2>;
+        bindings = <&kp>, <&kp>;
+    };
+
+    hmrrp: miryoku_home_row_mods_right_ring_pinky {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HOME_ROW_MODS_RIGHT_HAND_RING_PINKY";
+        flavor = HOME_HOLDING_TYPE_RP;
+        hold-trigger-key-positions = <LEFT_HAND_KEYS THUMB_KEYS>;
+        hold-trigger-on-release; // wait for other home row mods
+        tapping-term-ms = <HOME_ROW_TAPPING_TERM_RP>;
+        quick-tap-ms = <HOME_ROW_QUICK_TAP_MS>;
+        require-prior-idle-ms = <HOME_ROW_REQUIRE_PRIOR_IDLE_MS>;
+        retro-tap;
+        #binding-cells = <2>;
+        bindings = <&kp>, <&kp>;
+    };
+
+    // Layer hold with hold-preferred flavor and repeat behavior
+    lht: layer_hold_tap {
+        compatible = "zmk,behavior-hold-tap";
+        label = "LAYER_HOLD_TAP";
+        #binding-cells = <2>;
+        quick-tap-ms = <210>;
+        tapping-term-ms = <250>;
+        flavor = "hold-preferred";
+        bindings = <&mo>, <&kp>;
+    };
+
+    splht: spacebar_layer_hold_layer_tap {
+        compatible = "zmk,behavior-hold-tap";
+        label = "SPACEBAR_LAYER_HOLD_LAYER_TAP";
+        flavor = "tap-preferred";
+        hold-trigger-key-positions = <RIGHT_HAND_KEYS LEFT_HAND_KEYS>;
+        tapping-term-ms = <200>;
+        quick-tap-ms = <HOME_ROW_QUICK_TAP_MS>;
+        require-prior-idle-ms = <HOME_ROW_REQUIRE_PRIOR_IDLE_SHORT>;
+        #binding-cells = <2>;
+        bindings = <&mo>, <&kp>;
+    };
+
+    // Sticky key with quick release behavior
+    skq: sticky_key_quick_release {
+        compatible = "zmk,behavior-sticky-key";
+        label = "STICKY_KEY_QUICK_RELEASE";
+        #binding-cells = <1>;
+        bindings = <&kp>;
+        release-after-ms = <2000>;
+        quick-release;
+        ignore-modifiers;
+      };
+};
+
+combos {
+    compatible = "zmk,combos";
+
+    #define COMBO_TIMEOUT_MS       50
+    #define COMBO_TIMEOUT_MS_SHORT 35
+
+    combo_escape {
+        // Left hand, home row middle + index -> escape
+        bindings = <&kp ESC>;
+        key-positions = <37 38>;
+        timeout-ms = <COMBO_TIMEOUT_MS>;
+        require-prior-idle-ms = <HOME_ROW_REQUIRE_PRIOR_IDLE_SHORT>;
+    };
+
+    combo_enter {
+        // Right hand, home row middle + index -> enter
+        bindings = <&kp ENTER>;
+        key-positions = <41 42>;
+        timeout-ms = <COMBO_TIMEOUT_MS>;
+    };
+  
+   combo_backspace {
+       // Right hand, home row middle + index -> backspace
+       bindings = <&kp BACKSPACE>;
+       key-positions = <59 60>;
+       timeout-ms = <COMBO_TIMEOUT_MS>;
+       require-prior-idle-ms = <HOME_ROW_REQUIRE_PRIOR_IDLE_MS>;
+   };
+
+   combo_delete {
+       // Right hand, home row middle + index -> delete
+       bindings = <&kp DELETE>;
+       key-positions = <60 61>;
+       timeout-ms = <COMBO_TIMEOUT_MS>;
+       require-prior-idle-ms = <HOME_ROW_REQUIRE_PRIOR_IDLE_MS>;
+   };
+
+   combo_tab {
+       // Right hand, home row k + l -> backspace
+       bindings = <&kp TAB>;
+       key-positions = <42 43>;
+       timeout-ms = <COMBO_TIMEOUT_MS>;
+       require-prior-idle-ms = <HOME_ROW_REQUIRE_PRIOR_IDLE_SHORT>;
+   };
+
+    combo_sticky_ctrl {
+        // Left hand, lower row middle + ring -> sticky ctrl for while using the mouse
+        bindings = <&skq LCTRL>;
+        key-positions = <48 49>;
+        timeout-ms = <COMBO_TIMEOUT_MS>;
+        require-prior-idle-ms = <HOME_ROW_REQUIRE_PRIOR_IDLE_MS>;
+    };
+
+    combo_sticky_german {
+        // Left hand, lower row middle + index -> sticky layer for German Characters
+        bindings = <&sl 5>;
+        key-positions = <49 50>;
+        timeout-ms = <COMBO_TIMEOUT_MS>;
+        require-prior-idle-ms = <HOME_ROW_REQUIRE_PRIOR_IDLE_MS>;
+    };
+};
+
+macros {
+    // Windows German Characters Unicode
+    win_de_sfa: win_de_sfa {
+        label = "WIN_GERMAN_SFA";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        tap-ms = <0>;
+        wait-ms = <0>;
+        bindings
+            = <&macro_press &kp RALT>
+            , <&macro_tap &kp KP_N1 &kp KP_N4 &kp KP_N2>
+            , <&macro_release &kp RALT>
+            ;
+    }; 
+    win_de_a: win_de_a {
+        label = "WIN_GERMAN_A";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        tap-ms = <0>;
+        wait-ms = <0>;
+        bindings
+            = <&macro_press &kp RALT>
+            , <&macro_tap &kp KP_N1 &kp KP_N3 &kp KP_N2>
+            , <&macro_release &kp RALT>
+            ;
+    }; 
+
+    win_de_sfo: win_de_sfo {
+        label = "WIN_GERMAN_SFO";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        tap-ms = <0>;
+        wait-ms = <0>;
+        bindings
+            = <&macro_press &kp RALT>
+            , <&macro_tap &kp KP_N1 &kp KP_N5 &kp KP_N3>
+            , <&macro_release &kp RALT>
+            ;
+    }; 
+    win_de_o: win_de_o {
+        label = "WIN_GERMAN_O";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        tap-ms = <0>;
+        wait-ms = <0>;
+        bindings
+            = <&macro_press &kp RALT>
+            , <&macro_tap &kp KP_N1 &kp KP_N4 &kp KP_N8>
+            , <&macro_release &kp RALT>
+            ;
+    }; 
+
+    win_de_sfu: win_de_sfu {
+        label = "WIN_GERMAN_SFU";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        tap-ms = <0>;
+        wait-ms = <0>;
+        bindings
+            = <&macro_press &kp RALT>
+            , <&macro_tap &kp KP_N1 &kp KP_N5 &kp KP_N4>
+            , <&macro_release &kp RALT>
+            ;
+    }; 
+    win_de_u: win_de_u {
+        label = "WIN_GERMAN_U";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        tap-ms = <0>;
+        wait-ms = <0>;
+        bindings
+            = <&macro_press &kp RALT>
+            , <&macro_tap &kp KP_N1 &kp KP_N2 &kp KP_N9>
+            , <&macro_release &kp RALT>
+            ;
+    }; 
+
+    win_de_sfs: win_de_sfs {
+        label = "WIN_GERMAN_SFS";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        tap-ms = <0>;
+        wait-ms = <0>;
+        bindings
+            = <&macro_press &kp RALT>
+            , <&macro_tap &kp KP_N0 &kp KP_N2 &kp KP_N2 &kp KP_N3>
+            , <&macro_release &kp RALT>
+            ;
+    }; 
+    win_de_s: win_de_s {
+        label = "WIN_GERMAN_S";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        tap-ms = <0>;
+        wait-ms = <0>;
+        bindings
+            = <&macro_press &kp RALT>
+            , <&macro_tap &kp KP_N2 &kp KP_N2 &kp KP_N5>
+            , <&macro_release &kp RALT>
+            ;
+    }; 
+
+    // Linux German Characters Unicode
+    ibus_de_sfa: ibus_de_sfa {
+        label = "IBUS_GERMAN_SFA";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        tap-ms = <0>;
+        wait-ms = <0>;
+        bindings
+            = <&macro_press &kp LCTRL &kp LSHFT>
+            , <&macro_tap &kp U>
+            , <&macro_release &kp LCTRL &kp LSHFT>
+            , <&macro_tap &kp N0 &kp N0 &kp C &kp N4 &kp SPC>
+            ;
+    }; 
+    ibus_de_a: ibus_de_a {
+        label = "IBUS_GERMAN_A";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        tap-ms = <0>;
+        wait-ms = <0>;
+        bindings
+            = <&macro_press &kp LCTRL &kp LSHFT>
+            , <&macro_tap &kp U>
+            , <&macro_release &kp LCTRL &kp LSHFT>
+            , <&macro_tap &kp N0 &kp N0 &kp E &kp N4 &kp SPC>
+            ;
+    }; 
+
+    ibus_de_sfo: ibus_de_sfo {
+        label = "IBUS_GERMAN_SFO";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        tap-ms = <0>;
+        wait-ms = <0>;
+        bindings
+            = <&macro_press &kp LCTRL &kp LSHFT>
+            , <&macro_tap &kp U>
+            , <&macro_release &kp LCTRL &kp LSHFT>
+            , <&macro_tap &kp N0 &kp N0 &kp D &kp N6 &kp SPC>
+            ;
+    }; 
+    ibus_de_o: ibus_de_o {
+        label = "IBUS_GERMAN_O";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        tap-ms = <0>;
+        wait-ms = <0>;
+        bindings
+            = <&macro_press &kp LCTRL &kp LSHFT>
+            , <&macro_tap &kp U>
+            , <&macro_release &kp LCTRL &kp LSHFT>
+            , <&macro_tap &kp N0 &kp N0 &kp F &kp N6 &kp SPC>
+            ;
+    }; 
+
+    ibus_de_sfu: ibus_de_sfu {
+        label = "IBUS_GERMAN_SFU";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        tap-ms = <0>;
+        wait-ms = <0>;
+        bindings
+            = <&macro_press &kp LCTRL &kp LSHFT>
+            , <&macro_tap &kp U>
+            , <&macro_release &kp LCTRL &kp LSHFT>
+            , <&macro_tap &kp N0 &kp N0 &kp D &kp C &kp SPC>
+            ;
+    }; 
+    ibus_de_u: ibus_de_u {
+        label = "IBUS_GERMAN_U";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        tap-ms = <0>;
+        wait-ms = <0>;
+        bindings
+            = <&macro_press &kp LCTRL &kp LSHFT>
+            , <&macro_tap &kp U>
+            , <&macro_release &kp LCTRL &kp LSHFT>
+            , <&macro_tap &kp N0 &kp N0 &kp F &kp C &kp SPC>
+            ;
+    }; 
+
+    ibus_de_s: ibus_de_s {
+        label = "IBUS_GERMAN_SFS";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        tap-ms = <0>;
+        wait-ms = <0>;
+        bindings
+            = <&macro_press &kp LCTRL &kp LSHFT>
+            , <&macro_tap &kp U>
+            , <&macro_release &kp LCTRL &kp LSHFT>
+            , <&macro_tap &kp N0 &kp N0 &kp D &kp F &kp SPC>
+            ;
+    }; 
+};
