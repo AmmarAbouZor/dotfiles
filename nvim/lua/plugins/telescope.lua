@@ -21,6 +21,7 @@ return {
     --   "<cmd>Telescope git_bcommits<cr>",
     --   desc = "Current file history",
     -- },
+    { "<leader>bb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
   },
   opts = {
     defaults = {
