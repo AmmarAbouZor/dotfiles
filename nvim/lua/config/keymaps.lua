@@ -3,8 +3,7 @@
 -- Add any additional keyvim.keymap.sets here
 
 -- replace without losing clipboard content
-vim.keymap.set("x", "<leader>p", '"_dp')
-vim.keymap.set("x", "<leader>P", '"_dP')
+vim.keymap.set("x", "<leader>p", '"_dP')
 
 -- redo to shift U
 vim.keymap.set({ "n", "x" }, "<S-u>", "<C-r>")

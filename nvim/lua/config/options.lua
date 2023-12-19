@@ -50,3 +50,13 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 vim.diagnostic.config({
   float = { border = border },
 })
+
+-- This takes care of centering the cursure when scrolling
+-- TODO: Apply this in visual studio at work
+opt.scrolloff = 999
+
+-- Ignore case in auto complete for vim commands
+opt.ignorecase = true
+
+-- Show spilt window while seaching and replaceing
+opt.inccommand = "split"
