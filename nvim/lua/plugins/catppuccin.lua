@@ -7,14 +7,14 @@ return {
     "catppuccin",
     priority = 1000,
     opts = {
-      transparent_background = true,
+      transparent_background = false,
       -- transparent background mode sets the background to none
       -- which invoke a warning nvim-notify
-      custom_highlights = function(_)
-        return {
-          NotifyBackground = { bg = "#000000" },
-        }
-      end,
+      -- custom_highlights = function(_)
+      --   return {
+      --     NotifyBackground = { bg = "#000000" },
+      --   }
+      -- end,
 
       integrations = {
         indent_blankline = false,

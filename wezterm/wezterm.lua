@@ -19,6 +19,7 @@ return {
 	tab_bar_at_bottom = true,
 	term = "wezterm",
 	integrated_title_buttons = { "Maximize", "Close" },
+	warn_about_missing_glyphs = false,
 
 	-- front_end = "OpenGL",
 	-- front_end = "WebGpu",
@@ -107,6 +108,8 @@ return {
 		{ key = "T", mods = "ALT", action = act.SpawnTab("CurrentPaneDomain") },
 		{ key = "T", mods = "SHIFT|ALT", action = act.SpawnTab("CurrentPaneDomain") },
 		{ key = "Enter", mods = "SHIFT|ALT", action = act.SpawnTab("CurrentPaneDomain") },
+		{ key = "y", mods = "SHIFT|ALT", action = act.SpawnTab("CurrentPaneDomain") },
+		{ key = "Y", mods = "SHIFT|ALT", action = act.SpawnTab("CurrentPaneDomain") },
 
 		{ key = "n", mods = "SHIFT|ALT", action = act.ActivateTabRelative(1) },
 		{ key = "N", mods = "SHIFT|ALT", action = act.ActivateTabRelative(1) },
