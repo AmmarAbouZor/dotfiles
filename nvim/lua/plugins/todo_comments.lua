@@ -12,5 +12,9 @@ return {
       keyword = "wide", -- "fg", "bg", "wide", "wide_bg", "wide_fg" or empty. (wide and wide_bg is the same as bg, but will also highlight surrounding characters, wide_fg acts accordingly but with fg)
       after = "", -- "fg" or "bg" or empty
     },
+
+    keywords = {
+      TODO = { icon = " ", color = "info", alt = { "TODO AAZ", "TODO AMMAR" } },
+    },
   },
 }

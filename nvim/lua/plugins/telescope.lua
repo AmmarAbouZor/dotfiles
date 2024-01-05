@@ -21,7 +21,27 @@ return {
     --   "<cmd>Telescope git_bcommits<cr>",
     --   desc = "Current file history",
     -- },
+
     { "<leader>bb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
+
+    {
+      "<leader>s/",
+      function()
+        require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
+      end,
+      mode = "n",
+      desc = "Grep word",
+    },
+
+    {
+      "<leader>s?",
+      function()
+        local whole_word_under_cursor = vim.fn.expand("<cWORD>")
+        require("telescope.builtin").grep_string({ search = whole_word_under_cursor })
+      end,
+      mode = "n",
+      desc = "Search WORD",
+    },
   },
   opts = {
     defaults = {
