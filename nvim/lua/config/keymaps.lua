@@ -81,6 +81,23 @@ vim.keymap.set("n", "<leader>s'", require("telescope.builtin").resume, { desc = 
 vim.keymap.set({ "n", "x" }, "gh", "^")
 vim.keymap.set({ "n", "x" }, "gl", "$")
 
+-- Mini Move must overwrite lazyvim default bindings
+vim.keymap.set("v", "<A-j>", function()
+  require("mini.move").move_selection("down")
+end)
+
+vim.keymap.set("v", "<A-k>", function()
+  require("mini.move").move_selection("up")
+end)
+
+vim.keymap.set("n", "<A-j>", function()
+  require("mini.move").move_line("down")
+end)
+
+vim.keymap.set("n", "<A-k>", function()
+  require("mini.move").move_line("up")
+end)
+
 -- Apply CSpell
 vim.keymap.set("n", "<leader>uq", function()
   vim.notify("Activate CSpell", 2, { title = "option" })
