@@ -51,9 +51,8 @@ vim.diagnostic.config({
   float = { border = border },
 })
 
--- This takes care of centering the cursure when scrolling
--- TODO: Apply this in visual studio at work
-opt.scrolloff = 999
+-- This prvent add offset when scrolling so the cursor doesn't get to the top or the buttom of the view
+opt.scrolloff = 5
 
 -- Ignore case in auto complete for vim commands
 opt.ignorecase = true
