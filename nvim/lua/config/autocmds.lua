@@ -34,3 +34,6 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.spell = true
   end,
 })
+
+-- Remove highlight on yank from LazyVim
+vim.api.nvim_clear_autocmds({ group = "lazyvim_highlight_yank" })
