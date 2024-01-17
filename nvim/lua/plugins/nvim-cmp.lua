@@ -8,14 +8,20 @@ return {
     mapping = cmp.mapping.preset.insert({
       ["<C-j>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
-          cmp.confirm()
+          cmp.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+          })
         else
           fallback()
         end
       end, { "i", "s" }),
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
-          cmp.confirm()
+          cmp.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+          })
         elseif luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
         else
@@ -28,6 +34,15 @@ return {
       -- ["<C-e>"] = cmp.mapping(function(fallback)
       --   fallback()
       -- end),
+
+      ["<CR>"] = cmp.mapping.confirm({
+        behavior = cmp.ConfirmBehavior.Replace,
+        select = true,
+      }),
+      ["<C-y>"] = cmp.mapping.confirm({
+        behavior = cmp.ConfirmBehavior.Replace,
+        select = true,
+      }),
     }),
     sources = cmp.config.sources({
       { name = "nvim_lsp" },

@@ -32,6 +32,8 @@ vim.keymap.set("n", "<S-Right>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move b
 -- Better scrolling
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Center cursor after moving down half-page" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Center cursor after moving up half-page" })
+vim.keymap.set("n", "<C-f>", "<C-f>zz", { desc = "Center cursor after moving down page" })
+vim.keymap.set("n", "<C-b>", "<C-b>zz", { desc = "Center cursor after moving up page" })
 
 -- MiniPairs
 local map_MiniPairs = function(lhs, rhs)
