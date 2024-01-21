@@ -1,6 +1,8 @@
 return {
   "folke/noice.nvim",
 
+  enabled = false,
+
   -- stylua: ignore
 keys = {
     { "<leader>nl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },

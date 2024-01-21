@@ -52,7 +52,7 @@ vim.diagnostic.config({
 })
 
 -- This prvent add offset when scrolling so the cursor doesn't get to the top or the buttom of the view
-opt.scrolloff = 5
+opt.scrolloff = 7
 
 -- Ignore case in auto complete for vim commands
 opt.ignorecase = true

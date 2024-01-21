@@ -24,6 +24,18 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- close netrw buffer with <qq>
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("Close_netrw_qq", { clear = true }),
+  pattern = {
+    "netrw",
+  },
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.keymap.set("n", "qq", "<cmd>bd<cr>", { buffer = event.buf, silent = true })
+  end,
+})
+
 -- Enable spell check on text files by default
 vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("text_spell", { clear = true }),

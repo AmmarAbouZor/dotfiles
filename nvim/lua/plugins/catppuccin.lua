@@ -7,23 +7,37 @@ return {
     "catppuccin",
     priority = 1000,
     opts = {
+      flavour = "mocha",
       transparent_background = true,
-      -- transparent background mode sets the background to none
-      -- which invoke a warning nvim-notify
-      custom_highlights = function(_)
+
+      integrations = {
+        cmp = true,
+        aerial = true,
+        indent_blankline = false,
+        fidget = true,
+        harpoon = true,
+        neotree = true,
+        which_key = true,
+      },
+
+      custom_highlights = function(C)
         return {
-          NotifyBackground = { bg = "#000000" },
+          -- This is for the messages at the bottom of the screen
+          MsgSeparator = { bg = C.mantle },
+
+          -- This removes the black background on the popup window that after the cmp popup is shown
+          NormalFloat = { fg = C.text, bg = (O.transparent_background and vim.o.winblend == 0) and C.base or C.mantle },
         }
       end,
 
-      integrations = {
-        indent_blankline = false,
-        -- indent_blankline = {
-        --   enabled = true,
-        --   scope_color = "", -- catppuccin color (eg. `lavender`) Default: text
-        --   colored_indent_levels = false,
-        -- },
-      },
+      -- This will be kept only for the case if I reactivate nvim-notify
+      -- transparent background mode sets the background to none
+      -- which invoke a warning nvim-notify
+      -- custom_highlights = function(_)
+      --   return {
+      --     NotifyBackground = { bg = "#000000" },
+      --   }
+      -- end,
     },
   },
 }
