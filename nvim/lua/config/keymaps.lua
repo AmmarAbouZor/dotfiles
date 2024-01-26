@@ -8,6 +8,9 @@ vim.keymap.set("x", "<leader>p", '"_dP')
 -- redo to shift U
 vim.keymap.set({ "n", "x" }, "<S-u>", "<C-r>")
 
+-- switch to last buffer
+vim.keymap.set("n", "<C-q>", "<C-^>")
+
 -- emacs keybindings in insert mod --
 -- move-beginning-of-line
 vim.keymap.set("!", "<C-a>", "<Home>")

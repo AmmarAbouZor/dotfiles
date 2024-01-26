@@ -9,6 +9,8 @@ return {
     opts = {
       flavour = "mocha",
       transparent_background = true,
+      -- I have the workaround applied in kitty theme and don't need it here.
+      kitty = false,
 
       integrations = {
         cmp = true,
