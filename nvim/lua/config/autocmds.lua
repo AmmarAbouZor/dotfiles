@@ -17,6 +17,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "fugitivediff",
     -- TODO: This could do some problems since I still don't know which other git buffers are
     "git",
+    "oil",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
