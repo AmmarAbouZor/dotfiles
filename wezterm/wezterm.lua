@@ -21,6 +21,9 @@ return {
 	integrated_title_buttons = { "Maximize", "Close" },
 	warn_about_missing_glyphs = false,
 
+	-- This makes the fonts a little bit
+	freetype_load_target = "Light",
+
 	-- front_end = "OpenGL",
 	-- front_end = "WebGpu",
 	-- webgpu_power_preference = "HighPerformance",

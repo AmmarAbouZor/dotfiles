@@ -59,3 +59,6 @@ opt.ignorecase = true
 
 -- Show spilt window while seaching and replaceing
 opt.inccommand = "split"
+
+-- Remove - for whitespaces and > for tabs
+opt.list = false
