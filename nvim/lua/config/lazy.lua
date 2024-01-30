@@ -30,6 +30,9 @@ require("lazy").setup({
     notify = false,
   },
   performance = {
+    cache = {
+      enabled = true,
+    },
     rtp = {
       -- disable some rtp plugins
       disabled_plugins = {

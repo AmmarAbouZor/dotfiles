@@ -62,3 +62,4 @@ opt.inccommand = "split"
 
 -- Remove - for whitespaces and > for tabs
 opt.list = false
+opt.showmode = true
