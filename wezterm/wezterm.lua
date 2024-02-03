@@ -21,7 +21,7 @@ return {
 	integrated_title_buttons = { "Maximize", "Close" },
 	warn_about_missing_glyphs = false,
 
-	-- This makes the fonts a little bit
+	-- This makes the fonts a little bit fuzzier but it should be faster for rendering
 	freetype_load_target = "Light",
 
 	-- front_end = "OpenGL",

@@ -18,8 +18,8 @@ select = "block"
 right = ["diagnostics", "selections", "position","position-percentage", "file-encoding"]
 left = ["mode", "spinner", "version-control", "file-name"]
 
-# [editor.lsp]
-# auto-signature-help = false
+[editor.lsp]
+auto-signature-help = false
 # display-inlay-hints = true
 
 [editor.soft-wrap]
@@ -57,13 +57,7 @@ A-j = ["goto_line_end","extend_line_below", "delete_selection", "paste_after"]
 C-s = [":w", "normal_mode"]
 C-y = ":fmt"
 C-q = "collapse_selection"
-C-p = "move_line_up"
-C-n = "move_line_down"
-C-e = "goto_line_end_newline"
-C-a = "goto_line_start"
-C-f = "move_char_right"
-C-b = "move_char_left"
-C-space = "signature_help"
+C-k = "signature_help"
 
 [keys.select]
 C-y = ":fmt"
@@ -78,3 +72,6 @@ A-j = ["goto_line_end","extend_line_below",  "delete_selection", "paste_after", 
 q = ":quit"
 e = ":write"
 n = ":toggle-option lsp.display-inlay-hints"
+# expermenting: This runs cspell on the changed files and dump the results in a new buffer
+# z = [":hnew", ":append-output cspell $(git diff --name-only)"]
+

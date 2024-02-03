@@ -2,6 +2,14 @@ return {
   { "projekt0n/github-nvim-theme" },
   { "neanias/everforest-nvim" },
   { "sainnhe/gruvbox-material" },
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    opts = {
+      variant = "main",
+      styles = { transparency = true },
+    },
+  },
   --
   -- {
   --   "folke/tokyonight.nvim",
