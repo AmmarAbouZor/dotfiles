@@ -10,6 +10,17 @@ return {
       },
     },
 
+    -- Close tree when file is opened
+    event_handlers = {
+      {
+        event = "file_opened",
+        handler = function(file_path)
+          --auto close
+          require("neo-tree.command").execute({ action = "close" })
+        end,
+      },
+    },
+
     -- This helps to show the new tree in full screen when open vim with a directory as argument
     filesystem = {
       hijack_netrw_behavior = "open_current",
@@ -35,6 +46,7 @@ return {
         end
       end,
     })
+
     -- keymaps
   end,
 

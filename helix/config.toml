@@ -58,6 +58,8 @@ C-s = [":w", "normal_mode"]
 C-y = ":fmt"
 C-q = "collapse_selection"
 C-k = "signature_help"
+C-e = "goto_line_end_newline"
+C-a = "goto_line_start"
 
 [keys.select]
 C-y = ":fmt"
