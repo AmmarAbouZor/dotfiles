@@ -5,7 +5,7 @@ return {
 	default_prog = { "/usr/bin/fish" },
 	color_scheme = "Catppuccin Mocha",
 	window_background_opacity = 0.95,
-	window_decorations = "RESIZE",
+	window_decorations = "NONE",
 	enable_tab_bar = true,
 	hide_tab_bar_if_only_one_tab = true,
 	enable_scroll_bar = false,
@@ -21,8 +21,11 @@ return {
 	integrated_title_buttons = { "Maximize", "Close" },
 	warn_about_missing_glyphs = false,
 
-	-- This makes the fonts a little bit fuzzier but it should be faster for rendering
-	freetype_load_target = "Light",
+	-- TODO: Check if disabling hinting has an impact on the performance
+	-- freetype_load_target = "Light",
+	-- freetype_load_flags = "NO_HINTING",
+	-- freetype_load_flags = "NO_AUTOHINT",
+	-- freetype_load_flags = "FORCE_AUTOHINT",
 
 	-- front_end = "OpenGL",
 	-- front_end = "WebGpu",
@@ -45,7 +48,6 @@ return {
 	default_cursor_style = "SteadyBlock",
 	-- TODO: Check the best fps for my computer
 	-- max_fps = 30,
-	-- freetype_load_flags = "NO_HINTING",
 
 	-- webgpu_preferred_adapter = {
 	-- 	backend = "Vulkan",

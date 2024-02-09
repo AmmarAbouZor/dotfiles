@@ -16,7 +16,7 @@ vim.keymap.set("n", "<C-q>", "<C-^>")
 vim.keymap.set("!", "<C-a>", "<Home>")
 
 -- move-end-of-line
-vim.keymap.set("!", "<C-e>", "<End>")
+vim.keymap.set("!", "<C-e>", "<End>", { noremap = true })
 
 -- backward-word
 vim.keymap.set("i", "<M-b>", "<C-Left>")

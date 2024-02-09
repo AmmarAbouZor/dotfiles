@@ -12,6 +12,13 @@ return {
   opts = {
     -- Tab makes problem with the autocompletion in cmd
     mapping = cmp.mapping.preset.insert({
+      -- I couldn't overwrite <C-e> by setting the value to nil and must redefine the function here again
+      ["<C-e>"] = cmp.mapping(function(_)
+        vim.api.nvim_input("<End>")
+      end, { "i", "s" }),
+
+      ["<C-c>"] = cmp.mapping.abort(),
+
       ["<C-j>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.confirm({
@@ -22,6 +29,7 @@ return {
           fallback()
         end
       end, { "i", "s" }),
+
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.confirm({
@@ -39,12 +47,6 @@ return {
           fallback()
         end
       end, { "i", "s" }),
-
-      -- switch <Ctrl-c> and <Ctrl-e>
-      -- ["<C-c>"] = cmp.mapping.abort(),
-      -- ["<C-e>"] = cmp.mapping(function(fallback)
-      --   fallback()
-      -- end),
 
       ["<CR>"] = cmp.mapping.confirm({
         behavior = cmp.ConfirmBehavior.Replace,
