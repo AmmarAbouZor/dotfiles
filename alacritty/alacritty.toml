@@ -18,6 +18,12 @@ action = "SpawnNewInstance"
 key = "Return"
 mods = "Alt|Shift"
 
+[[keyboard.bindings]]
+chars = "\u0017"
+key = "Backspace"
+mods = "Control"
+
+
 [shell]
 program = "/bin/tmux"
 

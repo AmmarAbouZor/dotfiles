@@ -12,24 +12,6 @@ return {
   opts = {
     -- Tab makes problem with the autocompletion in cmd
     mapping = cmp.mapping.preset.insert({
-      -- I couldn't overwrite <C-e> by setting the value to nil and must redefine the function here again
-      ["<C-e>"] = cmp.mapping(function(_)
-        vim.api.nvim_input("<End>")
-      end, { "i", "s" }),
-
-      ["<C-c>"] = cmp.mapping.abort(),
-
-      ["<C-j>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-          })
-        else
-          fallback()
-        end
-      end, { "i", "s" }),
-
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.confirm({
@@ -39,6 +21,24 @@ return {
         elseif luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
         elseif has_words_before() then
+          cmp.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+          })
+        else
+          fallback()
+        end
+      end, { "i", "s" }),
+
+      -- I couldn't overwrite <C-e> by setting the value to nil and must redefine the function here again
+      ["<C-e>"] = cmp.mapping(function(_)
+        vim.api.nvim_input("<End>")
+      end, { "i", "s" }),
+
+      ["<C-c>"] = cmp.mapping.abort(),
+
+      ["<C-j>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
           cmp.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
