@@ -1,3 +1,5 @@
+local Util = require("lazyvim.util")
+
 return {
   "nvim-telescope/telescope.nvim",
   keys = {
@@ -12,7 +14,7 @@ return {
         require("rose-pine")
 
         -- Then Open telescope themes picker
-        require("lazyvim.util").telescope("colorscheme", { enable_preview = true })()
+        Util.telescope("colorscheme", { enable_preview = true })()
       end,
       desc = "Colorscheme with preview",
     },
@@ -24,6 +26,7 @@ return {
     -- },
 
     { "<leader>bb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
+    { "<leader>,", Util.telescope("files"), desc = "Find Files (root dir)" },
 
     {
       "<leader>s/",

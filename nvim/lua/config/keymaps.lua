@@ -2,6 +2,9 @@
 -- Default keyvim.keymap.sets that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keyvim.keymap.sets here
 
+-- Make , a second leader key
+vim.cmd("nmap , <space>")
+
 -- replace without losing clipboard content
 vim.keymap.set("x", "<leader>p", '"_dP')
 
