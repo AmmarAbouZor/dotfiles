@@ -62,4 +62,8 @@ opt.inccommand = "split"
 
 -- Remove - for whitespaces and > for tabs
 opt.list = false
+-- opt.list = true
+-- -- opt.listchars = { eol = "⏎" }
+-- opt.listchars = { eol = "↲" }
+
 opt.showmode = true
