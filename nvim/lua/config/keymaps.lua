@@ -65,19 +65,6 @@ vim.keymap.set("n", "<leader>d", function()
   require("notify").dismiss({ pending = true, silent = true })
 end, { desc = "Dismiss notifies" })
 
--- Toggle Show errors only
-local show_errors_only = false
-vim.keymap.set("n", "<leader>ue", function()
-  show_errors_only = not show_errors_only
-  if show_errors_only then
-    vim.diagnostic.config({ virtual_text = {
-      severity = vim.diagnostic.severity.ERROR,
-    } })
-  else
-    vim.diagnostic.config({ virtual_text = true })
-  end
-end, { desc = "Toggle show errors only" })
-
 local Util = require("lazyvim.util")
 -- Gitui
 vim.keymap.set("n", "<leader>gu", function()
