@@ -17,6 +17,12 @@ return {
         desc = "Diffview Close",
       },
       {
+        "q",
+        "<cmd>DiffviewClose<cr>",
+        mode = "n",
+        desc = "Diffview Close",
+      },
+      {
         "<leader>gr",
         "<cmd>DiffviewRefresh<cr>",
         mode = "n",

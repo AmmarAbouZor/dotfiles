@@ -7,7 +7,7 @@ idle-timeout = 200
 bufferline = "always"
 color-modes = true
 cursorline = true
-scrolloff = 999
+scrolloff = 10
 
 [editor.cursor-shape]
 insert = "bar"
