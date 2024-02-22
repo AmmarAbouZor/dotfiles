@@ -67,3 +67,5 @@ opt.list = false
 -- opt.listchars = { eol = "↲" }
 
 opt.showmode = true
+
+opt.showcmd = false
