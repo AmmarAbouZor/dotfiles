@@ -70,11 +70,6 @@ vim.keymap.set("n", "<leader>wq", function()
   require("mini.bufremove").delete(0, false)
 end, { desc = "Delete current buffer" })
 
--- Dismiss Notifications
-vim.keymap.set("n", "<leader>d", function()
-  require("notify").dismiss({ pending = true, silent = true })
-end, { desc = "Dismiss notifies" })
-
 local Util = require("lazyvim.util")
 -- Gitui
 vim.keymap.set("n", "<leader>gu", function()
