@@ -25,7 +25,9 @@ mods = "Control"
 
 
 [shell]
-program = "/bin/tmux"
+# I start with tmux using the command `alacritty -e tmux`
+# program = "/bin/tmux"
+program = "/bin/fish"
 
 [window]
 decorations = "none"
