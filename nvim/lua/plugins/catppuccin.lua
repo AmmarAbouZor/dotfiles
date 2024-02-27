@@ -29,7 +29,10 @@ return {
           MsgSeparator = { bg = C.mantle },
 
           -- This removes the black background on the popup window that after the cmp popup is shown
-          NormalFloat = { fg = C.text, bg = (O.transparent_background and vim.o.winblend == 0) and C.base or C.mantle },
+          NormalFloat = {
+            fg = C.text,
+            bg = (require("catppuccin").options.transparent_background and vim.o.winblend == 0) and C.base or C.mantle,
+          },
         }
       end,
 
