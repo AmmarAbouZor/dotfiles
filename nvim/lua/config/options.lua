@@ -69,3 +69,6 @@ opt.list = false
 opt.showmode = true
 
 opt.showcmd = false
+
+-- Enable line wrap on words
+vim.o.linebreak = true

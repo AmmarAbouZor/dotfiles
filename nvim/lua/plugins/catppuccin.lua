@@ -8,7 +8,7 @@ return {
     priority = 1000,
     opts = {
       flavour = "mocha",
-      transparent_background = false,
+      transparent_background = true,
       -- I have the workaround applied in kitty theme and don't need it here.
       kitty = false,
 
