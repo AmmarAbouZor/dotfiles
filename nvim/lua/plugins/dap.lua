@@ -16,6 +16,12 @@ return {
     keys = {
         { "<leader>dO", function() require("dap").step_out() end, desc = "Step Out" },
         { "<leader>do", function() require("dap").step_over() end, desc = "Step Over" },
+
+      -- Visual studio old habits 
+        { "<F5>", function() require("dap").continue() end },
+        { "<F10>", function() require("dap").step_over() end },
+        { "<F11>", function() require("dap").step_into() end },
+        { "<F12>", function() require("dap").step_out() end },
       },
 
     -- This is the config for rust but it seems to work without it.
