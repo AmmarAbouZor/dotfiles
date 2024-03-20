@@ -66,6 +66,8 @@ return {
   {
     "rcarriga/nvim-dap-ui",
 
+    dependencies = { "nvim-neotest/nvim-nio" },
+
   -- stylua: ignore
   keys = {
 ---@diagnostic disable-next-line: missing-fields
