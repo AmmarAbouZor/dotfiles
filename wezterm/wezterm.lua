@@ -5,7 +5,7 @@ return {
 	default_prog = { "/usr/bin/fish" },
 	color_scheme = "Catppuccin Mocha",
 	window_background_opacity = 0.95,
-	window_decorations = "NONE",
+	window_decorations = "RESIZE",
 	enable_tab_bar = true,
 	hide_tab_bar_if_only_one_tab = true,
 	enable_scroll_bar = false,
