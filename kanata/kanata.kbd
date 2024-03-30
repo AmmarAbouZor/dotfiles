@@ -1,4 +1,3 @@
-
 (defcfg
   linux-dev /dev/input/by-path/platform-i8042-serio-0-event-kbd
   process-unmapped-keys yes
@@ -15,11 +14,9 @@
 )
 
 (defvar
-  ;; Note: consider using different time values for your different fingers.
-  ;; For example, your pinkies might be slower to release keys and index
-  ;; fingers faster.
   tap-time 0
   hold-time 220
+  hold-time-fast 180
 
   left-hand-keys (
     q w e r t
@@ -69,7 +66,7 @@
    _   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11   f12      _
    _    _    _    _    _   _  _  7   8   9    _     _     _         _
    spc    _    _    _    _    _  0   4   5   6   _  _    _
-   _   _   _    _    _    _    _  _   1   2   3    _                   _
+   _   _   _    _    _    _    _  0   1   2   3    _                   _
   _   _   _    _              0               _    _    _               _
                                                                    _    _    _
 )
@@ -92,22 +89,42 @@
     (on-idle-fakekey to-base tap 20)
   )
 
+  ;; Home row mods
   a (tap-hold-release-keys $tap-time $hold-time (multi a @tap) lalt $left-hand-keys-nhm)
   s (tap-hold-release-keys $tap-time $hold-time (multi s @tap) lmet $left-hand-keys-nhm)
-  d (tap-hold-release-keys $tap-time $hold-time (multi d @tap) lsft $left-hand-keys-nhm)
-  f (tap-hold-release-keys $tap-time $hold-time (multi f @tap) lctl $left-hand-keys-nhm)
-  j (tap-hold-release-keys $tap-time $hold-time (multi j @tap) rctl $right-hand-keys-nhm)
-  k (tap-hold-release-keys $tap-time $hold-time (multi k @tap) rsft $right-hand-keys-nhm)
-  l (tap-hold-release-keys $tap-time $hold-time (multi l @tap) rmet $right-hand-keys-nhm)
+  d (chord combo d)
+  f (chord combo f)
+  j (chord combo j)
+  k (chord combo k)
+  l (chord combo l)
   ; (tap-hold-release-keys $tap-time $hold-time (multi ; @tap) ralt $right-hand-keys-nhm)
 
   q (tap-hold-release-keys $tap-time $hold-time (multi q @tap) (multi lalt lsft) $left-hand-keys-nhm)
 
-  spc (tap-hold-press-timeout $tap-time $hold-time (multi spc @tap) (layer-toggle nav-symb) (multi spc @tap))
+  spc (tap-hold-release $tap-time $hold-time (multi spc @tap) (layer-toggle nav-symb))
   caps (tap-hold-release $tap-time $hold-time (multi (caps-word 2000) @tap) (layer-toggle nums))
 
-  s-plus (tap-hold-release $tap-time $hold-time (multi (multi lsft =) @tap) lsft)
-  c-eql (tap-hold-release $tap-time $hold-time (multi = @tap) lctl)
+  ;; Home row mods on nav-symb layer
+  s-plus (tap-hold-release $tap-time $hold-time-fast (multi (multi lsft =) @tap) lsft)
+  c-eql (tap-hold-release $tap-time $hold-time-fast (multi = @tap) lctl)
+)
+
+;; Combos
+(defchords combo 75
+  (d) (tap-hold-release-keys $tap-time $hold-time-fast (multi d @tap) lsft $left-hand-keys-nhm)
+  (f) (tap-hold-release-keys $tap-time $hold-time-fast (multi f @tap) lctl $left-hand-keys-nhm)
+  (j) (tap-hold-release-keys $tap-time $hold-time-fast (multi j @tap) rctl $right-hand-keys-nhm)
+  (k) (tap-hold-release-keys $tap-time $hold-time-fast (multi k @tap) rsft $right-hand-keys-nhm)
+  (l) (tap-hold-release-keys $tap-time $hold-time (multi l @tap) rmet $right-hand-keys-nhm)
+
+  (d f) esc
+  (j k) ret
+  (k l) tab
+
+  ;; This caused a lot of problems.
+  ;; (d f) (tap-hold-release $tap-time $hold-time (multi esc @tap) (multi lsft lctl))
+  ;; (j k) (tap-hold-release $tap-time $hold-time (multi ret @tap) (multi rsft rctl))
+  ;; (k l) (tap-hold-release $tap-time $hold-time (multi tab @tap) (multi rsft rmet))
 )
 
 
