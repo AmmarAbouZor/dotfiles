@@ -94,7 +94,7 @@
   s (tap-hold-release-keys $tap-time $hold-time (multi s @tap) lmet $left-hand-keys-nhm)
   d (chord combo d)
   f (chord combo f)
-  j (chord combo j)
+  j (tap-hold-release-keys $tap-time $hold-time-fast (multi j @tap) rctl $right-hand-keys-nhm)
   k (chord combo k)
   l (chord combo l)
   ; (tap-hold-release-keys $tap-time $hold-time (multi ; @tap) ralt $right-hand-keys-nhm)
@@ -113,13 +113,15 @@
 (defchords combo 75
   (d) (tap-hold-release-keys $tap-time $hold-time-fast (multi d @tap) lsft $left-hand-keys-nhm)
   (f) (tap-hold-release-keys $tap-time $hold-time-fast (multi f @tap) lctl $left-hand-keys-nhm)
-  (j) (tap-hold-release-keys $tap-time $hold-time-fast (multi j @tap) rctl $right-hand-keys-nhm)
   (k) (tap-hold-release-keys $tap-time $hold-time-fast (multi k @tap) rsft $right-hand-keys-nhm)
   (l) (tap-hold-release-keys $tap-time $hold-time (multi l @tap) rmet $right-hand-keys-nhm)
 
   (d f) esc
-  (j k) ret
   (k l) tab
+
+  ;; Trying to find solve the problem with f+j
+  ;; (j) (tap-hold-release-keys $tap-time $hold-time-fast (multi j @tap) rctl $right-hand-keys-nhm)
+  ;; (j k) ret
 
   ;; This caused a lot of problems.
   ;; (d f) (tap-hold-release $tap-time $hold-time (multi esc @tap) (multi lsft lctl))
