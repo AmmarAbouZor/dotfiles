@@ -12,6 +12,7 @@ return {
         require("everforest")
         require("lazy").load({ plugins = { "gruvbox-material" } })
         require("rose-pine")
+        require("lazy").load({ plugins = { "catppuccin" } })
 
         -- Then Open telescope themes picker
         Util.telescope("colorscheme", { enable_preview = true })()

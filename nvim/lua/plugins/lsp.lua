@@ -29,7 +29,9 @@ return {
           },
         },
       },
-      pyright = {},
+      pyright = {
+        mason = false,
+      },
       solargraph = {
         mason = false,
       },
@@ -45,8 +47,11 @@ return {
       -- },
     },
   },
-  -- keybindings
   init = function()
+    -- *** Remove Unsed varaiables highlight ***
+    vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", { link = "NONE" })
+
+    -- *** keybindings ***
     local keys = require("lazyvim.plugins.lsp.keymaps").get()
 
     keys[#keys + 1] = { "<leader>a", vim.lsp.buf.code_action, desc = "Code Action" }

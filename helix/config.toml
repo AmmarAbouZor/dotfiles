@@ -1,4 +1,5 @@
-theme = "catppuccin_mocha"
+# theme = "catppuccin_mocha"
+theme = "gruvbox"
 # theme = "catppuccin_mocha_no_italic"
 
 [editor]
@@ -8,6 +9,7 @@ bufferline = "always"
 color-modes = true
 cursorline = true
 scrolloff = 10
+popup-border = "all"
 
 [editor.cursor-shape]
 insert = "bar"

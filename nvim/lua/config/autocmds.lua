@@ -50,3 +50,11 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Remove highlight on yank from LazyVim
 vim.api.nvim_clear_autocmds({ group = "lazyvim_highlight_yank" })
+
+-- Reset Unused marking after changing the colorscheme
+vim.api.nvim_create_autocmd("ColorScheme", {
+  group = vim.api.nvim_create_augroup("reset_unused_highlight", { clear = true }),
+  callback = function()
+    vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", { link = "NONE" })
+  end,
+})

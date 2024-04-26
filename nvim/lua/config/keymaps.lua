@@ -119,6 +119,8 @@ vim.keymap.set("n", "<leader>bt", function()
   print(vim.bo.filetype)
 end, { desc = "Show buffer type" })
 
+vim.keymap.set("n", "<leader>gy", LazyVim.lazygit.blame_line, { desc = "Git Blame Line" })
+
 -- NOTE: This function is helpful when I need to use cspell linters with autocmds
 --  -- get filetype of current buffer
 -- local ft = vim.filetype.match({buf = 0})

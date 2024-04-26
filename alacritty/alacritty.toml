@@ -1,4 +1,4 @@
-import = ["/home/ammar/.config/alacritty/catppuccin-mocha.toml"]
+import = ["/home/ammar/.config/alacritty/gruvbox_dark.toml"]
 
 [font]
 size = 12.5

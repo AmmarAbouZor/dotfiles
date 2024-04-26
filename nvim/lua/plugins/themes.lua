@@ -1,3 +1,14 @@
+-- return the theme based on the terminal
+-- local function get_theme()
+--   local term = vim.fn.getenv("TERM")
+--
+--   if term == "wezterm" then
+--     return "gruvbox-material"
+--   else
+--     return "catppuccin-mocha"
+--   end
+-- end
+
 return {
   { "projekt0n/github-nvim-theme" },
   { "neanias/everforest-nvim" },
@@ -21,8 +32,9 @@ return {
     "LazyVim/LazyVim",
     lazy = false,
     opts = {
-      colorscheme = "catppuccin-mocha",
-      -- colorscheme = "gruvbox-material",
+      -- colorscheme = get_theme(),
+      -- colorscheme = "catppuccin-mocha",
+      colorscheme = "gruvbox-material",
       -- colorscheme = "github_dark_dimmed",
     },
   },
