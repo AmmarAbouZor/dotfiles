@@ -9,10 +9,9 @@ return {
         -- Load all themes
         require("tokyonight")
         require("github-theme")
-        require("everforest")
-        require("lazy").load({ plugins = { "gruvbox-material" } })
+        require("lazy").load({ plugins = { "gruvbox-material", "catppuccin", "everforest", "sonokai" } })
         require("rose-pine")
-        require("lazy").load({ plugins = { "catppuccin" } })
+        require("gruvbox")
 
         -- Then Open telescope themes picker
         Util.telescope("colorscheme", { enable_preview = true })()
