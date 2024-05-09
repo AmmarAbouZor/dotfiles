@@ -1,6 +1,25 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
+wezterm.on("toggle-dark-light-theme", function(window, _)
+	local current_scheme = window:effective_config().color_scheme
+
+	if not current_scheme:find("Gogh") then
+		wezterm.log_warn("toggle-dark-light-theme: Different color scheme than Gogh is in use")
+		return
+	end
+
+	local overrides = window:get_config_overrides() or {}
+
+	if current_scheme:find("Gruvbox Material") then
+		overrides.color_scheme = "Gruvbox (Gogh)"
+	else
+		overrides.color_scheme = "Gruvbox Material (Gogh)"
+	end
+
+	window:set_config_overrides(overrides)
+end)
+
 return {
 	default_prog = { "/usr/bin/fish" },
 	window_background_opacity = 0.95,
@@ -187,6 +206,7 @@ return {
 		{ key = "K", mods = "SHIFT|ALT", action = act.ActivatePaneDirection("Up") },
 		{ key = "J", mods = "SHIFT|ALT", action = act.ActivatePaneDirection("Down") },
 		{ key = ":", mods = "SHIFT|ALT", action = act.RotatePanes("Clockwise") },
+		{ key = "B", mods = "SHIFT|ALT", action = act.EmitEvent("toggle-dark-light-theme") },
 
 		{ key = "LeftArrow", mods = "SHIFT|ALT", action = act.AdjustPaneSize({ "Left", 1 }) },
 		{ key = "RightArrow", mods = "SHIFT|ALT", action = act.AdjustPaneSize({ "Right", 1 }) },
