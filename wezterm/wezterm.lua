@@ -42,6 +42,7 @@ return {
 	term = "wezterm",
 	integrated_title_buttons = { "Maximize", "Close" },
 	warn_about_missing_glyphs = false,
+	window_padding = { bottom = 0 },
 
 	-- TODO: Check if disabling hinting has an impact on the performance
 	-- freetype_load_target = "Light",

@@ -4,7 +4,7 @@ function c --wraps=fzfcd --description 'change directory with fzf, alias c=z $(f
     if test -n "$argv"
         z $argv
     else
-        # find * -type d will list the folders only
-        z $(find ~ * -type d | fzf)
+        # find dirs $HOME with depth of 4 ignoring dot_dirs and give them to fzf
+        z (find ~  -maxdepth 4 -type d ! -path '*/.*'| fzf)
     end
 end
