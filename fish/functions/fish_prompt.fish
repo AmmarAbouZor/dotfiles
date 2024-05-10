@@ -13,6 +13,7 @@ function fish_prompt
 
     set_color $color
     echo -n (prompt_pwd)
+    # echo -n (fish_vcs_prompt)
     set_color normal
 
     echo -n $symbol

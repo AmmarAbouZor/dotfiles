@@ -5,6 +5,11 @@ function c --wraps=fzfcd --description 'change directory with fzf, alias c=z $(f
         z $argv
     else
         # find dirs $HOME with depth of 4 ignoring dot_dirs and give them to fzf
-        z (find ~  -maxdepth 4 -type d ! -path '*/.*'| fzf)
+        set -l path (find ~  -maxdepth 4 -type d ! -path '*/.*'| fzf)
+
+        # Apply zioxide only if we got a value from fzf
+        if test -n "$path"
+            z $path
+        end
     end
 end
