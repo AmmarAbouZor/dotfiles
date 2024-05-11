@@ -58,3 +58,14 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", { link = "NONE" })
   end,
 })
+
+-- Fix conceallevel for md files
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("markdown_conceal", { clear = true }),
+  pattern = {
+    "markdown",
+  },
+  callback = function()
+    vim.opt_local.conceallevel = 0
+  end,
+})
