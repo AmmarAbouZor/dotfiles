@@ -115,6 +115,7 @@ vim.keymap.set("n", "<leader>ut", function()
 end, { desc = "Reset Diagnostic" })
 
 -- Show buffer type (For debugging purposes)
+-- You can also use the cmd 'echo &ft'
 vim.keymap.set("n", "<leader>bt", function()
   print(vim.bo.filetype)
 end, { desc = "Show buffer type" })

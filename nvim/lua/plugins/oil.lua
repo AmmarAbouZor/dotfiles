@@ -6,6 +6,7 @@ return {
     prompt_save_on_select_new_entry = false,
     keymaps = {
       ["<BS>"] = "actions.parent",
+      ["<C-s>"] = false,
       -- ["_"] = "actions.open_cwd",
     },
 
