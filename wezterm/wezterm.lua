@@ -139,10 +139,10 @@ return {
 		{ key = "y", mods = "SHIFT|ALT", action = act.SpawnTab("CurrentPaneDomain") },
 		{ key = "Y", mods = "SHIFT|ALT", action = act.SpawnTab("CurrentPaneDomain") },
 
-		{ key = "n", mods = "SHIFT|ALT", action = act.ActivateTabRelative(1) },
-		{ key = "N", mods = "SHIFT|ALT", action = act.ActivateTabRelative(1) },
-		{ key = "p", mods = "SHIFT|ALT", action = act.ActivateTabRelative(-1) },
-		{ key = "P", mods = "SHIFT|ALT", action = act.ActivateTabRelative(-1) },
+		{ key = "p", mods = "SHIFT|ALT", action = act.ActivateTabRelative(1) },
+		{ key = "P", mods = "SHIFT|ALT", action = act.ActivateTabRelative(1) },
+		{ key = "n", mods = "SHIFT|ALT", action = act.ActivateTabRelative(-1) },
+		{ key = "N", mods = "SHIFT|ALT", action = act.ActivateTabRelative(-1) },
 
 		{ key = "!", mods = "ALT", action = act.ActivateTab(0) },
 		{ key = "!", mods = "SHIFT|ALT", action = act.ActivateTab(0) },
