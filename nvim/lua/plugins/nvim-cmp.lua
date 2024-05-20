@@ -13,7 +13,7 @@ return {
     -- Tab makes problem with the autocompletion in cmd
     mapping = cmp.mapping.preset.insert({
       ["<Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
+        if cmp.core.view:visible() or vim.fn.pumvisible() == 1 then
           cmp.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
