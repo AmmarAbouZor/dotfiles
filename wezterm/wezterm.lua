@@ -151,6 +151,9 @@ return {
 		{ key = "5", mods = "ALT", action = act.ActivateTab(4) },
 		{ key = "6", mods = "ALT", action = act.ActivateTab(5) },
 
+		{ key = "q", mods = "ALT", action = act.ActivateLastTab },
+		{ key = "Space", mods = "SHIFT|ALT", action = act.ActivateLastTab },
+
 		-- Font size
 		{ key = ")", mods = "CTRL", action = act.ResetFontSize },
 		{ key = ")", mods = "SHIFT|CTRL", action = act.ResetFontSize },
