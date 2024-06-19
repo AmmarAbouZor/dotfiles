@@ -2,6 +2,21 @@ return {
   "sindrets/diffview.nvim",
   lazy = true,
 
+  -- Close diff view with q in all diffviews buffers
+  opts = {
+    keymaps = {
+      view = { { "n", "q", "<cmd>DiffviewClose<cr>", desc = "Diffview Close" } },
+      diff1 = { { "n", "q", "<cmd>DiffviewClose<cr>", desc = "Diffview Close" } },
+      diff2 = { { "n", "q", "<cmd>DiffviewClose<cr>", desc = "Diffview Close" } },
+      diff3 = { { "n", "q", "<cmd>DiffviewClose<cr>", desc = "Diffview Close" } },
+      diff4 = { { "n", "q", "<cmd>DiffviewClose<cr>", desc = "Diffview Close" } },
+      file_panel = { { "n", "q", "<cmd>DiffviewClose<cr>", desc = "Diffview Close" } },
+      file_history_panel = { { "n", "q", "<cmd>DiffviewClose<cr>", desc = "Diffview Close" } },
+      option_panel = { { "n", "q", "<cmd>DiffviewClose<cr>", desc = "Diffview Close" } },
+      help_panel = { { "n", "q", "<cmd>DiffviewClose<cr>", desc = "Diffview Close" } },
+    },
+  },
+
   keys = function()
     return {
       {
@@ -12,12 +27,6 @@ return {
       },
       {
         "<leader>gq",
-        "<cmd>DiffviewClose<cr>",
-        mode = "n",
-        desc = "Diffview Close",
-      },
-      {
-        "q",
         "<cmd>DiffviewClose<cr>",
         mode = "n",
         desc = "Diffview Close",

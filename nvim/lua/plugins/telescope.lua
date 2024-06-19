@@ -38,6 +38,10 @@ return {
       desc = "Grep word",
     },
 
+    -- TODO AAZ: Activate after update to neovim 0.10
+    -- { "<leader>sB", LazyVim.pick("live_grep", { grep_open_files = true }), desc = "Word (Open Buffers)" },
+    -- { "<leader>sD", LazyVim.pick("diagnostics", { sort_by = "severity" }), desc = "Workspace Diagnostics" },
+
     {
       "<leader>s?",
       function()

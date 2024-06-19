@@ -4,9 +4,12 @@ import = ["/home/ammar/.config/alacritty/gruvbox_dark.toml"]
 size = 12.5
 
 [font.bold_italic]
-style = "Bold"
+family = "Fira Code SemiBold"
 
 [font.italic]
+family = "Fira Code Medium"
+
+[font.bold]
 style = "SemiBold"
 
 [font.normal]
