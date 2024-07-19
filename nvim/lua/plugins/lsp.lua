@@ -10,6 +10,9 @@ return {
       -- },
       virtual_text = false,
     },
+    inlay_hints = {
+      enabled = false,
+    },
     servers = {
       rust_analyzer = {
         mason = false,
@@ -26,8 +29,23 @@ return {
                 snippets = "add_parentheses",
               },
             },
+            cargo = {
+              allFeatures = true,
+            },
+            procMacro = {
+              enable = true,
+              -- Taken from LazyVim Rust Extra
+              ignored = {
+                ["async-trait"] = { "async_trait" },
+                ["napi-derive"] = { "napi" },
+                ["async-recursion"] = { "async_recursion" },
+              },
+            },
           },
         },
+      },
+      clangd = {
+        mason = false,
       },
       pyright = {
         mason = false,
@@ -48,9 +66,6 @@ return {
     },
   },
   init = function()
-    -- *** Remove Unsed varaiables highlight ***
-    vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", { link = "NONE" })
-
     -- *** keybindings ***
     local keys = require("lazyvim.plugins.lsp.keymaps").get()
 
@@ -70,6 +85,9 @@ return {
       end,
       desc = "Toggle diagnostics text",
     }
+
+    keys[#keys + 1] = { "<M-p>", false }
+    keys[#keys + 1] = { "<M-n>", false }
 
     -- This shows the diagnostics in hover window automatically
     -- vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {

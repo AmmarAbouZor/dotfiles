@@ -1,6 +1,5 @@
 return {
   "danymat/neogen",
-  config = true,
 
   keys = {
     {
@@ -11,9 +10,10 @@ return {
       desc = "Generate Documentation",
       { noremap = true, silent = true },
     },
+    { "<leader>cn", false },
   },
+
   opts = {
-    snippet_engine = "luasnip",
-    -- placeholders_hl = "None",
+    placeholders_hl = "None",
   },
 }

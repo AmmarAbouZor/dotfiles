@@ -3,29 +3,39 @@ keybinds clear-defaults=true{
     shared {
         bind "Alt Q" { Quit; }
         bind "Alt W" { Detach; }
-        bind "Alt ?" { EditScrollback; }
+        // I'm using alacrrity built in VI mode for this
+        // bind "Alt ?" { EditScrollback; }
         bind "Alt Up" { HalfPageScrollUp; }
         bind "Alt Down" { HalfPageScrollDown; }
 
         // Panes
-        bind "Alt N" { NewPane; }
+        bind "Alt |" { NewPane "Right"; }
+        bind "Alt _" { NewPane "Down"; }
+        bind "Alt \"" { NewPane; }
         bind "Alt H" { MoveFocusOrTab "Left"; }
         bind "Alt L" { MoveFocusOrTab "Right"; }
         bind "Alt J" { MoveFocus "Down"; }
         bind "Alt K" { MoveFocus "Up"; }
-        bind "Alt M" { ToggleFloatingPanes; }
-        bind "Alt P" { TogglePaneEmbedOrFloating; }
-        bind "Alt +" { Resize "Increase"; }
-        bind "Alt _" { Resize "Decrease"; }
-        bind "Alt F" { ToggleFocusFullscreen; }
+        bind "Alt F" { ToggleFloatingPanes; }
+        bind "Alt :" { ToggleFloatingPanes; }
+        bind "Alt T" { TogglePaneEmbedOrFloating; }
+        bind "Alt M" { ToggleFocusFullscreen; }
         bind "Alt {" { PreviousSwapLayout; }
         bind "Alt }" { NextSwapLayout; }
-        bind "Alt |" "Tab" { MovePane; }
+        bind "Alt I" { ToggleTab; }
+        bind "Alt )" { Resize "Increase"; }
+        bind "Alt (" { Resize "Decrease"; }
 
         // Tabs
         bind "Alt T" { NewTab; }
-        bind "Alt <" "Alt Left" { GoToPreviousTab; }
-        bind "Alt >" "Alt Right" { GoToNextTab; }
+        bind "Alt Y" { NewTab {
+            name "Tab"
+          }
+        }
+        bind "Alt P" { GoToNextTab; }
+        bind "Alt N" { GoToPreviousTab; }
+        bind "Alt <" { MoveTab "Left"; }
+        bind "Alt >" { MoveTab "Right"; }
         bind "Alt 1" { GoToTab 1; }
         bind "Alt 2" { GoToTab 2; }
         bind "Alt 3" { GoToTab 3; }
@@ -40,10 +50,12 @@ keybinds clear-defaults=true{
 
 default_shell "fish"
 pane_frames false
-theme "catppuccin-mocha"
+// theme "gruvbox-dark"
+theme "gruvbox-light"
 copy_on_select false
 default_layout "compact"
 default_mode "locked"
+copy_command "wl-copy"
 
 ui {
     pane_frames {
@@ -61,34 +73,3 @@ ui {
 on_force_close "quit"
 
 
-// Provide a command to execute when copying text. The text will be piped to
-// the stdin of the program to perform the copy. This can be used with
-// terminal emulators which do not support the OSC 52 ANSI control sequence
-// that will be used by default if this option is not set.
-// Examples:
-//
-// copy_command "xclip -selection clipboard" // x11
-copy_command "wl-copy"                    // wayland
-// copy_command "pbcopy"                     // osx
-
-
-//  Send a request for a simplified ui (without arrow fonts) to plugins
-//  Options:
-//    - true
-//    - false (Default)
-//
-// simplified_ui true
-
-// Toggle enabling the mouse mode.
-// On certain configurations, or terminals this could
-// potentially interfere with copying text.
-// Options:
-//   - true (default)
-//   - false
-//
-// mouse_mode false
-
-// Path to the default editor to use to edit pane scrollbuffer
-// Default: $EDITOR or $VISUAL
-//
-// scrollback_editor "/usr/bin/vim"

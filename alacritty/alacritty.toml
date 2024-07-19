@@ -26,6 +26,16 @@ chars = "\u0017"
 key = "Backspace"
 mods = "Control"
 
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "?"
+mods = "Alt|Shift"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+mode = "Vi"
+key = "q"
+
 
 [shell]
 # I start with tmux using the command `alacritty -e usr/bin/tmux`

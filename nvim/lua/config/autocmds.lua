@@ -51,11 +51,26 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Remove highlight on yank from LazyVim
 vim.api.nvim_clear_autocmds({ group = "lazyvim_highlight_yank" })
 
--- Reset Unused marking after changing the colorscheme
+-- Reset Unused and snippets marking after changing the color scheme
 vim.api.nvim_create_autocmd("ColorScheme", {
-  group = vim.api.nvim_create_augroup("reset_unused_highlight", { clear = true }),
+  group = vim.api.nvim_create_augroup("reset_highlights_on_theme_change", { clear = true }),
   callback = function()
+    -- *** Remove Unused variables highlight ***
     vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", { link = "NONE" })
+    -- *** Remove Snippets highlights ***
+    vim.api.nvim_set_hl(0, "SnippetTabstop", { link = "NONE" })
+  end,
+})
+
+-- Reset Unused and snippets marking on LSP Attache
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("reset_highlights_on_lsp_change", { clear = true }),
+  callback = function(ev)
+    -- *** Remove Unused variables highlight ***
+    vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", { link = "NONE" })
+
+    -- *** Remove Snippets highlights ***
+    vim.api.nvim_set_hl(0, "SnippetTabstop", { link = "NONE" })
   end,
 })
 

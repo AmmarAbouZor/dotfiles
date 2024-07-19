@@ -50,8 +50,15 @@ return {
     -- keymaps
   end,
 
+  -- Switch default keymaps between root and cwd
+  keys = {
+    { "<leader>E", "<leader>fe", desc = "Explorer NeoTree (Root Dir)", remap = true },
+    { "<leader>e", "<leader>fE", desc = "Explorer NeoTree (cwd)", remap = true },
+  },
+
+  -- TODO AAZ: Make sure we don't need to this if we didn't get memory leaks anymore
   -- Disable default lazygit settings to hunt down the memory leak when moving and deleting files
-  config = function(_, opts)
-    require("neo-tree").setup(opts)
-  end,
+  -- config = function(_, opts)
+  --   require("neo-tree").setup(opts)
+  -- end,
 }

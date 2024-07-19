@@ -1,5 +1,3 @@
-local Util = require("lazyvim.util")
-
 return {
   "nvim-telescope/telescope.nvim",
   keys = {
@@ -9,12 +7,14 @@ return {
         -- Load all themes
         require("tokyonight")
         require("github-theme")
-        require("lazy").load({ plugins = { "gruvbox-material", "catppuccin", "everforest", "sonokai" } })
+        require("lazy").load({
+          plugins = { "gruvbox-material", "catppuccin", "everforest", "sonokai", "vscode.nvim" },
+        })
         require("rose-pine")
         require("gruvbox")
 
         -- Then Open telescope themes picker
-        Util.telescope("colorscheme", { enable_preview = true })()
+        LazyVim.pick("colorscheme", { enable_preview = true })()
       end,
       desc = "Colorscheme with preview",
     },
@@ -37,11 +37,6 @@ return {
       mode = "n",
       desc = "Grep word",
     },
-
-    -- TODO AAZ: Activate after update to neovim 0.10
-    -- { "<leader>sB", LazyVim.pick("live_grep", { grep_open_files = true }), desc = "Word (Open Buffers)" },
-    -- { "<leader>sD", LazyVim.pick("diagnostics", { sort_by = "severity" }), desc = "Workspace Diagnostics" },
-
     {
       "<leader>s?",
       function()
@@ -51,6 +46,12 @@ return {
       mode = "n",
       desc = "Search WORD",
     },
+
+    { "<leader>sB", LazyVim.pick("live_grep", { grep_open_files = true }), desc = "Word (Open Buffers)" },
+
+    { "<leader>sD", LazyVim.pick("diagnostics", { sort_by = "severity" }), desc = "Workspace Diagnostics" },
+
+    { "<leader><space>", LazyVim.pick("files", { root = false }), desc = "Find Files (cwd)" },
   },
   opts = {
     defaults = {

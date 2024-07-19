@@ -1,5 +1,5 @@
 local cmp = require("cmp")
-local luasnip = require("luasnip")
+-- local luasnip = require("luasnip")
 
 local has_words_before = function()
   unpack = unpack or table.unpack
@@ -18,8 +18,10 @@ return {
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
           })
-        elseif luasnip.expand_or_jumpable() then
-          luasnip.expand_or_jump()
+        elseif vim.snippet.active({ direction = 1 }) then
+          vim.schedule(function()
+            vim.snippet.jump(1)
+          end)
         elseif has_words_before() then
           cmp.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
@@ -53,7 +55,6 @@ return {
         select = true,
       }),
       ["<C-y>"] = cmp.mapping.confirm({
-        behavior = cmp.ConfirmBehavior.Replace,
         select = true,
       }),
     }),
@@ -72,8 +73,9 @@ return {
     sorting = {
       priority_weight = 2,
       comparators = {
-        cmp.config.compare.offset,
         cmp.config.compare.exact,
+        cmp.config.compare.sort_text,
+        cmp.config.compare.offset,
         -- cmp.config.compare.scopes,
         cmp.config.compare.score,
         cmp.config.compare.recently_used,
@@ -100,7 +102,6 @@ return {
             end
           end
         end,
-        -- cmp.config.compare.sort_text,
         cmp.config.compare.length,
         cmp.config.compare.order,
       },

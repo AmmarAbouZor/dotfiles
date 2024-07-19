@@ -12,6 +12,7 @@ return {
         "rust",
         "go",
         "ruby",
+        "wit",
       })
 
       opts.indent = {

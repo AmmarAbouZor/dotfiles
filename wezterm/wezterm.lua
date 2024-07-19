@@ -11,22 +11,65 @@ wezterm.on("toggle-dark-light-theme", function(window, _)
 
 	local overrides = window:get_config_overrides() or {}
 
-	if current_scheme:find("Gruvbox Material") then
+	if current_scheme:find("Gruvbox Dark") then
 		overrides.color_scheme = "Gruvbox (Gogh)"
 	else
-		overrides.color_scheme = "Gruvbox Material (Gogh)"
+		overrides.color_scheme = "Gruvbox Dark (Gogh)"
 	end
 
 	window:set_config_overrides(overrides)
 end)
 
+-- Spawn a tab with setting the light env variable on on light themes, which will be read by fish shell to set its theme accordingly
+wezterm.on("spawn_tab_according_to_theme", function(window, pane)
+	local current_scheme = window:effective_config().color_scheme
+
+	if current_scheme == "Gruvbox (Gogh)" then
+		window:perform_action(
+			act.SpawnCommandInNewTab({
+				args = { "fish" },
+				set_environment_variables = {
+					-- Fish well check for this variable and apply its light theme colors
+					WEZ_LIGHT_THEME = "1",
+				},
+			}),
+			pane
+		)
+	else
+		window:perform_action(act.SpawnTab("CurrentPaneDomain"), pane)
+	end
+end)
+
+-- Spawn a window with setting the light env variable on on light themes, which will be read by fish shell to set its theme accordingly
+wezterm.on("spawn_win_according_to_theme", function(window, pane)
+	local current_scheme = window:effective_config().color_scheme
+
+	if current_scheme == "Gruvbox (Gogh)" then
+		local _, _, mux_win = wezterm.mux.spawn_window({
+			args = { "fish" },
+			set_environment_variables = {
+				-- Fish well check for this variable and apply its light theme colors
+				WEZ_LIGHT_THEME = "1",
+			},
+		})
+
+		local new_win = mux_win:gui_window()
+		new_win:set_config_overrides({ color_scheme = "Gruvbox (Gogh)" })
+	else
+		window:perform_action(act.SpawnWindow, pane)
+	end
+end)
+
 return {
 	default_prog = { "/usr/bin/fish" },
-	window_background_opacity = 0.95,
 	-- color_scheme = "Catppuccin Mocha",
 	-- color_scheme = "Catppuccin Latte",
 	-- color_scheme = "Gruvbox (Gogh)", -- Light theme
-	color_scheme = "Gruvbox Material (Gogh)",
+	-- color_scheme = "Gruvbox Material (Gogh)",
+	color_scheme = "Gruvbox Dark (Gogh)",
+	-- color_scheme = "Gruvbox dark, soft (base16)",
+	-- color_scheme = "Gruvbox dark, pale (base16)",
+	window_background_opacity = 0.9,
 	window_decorations = "RESIZE",
 	enable_tab_bar = true,
 	hide_tab_bar_if_only_one_tab = true,
@@ -133,11 +176,11 @@ return {
 		{ key = "_", mods = "SHIFT|ALT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 
 		-- Taps
-		{ key = "T", mods = "ALT", action = act.SpawnTab("CurrentPaneDomain") },
-		{ key = "T", mods = "SHIFT|ALT", action = act.SpawnTab("CurrentPaneDomain") },
-		{ key = "Enter", mods = "SHIFT|ALT", action = act.SpawnTab("CurrentPaneDomain") },
-		{ key = "y", mods = "SHIFT|ALT", action = act.SpawnTab("CurrentPaneDomain") },
-		{ key = "Y", mods = "SHIFT|ALT", action = act.SpawnTab("CurrentPaneDomain") },
+		{ key = "T", mods = "ALT", action = act.EmitEvent("spawn_tab_according_to_theme") },
+		{ key = "T", mods = "SHIFT|ALT", action = act.EmitEvent("spawn_tab_according_to_theme") },
+		{ key = "Enter", mods = "SHIFT|ALT", action = act.EmitEvent("spawn_win_according_to_theme") },
+		{ key = "y", mods = "SHIFT|ALT", action = act.EmitEvent("spawn_tab_according_to_theme") },
+		{ key = "Y", mods = "SHIFT|ALT", action = act.EmitEvent("spawn_tab_according_to_theme") },
 
 		{ key = "p", mods = "SHIFT|ALT", action = act.ActivateTabRelative(1) },
 		{ key = "P", mods = "SHIFT|ALT", action = act.ActivateTabRelative(1) },
@@ -153,6 +196,7 @@ return {
 
 		{ key = "q", mods = "ALT", action = act.ActivateLastTab },
 		{ key = "Space", mods = "SHIFT|ALT", action = act.ActivateLastTab },
+		{ key = "i", mods = "SHIFT|ALT", action = act.ActivateLastTab },
 
 		-- Font size
 		{ key = ")", mods = "CTRL", action = act.ResetFontSize },

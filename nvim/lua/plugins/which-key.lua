@@ -1,17 +1,16 @@
 return {
   "folke/which-key.nvim",
   opts = function(_, opts)
-    if require("lazyvim.util").has("noice.nvim") then
-      opts.defaults["<leader>sn"] = { name = "+noice" }
-      opts.defaults["<leader>n"] = { name = "+noice" }
-    end
-    opts.window = {
+    opts.win = {
       border = "single",
     }
+    -- Original LazyVim expands this to <C-W> which overwrites my <leader>w shortcut to close the current buffer
+    -- This overwrites the changes on LazyVim
+    opts.spec = {
+      {
+        "<leader>w",
+        group = "windows",
+      },
+    }
   end,
-  -- opts = {
-  --   window = {
-  --     border = "single", -- none, single, double, shadow
-  --   },
-  -- },
 }

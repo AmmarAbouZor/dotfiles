@@ -13,10 +13,12 @@ return {
   { "projekt0n/github-nvim-theme" },
   { "sainnhe/everforest" },
   { "sainnhe/sonokai" },
+  { "Mofiqul/vscode.nvim" },
   {
     "sainnhe/gruvbox-material",
     priority = 1000,
     init = function()
+      -- vim.api.nvim_set_var("gruvbox_material_float_style", "dim")
       -- vim.api.nvim_set_var("gruvbox_material_visual", "red background")
       -- vim.api.nvim_set_var("gruvbox_material_visual", "blue background")
       vim.api.nvim_set_var("gruvbox_material_visual", "green background")

@@ -59,16 +59,14 @@ end
 map_MiniPairs("<C-h>", "v:lua.MiniPairs.bs()")
 map_MiniPairs("<C-w>", 'v:lua.MiniPairs.bs("\23")')
 map_MiniPairs("<C-BS>", 'v:lua.MiniPairs.bs("\23")')
-map_MiniPairs("<C-u>", 'v:lua.MiniPairs.bs("\21")')
 -- Ctrl-j
 map_MiniPairs("<C-j>", "v:lua.MiniPairs.cr()")
 
 vim.keymap.set("c", "<C-BS>", "<C-w>")
 
 -- remove current buffer
-vim.keymap.set("n", "<leader>wq", function()
-  require("mini.bufremove").delete(0, false)
-end, { desc = "Delete current buffer" })
+vim.keymap.set("n", "<leader>w", LazyVim.ui.bufremove, { desc = "Delete current buffer", noremap = true })
+-- vim.keymap.set("n", "<leader>wq", LazyVim.ui.bufremove, { desc = "Delete current buffer", noremap = true })
 
 local Util = require("lazyvim.util")
 -- Gitui
@@ -102,6 +100,8 @@ vim.keymap.set("n", "<A-k>", function()
   require("mini.move").move_line("up")
 end)
 
+vim.keymap.set({ "n", "x" }, "<C-c>", "<cmd>normal gcc<cr>", { desc = "Comment current line" })
+
 -- Apply CSpell
 vim.keymap.set("n", "<leader>uq", function()
   vim.notify("Activate CSpell", 2, { title = "option" })
@@ -115,12 +115,17 @@ vim.keymap.set("n", "<leader>ut", function()
 end, { desc = "Reset Diagnostic" })
 
 -- Show buffer type (For debugging purposes)
--- You can also use the cmd 'echo &ft'
 vim.keymap.set("n", "<leader>bt", function()
   print(vim.bo.filetype)
 end, { desc = "Show buffer type" })
 
 vim.keymap.set("n", "<leader>gy", LazyVim.lazygit.blame_line, { desc = "Git Blame Line" })
+
+-- disable Ctrl + U because I don't use it and only hit it by mistake
+vim.keymap.set("i", "<C-u>", "")
+
+-- Save current document without auto formatting or any other autocmds
+vim.keymap.set({ "i", "n" }, "<C-S-s>", "<cmd>noa w<cr>", { desc = "Save without auto-format" })
 
 -- NOTE: This function is helpful when I need to use cspell linters with autocmds
 --  -- get filetype of current buffer
