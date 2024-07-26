@@ -57,6 +57,10 @@ default_layout "compact"
 default_mode "locked"
 copy_command "wl-copy"
 
+// I don't use sessions persisting with zellij 
+session_serialization false
+disable_session_metadata true
+
 ui {
     pane_frames {
         rounded_corners true
