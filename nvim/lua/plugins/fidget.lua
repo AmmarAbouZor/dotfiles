@@ -8,4 +8,11 @@ return {
       },
     },
   },
+  keys = {
+    {
+      "<leader>uu",
+      "<cmd>Fidget clear<cr>",
+      desc = "Fidget Clear",
+    },
+  },
 }
