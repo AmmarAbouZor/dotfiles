@@ -1,0 +1,9 @@
+// This is the same as compact layout but with the fixed tab name
+layout {
+  tab name="Tab"{
+      pane
+      pane size=1 borderless=true {
+          plugin location="compact-bar"
+      }
+    }
+}

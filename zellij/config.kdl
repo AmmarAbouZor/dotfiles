@@ -53,7 +53,7 @@ pane_frames false
 // theme "gruvbox-dark"
 theme "gruvbox-light"
 copy_on_select false
-default_layout "compact"
+default_layout "my_compact"
 default_mode "locked"
 copy_command "wl-copy"
 
