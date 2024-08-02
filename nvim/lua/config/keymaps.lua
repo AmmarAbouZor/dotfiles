@@ -83,9 +83,17 @@ vim.keymap.set("c", "<C-BS>", "<C-w>")
 
 vim.keymap.del("n", "<leader>wm")
 vim.keymap.del("n", "<leader>wd")
+-- toggle maximize
+LazyVim.toggle.map("<C-w>m", LazyVim.toggle.maximize)
 -- remove current buffer
 vim.keymap.set("n", "<leader>w", LazyVim.ui.bufremove, { desc = "Delete current buffer", noremap = true })
 -- vim.keymap.set("n", "<leader>wq", LazyVim.ui.bufremove, { desc = "Delete current buffer", noremap = true })
+
+-- Switch between <leader>uC and <leader>uc between conceallevel and changing the themes
+LazyVim.toggle.map(
+  "<leader>uC",
+  LazyVim.toggle("conceallevel", { values = { 0, vim.o.conceallevel > 0 and vim.o.conceallevel or 2 } })
+)
 
 local Util = require("lazyvim.util")
 -- Gitui

@@ -2,7 +2,7 @@ return {
   "nvim-telescope/telescope.nvim",
   keys = {
     {
-      "<leader>uC",
+      "<leader>uc",
       function()
         -- Load all themes
         require("tokyonight")
@@ -18,6 +18,8 @@ return {
       end,
       desc = "Colorscheme with preview",
     },
+
+    { "<leader>uC", false },
     -- I'm using Diffview for that
     -- {
     --   "<leader>gf",
