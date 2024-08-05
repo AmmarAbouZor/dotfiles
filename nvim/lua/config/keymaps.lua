@@ -154,6 +154,8 @@ vim.keymap.set("i", "<C-u>", "")
 -- Save current document without auto formatting or any other autocmds
 vim.keymap.set({ "i", "n" }, "<C-S-s>", "<cmd>noa w<cr>", { desc = "Save without auto-format" })
 
+vim.keymap.set("n", "z<space>", "zt", { desc = "Top this line" })
+
 -- NOTE: This function is helpful when I need to use cspell linters with autocmds
 --  -- get filetype of current buffer
 -- local ft = vim.filetype.match({buf = 0})
