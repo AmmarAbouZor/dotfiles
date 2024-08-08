@@ -98,10 +98,10 @@ LazyVim.toggle.map(
 local Util = require("lazyvim.util")
 -- Gitui
 vim.keymap.set("n", "<leader>gu", function()
-  Util.terminal.open({ "gitui" }, { cwd = Util.root.get() })
+  LazyVim.terminal.open({ "gitui" }, { cwd = LazyVim.root.get(), esc_esc = false, ctrl_hjkl = false })
 end, { desc = "Gitui (root dir)" })
 vim.keymap.set("n", "<leader>gU", function()
-  Util.terminal.open({ "gitui" })
+  LazyVim.terminal.open({ "gitui" }, { esc_esc = false, ctrl_hjkl = false })
 end, { desc = "Gitui (cwd)" })
 
 vim.keymap.set("n", "<leader>s'", require("telescope.builtin").resume, { desc = "Resume" })
@@ -155,6 +155,11 @@ vim.keymap.set("i", "<C-u>", "")
 vim.keymap.set({ "i", "n" }, "<C-S-s>", "<cmd>noa w<cr>", { desc = "Save without auto-format" })
 
 vim.keymap.set("n", "z<space>", "zt", { desc = "Top this line" })
+
+-- Disable hjkl and esc on toggle terminal
+vim.keymap.set("n", "<c-/>", function()
+  LazyVim.terminal(nil, { cwd = LazyVim.root(), esc_esc = false, ctrl_hjkl = false })
+end, { desc = "Terminal (Root Dir)" })
 
 -- NOTE: This function is helpful when I need to use cspell linters with autocmds
 --  -- get filetype of current buffer
