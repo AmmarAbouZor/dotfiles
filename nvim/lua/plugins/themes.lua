@@ -25,14 +25,27 @@ return {
       -- vim.api.nvim_set_var("gruvbox_material_diagnostic_virtual_text", "colored")
     end,
   },
-  { "ellisonleao/gruvbox.nvim" },
+  {
+    "ellisonleao/gruvbox.nvim",
+    opts = {
+      bold = false,
+      transparent_mode = true,
+      -- Override the bold gold highlighting for word under cursor and its matches.
+      overrides = {
+        -- This is lighter option on highlighting. With that we can recognize the highlighting on cursor line
+        LspReferenceRead = { link = "CursorLine" },
+        LspReferenceText = { link = "CursorLine" },
+        LspReferenceWrite = { link = "CursorLine" },
+        --
+        -- This is heavier one, but we can recognize the highlighting under the cursor.
+        -- LspReferenceRead = { link = "PmenuSbar" },
+        -- LspReferenceText = { link = "PmenuSbar" },
+        -- LspReferenceWrite = { link = "PmenuSbar" },
+      },
+    },
+  },
   {
     "rose-pine/neovim",
-    name = "rose-pine",
-    opts = {
-      variant = "main",
-      styles = { transparency = true },
-    },
   },
   --
   -- {
