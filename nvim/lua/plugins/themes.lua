@@ -29,7 +29,8 @@ return {
     "ellisonleao/gruvbox.nvim",
     opts = {
       bold = false,
-      transparent_mode = true,
+      -- Enable Transparent expect in neovide.
+      transparent_mode = not vim.g.neovide,
       -- Override the bold gold highlighting for word under cursor and its matches.
       overrides = {
         -- This is lighter option on highlighting. With that we can recognize the highlighting on cursor line
