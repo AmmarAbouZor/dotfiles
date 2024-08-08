@@ -108,7 +108,7 @@ return {
 	-- font = wezterm.font("roboto mono"),
 	-- font = wezterm.font("JetBrains mono", { weight = "Medium" }),
 	-- font = wezterm.font("DejaVu sans mono"),
-	font_size = 12.5,
+	font_size = 13,
 	-- font_size = 12.7,
 	-- line_height = 1.05,
 	default_cursor_style = "SteadyBlock",
