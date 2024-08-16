@@ -13,6 +13,13 @@ return {
         "go",
         "ruby",
         "wit",
+        "cpp",
+        "make",
+        "git_config",
+        "gitignore",
+        "javascript",
+        "typescript",
+        "fish",
       })
 
       opts.indent = {

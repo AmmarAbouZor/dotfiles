@@ -28,8 +28,7 @@ return {
     -- },
 
     { "<leader>bb", "<cmd>Telescope buffers sort_mru=true<cr>", desc = "Buffers" },
-
-    -- { "<leader>,", Util.telescope("files"), desc = "Find Files (root dir)" },
+    { "<leader>,", "<cmd>Telescope buffers sort_mru=true<cr>", desc = "Buffers" },
 
     {
       "<leader>s/",
