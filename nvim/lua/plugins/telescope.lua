@@ -33,11 +33,20 @@ return {
     {
       "<leader>s/",
       function()
+        require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > "), root = false })
+      end,
+      mode = "n",
+      desc = "Grep word (cwd)",
+    },
+    {
+      "<leader>s.",
+      function()
         require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
       end,
       mode = "n",
-      desc = "Grep word",
+      desc = "Grep word (Root)",
     },
+
     {
       "<leader>s?",
       function()
