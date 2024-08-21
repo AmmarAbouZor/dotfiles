@@ -9,11 +9,14 @@ opt.incsearch = true
 
 opt.shell = "fish"
 
--- TODO: Check if this is usefull
+-- TODO: Check if this is useful
 opt.jumpoptions = "stack"
 
 opt.undofile = false
 opt.timeoutlen = 600
+
+-- Remember to activate the autocmd for text files if you decide to activate spell by default.
+opt.spell = true
 
 opt.winbar = "%=%m %f"
 
@@ -31,13 +34,13 @@ vim.diagnostic.config({
   float = { border = border },
 })
 
--- This prvent add offset when scrolling so the cursor doesn't get to the top or the buttom of the view
+-- This prevent add offset when scrolling so the cursor doesn't get to the top or the bottom of the view
 opt.scrolloff = 7
 
 -- Ignore case in auto complete for vim commands
 opt.ignorecase = true
 
--- Show spilt window while seaching and replaceing
+-- Show spilt window while searching and replacing
 opt.inccommand = "split"
 
 -- Remove - for whitespaces and > for tabs

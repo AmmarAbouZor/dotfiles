@@ -37,16 +37,17 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- Enable spell check on text files by default
-vim.api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("text_spell", { clear = true }),
-  pattern = {
-    "text",
-  },
-  callback = function()
-    vim.opt_local.spell = true
-  end,
-})
+-- Spell is enabled by default not globally.
+-- -- Enable spell check on text files by default
+-- vim.api.nvim_create_autocmd("FileType", {
+--   group = vim.api.nvim_create_augroup("text_spell", { clear = true }),
+--   pattern = {
+--     "text",
+--   },
+--   callback = function()
+--     vim.opt_local.spell = true
+--   end,
+-- })
 
 -- Remove highlight on yank from LazyVim
 vim.api.nvim_clear_autocmds({ group = "lazyvim_highlight_yank" })
