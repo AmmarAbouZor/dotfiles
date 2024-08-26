@@ -1,28 +1,56 @@
--- return the theme based on the terminal
--- local function get_theme()
---   local term = vim.fn.getenv("TERM")
---
---   if term == "wezterm" then
---     return "gruvbox-material"
---   else
---     return "catppuccin-mocha"
---   end
--- end
+local sonokai_styles = { "default", "atlantis", "andromeda", "shusia", "maia", "espresso" }
+local current_sonokai_style_index = 1
+
+-- Toggle dark and light colors for themes except `sonokai` because it doesn't have light theme
+-- but it have many styles. Therefor we will cycle through them in this case.
+local function toggle_background_or_cycle_sonokai()
+  -- If the color scheme is sonokai, then cycle between it's styles
+  if vim.g.colors_name == "sonokai" then
+    current_sonokai_style_index = current_sonokai_style_index % #sonokai_styles + 1
+    local next_style = sonokai_styles[current_sonokai_style_index]
+
+    -- Set the Sonokai style
+    vim.g.sonokai_style = next_style
+    -- Reapply the color theme to let the changes take effect.
+    vim.cmd("colorscheme sonokai")
+
+    -- Print a message indicating the new style
+    LazyVim.warn("Sonokai style set to: " .. next_style)
+  else
+    LazyVim.toggle("background", { values = { "light", "dark" }, name = "Background" })()
+  end
+end
 
 return {
   { "projekt0n/github-nvim-theme" },
-  { "sainnhe/everforest" },
-  { "sainnhe/sonokai" },
+  {
+    "sainnhe/everforest",
+    init = function()
+      vim.api.nvim_set_var("everforest_diagnostic_virtual_text", "colored")
+      -- vim.api.nvim_set_var("everforest_diagnostic_virtual_text", "highlighted")
+    end,
+  },
+  {
+    "sainnhe/sonokai",
+    keys = {
+      { "<leader>ub", toggle_background_or_cycle_sonokai, desc = "Theme Light/Dark & Cycle" },
+    },
+
+    init = function()
+      vim.api.nvim_set_var("sonokai_style", "default")
+
+      vim.api.nvim_set_var("sonokai_diagnostic_virtual_text", "colored")
+      -- vim.api.nvim_set_var("everforest_diagnostic_virtual_text", "highlighted")
+    end,
+  },
   { "Mofiqul/vscode.nvim" },
   {
     "sainnhe/gruvbox-material",
     priority = 1000,
     init = function()
-      -- vim.api.nvim_set_var("gruvbox_material_float_style", "dim")
-      -- vim.api.nvim_set_var("gruvbox_material_visual", "red background")
-      -- vim.api.nvim_set_var("gruvbox_material_visual", "blue background")
       vim.api.nvim_set_var("gruvbox_material_visual", "green background")
-      -- vim.api.nvim_set_var("gruvbox_material_diagnostic_virtual_text", "colored")
+      vim.api.nvim_set_var("gruvbox_material_diagnostic_virtual_text", "colored")
+      -- vim.api.nvim_set_var("gruvbox_material_diagnostic_virtual_text", "highlighted")
     end,
   },
   {
@@ -95,10 +123,7 @@ return {
     "LazyVim/LazyVim",
     lazy = false,
     opts = {
-      -- colorscheme = get_theme(),
-      -- colorscheme = "catppuccin-mocha",
       colorscheme = "gruvbox-material",
-      -- colorscheme = "github_dark_dimmed",
     },
   },
 }

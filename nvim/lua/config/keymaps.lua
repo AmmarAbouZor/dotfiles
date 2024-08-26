@@ -95,7 +95,6 @@ LazyVim.toggle.map(
   LazyVim.toggle("conceallevel", { values = { 0, vim.o.conceallevel > 0 and vim.o.conceallevel or 2 } })
 )
 
-local Util = require("lazyvim.util")
 -- Gitui
 vim.keymap.set("n", "<leader>gu", function()
   LazyVim.terminal.open({ "gitui" }, { cwd = LazyVim.root.get(), esc_esc = false, ctrl_hjkl = false })
@@ -167,12 +166,3 @@ end, { desc = "Terminal (Root Dir)" })
 vim.keymap.set("t", "<m-;>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 -- disable <c-/> in terminal
 vim.keymap.set("t", "<c-/>", "<c-/>")
-
--- NOTE: This function is helpful when I need to use cspell linters with autocmds
---  -- get filetype of current buffer
--- local ft = vim.filetype.match({buf = 0})
---
--- -- empty out the linter table for current filetype
--- require('lint').linters_by_ft[ft] = {}
--- -- add linters to the current buffer
--- require('lint').linters_by_ft[ft] = {"CSpell"}
