@@ -13,6 +13,11 @@ return {
       default_direction = "prefer_left",
       min_width = 30,
     },
+    -- Move 5 lines up from the middle.
+    post_jump_cmd = "normal! 5j zz",
+    -- This is the original one
+    -- post_jump_cmd = "normal! zz",
+    -- post_jump_cmd = false,
 
     keymaps = {
       ["<C-n>"] = "actions.down_and_scroll",

@@ -18,6 +18,11 @@ vim.keymap.set("x", "<leader>p", '"_dP')
 -- vim.keymap.set('i', '<C-p>', '<C-r>+', { noremap = true, silent = true, desc = 'Paste from clipboard from within insert mode' })
 -- vim.keymap.set("x", "<leader>P", '"_dP', { noremap = true, silent = true, desc = 'Paste over selection without erasing unnamed register' })
 
+-- Delete char without losing clipboard content
+vim.keymap.set("n", "<S-x>", '"_x')
+-- Delete without losing clipboard content
+vim.keymap.set("v", "<S-x>", '"_d')
+
 -- redo to shift U
 vim.keymap.set({ "n", "x" }, "<S-u>", "<C-r>")
 
