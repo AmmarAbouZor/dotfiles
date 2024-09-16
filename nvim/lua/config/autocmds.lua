@@ -25,15 +25,12 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- close netrw buffer with <qq>
-vim.api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("Close_netrw_qq", { clear = true }),
-  pattern = {
-    "netrw",
-  },
-  callback = function(event)
-    vim.bo[event.buf].buflisted = false
-    vim.keymap.set("n", "qq", "<cmd>bd<cr>", { buffer = event.buf, silent = true })
+-- Close with q if nvim opened as diff tool with `nvim -d ...`
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    if vim.opt.diff:get() then
+      vim.api.nvim_set_keymap("n", "q", ":qa<CR>", { noremap = true, silent = true })
+    end
   end,
 })
 

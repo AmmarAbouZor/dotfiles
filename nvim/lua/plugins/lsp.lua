@@ -1,3 +1,11 @@
+-- Disable LSP when nvim opened to diff files with `nvim -d`
+if vim.opt.diff:get() then
+  return {
+    "neovim/nvim-lspconfig",
+    enabled = false,
+  }
+end
+
 -- Toggle Show errors only
 local show_diagnositcs = false
 
