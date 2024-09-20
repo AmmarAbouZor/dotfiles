@@ -48,7 +48,7 @@
   grv  1    2    3    4    5    6    7    8    9    0    -     =        bspc
   tab  @q    w    e    r    t    y    u    i    o    p    [     ]        ret
   @caps @a  @s   @d   @f    g    h   @j   @k   @l   @;    '     \
-  lsft 102d z    x    c    v    b    n    m    ,    .    /              rsft
+  @lsft 102d z    x    c    v    b    n    m    ,    .    /              rsft
   lctl wkup lmet lalt          @spc            ralt cmps rctl            up   
                                                                    left down rght
 )
@@ -88,7 +88,7 @@
 (defalias
   tap (multi
     (layer-switch nomods)
-    (on-idle-fakekey to-base tap 20)
+    (on-idle-fakekey to-base tap 1)
   )
 
   ;; Home row mods
@@ -104,7 +104,8 @@
   q (tap-hold-release-keys $tap-time $hold-time (multi q @tap) (multi lalt lsft) $left-hand-keys-nhm)
 
   spc (tap-hold-release $tap-time $hold-time (multi spc @tap) (layer-toggle nav-symb))
-  caps (tap-hold-release $tap-time $hold-time (multi (caps-word 2000) @tap) (layer-toggle nums))
+  caps (tap-hold-release $tap-time $hold-time (multi esc @tap) (layer-toggle nums))
+  lsft (tap-hold-release $tap-time $hold-time (multi (caps-word 2000) @tap) lsft)
 
   ;; Home row mods on nav-symb layer
   s-plus (tap-hold-release $tap-time $hold-time-fast (multi (multi lsft =) @tap) lsft)

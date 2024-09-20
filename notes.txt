@@ -1,18 +1,3 @@
-EasyEffect
-
-pavucontrol to control devices
-
-----------------------------------------
-GitHub Credential with GitUI
-
-git config --list --show-origin ////////////////// Shows configs
-
-printf "protocol=https\nhost=github.com\n" | git credential fill //////// username and password
-
-printf "protocol=https\nhost=github.com\n" | git credential-store get /// should give the credintial
-
-git config credential.helper store
-
 ----------------------------------------------
 External monitor as primary from log in:
 Set the monitor settings in the settings window
@@ -37,55 +22,36 @@ rustup component add rust-analyzer
 
 ------------------------------------
 
-# Keyboard layouts
-localectl --no-convert set-x11-keymap us,de,ar pc105, qwerty grp:alt_shift_toggle
-localectl --no-convert set-x11-keymap us,de,ar pc105, qwerty 
-
-#power manager
-sudo dnf install xfce4-power-manager
-
-#p7zip
-sudo dnf install p7zip p7zip-plugins
-
 #flatpak theme
 sudo flatpak override --env=GTK_THEME=Adwaita-dark
 
 #install fontawesome
 sudo dnf install fontawesome-fonts
 
-#fonts manuall install:
-unzip NerdFontsSymbolsOnly.zip -d ~/.local/share/fonts/
-fc-cache ~/.local/share/fonts/
+-----------------------------------------------------------------
+# Config to add to ~/.gitconfig file
 
-#apple Fonts.
-install 7z: install p7zip p7zip-plugins
-For each font (SF-MONO for example):
-7z x SF-Mono.dmg
-cd SFMonoFonts/
-7z x SF\ Mono\ Fonts.pkg
-7z x Payload\~
-Then move the files and clean up
+# fast forward on pull only
+[pull]
+	ff = only
 
--------------------------------------------
-#nvidia on x11
-/usr/share/X11/xorg.conf.d/...
-# I use this only
-	Option         "ForceFullCompositionPipeline" "on"
+[diff]
+	tool = nvim
 
-#These are other options
-    Option         "AllowIndirectGLXProtocol" "off"
-    Option         "TripleBuffer" "on"
------------------------------------------------------
+[difftool "nvim"]
+   cmd = nvim -d "$LOCAL" "$REMOTE" 
 
-Lightdm-gtk-greeter:
-[greeter]
-background = /usr/share/backgrounds/spooky_spill.jpg
-theme-name = Adwaita-dark
-icon-theme-name = Adwaita
+# Nvim as merge tool `git mergetool`
+[merge]
+	tool = nvim
 
-cursor-theme-name = Bibata_Ice
-cursor-theme-size = 16
+[mergetool "nvim"]
+   cmd = nvim -d "$LOCAL" "$MERGED" "$REMOTE" 
 
-Lighdm.conf:
-[Seat:*]
-greeter-setup-script=/usr/bin/numlockx on
+
+#### This is experimental ##########
+
+## Diff like that is slower but better for code and indentation.
+[diff]
+	algorithm = histogram
+	indentHeuristic = true
