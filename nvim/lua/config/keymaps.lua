@@ -164,10 +164,16 @@ vim.keymap.set("n", "<c-/>", LazyVim.pick("live_grep", { root = false }), { desc
 -- <c-_> for tmux and zellij can register as <c-/>
 vim.keymap.set("n", "<c-_>", LazyVim.pick("live_grep", { root = false }), { desc = "Grep (cwd)" })
 
--- Disable hjkl and esc on toggle terminal + Change keybinding to <m-;>
+-- Disable hjkl and esc on toggle terminal + Change keybinding to <m-;> and <m-'>
+vim.keymap.set("n", "<m-'>", function()
+  LazyVim.terminal.open(nil, { cwd = LazyVim.root(), esc_esc = false, ctrl_hjkl = false, border = "rounded" })
+end, { desc = "Terminal (Root Dir)" })
+vim.keymap.set("t", "<m-'>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+
 vim.keymap.set("n", "<m-;>", function()
-  LazyVim.terminal(nil, { cwd = LazyVim.root(), esc_esc = false, ctrl_hjkl = false })
+  LazyVim.terminal.open(nil, { cwd = LazyVim.root(), esc_esc = false, ctrl_hjkl = false, border = "rounded" })
 end, { desc = "Terminal (Root Dir)" })
 vim.keymap.set("t", "<m-;>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+
 -- disable <c-/> in terminal
 vim.keymap.set("t", "<c-/>", "<c-/>")
