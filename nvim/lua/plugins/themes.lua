@@ -24,6 +24,19 @@ end
 return {
   { "projekt0n/github-nvim-theme" },
   {
+    "rebelot/kanagawa.nvim",
+    opts = {
+      compile = true,
+      transparent = false,
+      -- options : "wave", "dragon", "lotus"
+      theme = "dragon",
+      background = {
+        dark = "dragon",
+        light = "lotus",
+      },
+    },
+  },
+  {
     "sainnhe/everforest",
     init = function()
       vim.api.nvim_set_var("everforest_diagnostic_virtual_text", "colored")
