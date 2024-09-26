@@ -69,7 +69,7 @@ return {
 	color_scheme = "Gruvbox Dark (Gogh)",
 	-- color_scheme = "Gruvbox dark, soft (base16)",
 	-- color_scheme = "Gruvbox dark, pale (base16)",
-	window_background_opacity = 0.9,
+	window_background_opacity = 0.95,
 	window_decorations = "RESIZE",
 	enable_tab_bar = true,
 	hide_tab_bar_if_only_one_tab = true,
