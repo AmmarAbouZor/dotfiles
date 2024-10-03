@@ -18,6 +18,18 @@ opt.timeoutlen = 600
 -- Remember to activate the autocmd for text files if you decide to activate spell by default.
 opt.spell = true
 
+-- Enable spell check on plain buffers only if they are given as CLI arguments
+if vim.fn.argc(-1) == 0 then
+  opt.spelloptions:append("noplainbuffer")
+else
+  --- index for argv is provided => only one item will be returned
+  ---@diagnostic disable-next-line: param-type-mismatch
+  local stats = vim.uv.fs_stat(vim.fn.argv(0))
+  if stats and stats.type == "directory" then
+    opt.spelloptions:append("noplainbuffer")
+  end
+end
+
 opt.winbar = "%=%m %f"
 
 local border = "rounded"

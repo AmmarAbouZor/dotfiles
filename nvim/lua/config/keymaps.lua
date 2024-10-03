@@ -160,6 +160,8 @@ vim.keymap.set({ "i", "n" }, "<C-S-s>", "<cmd>noa w<cr>", { desc = "Save without
 
 vim.keymap.set("n", "z<space>", "zt", { desc = "Top this line" })
 
+vim.keymap.set("n", "<leader>gm", "<cmd>G<cr>", { desc = "Git Fugitive" })
+
 vim.keymap.set("n", "<c-/>", LazyVim.pick("live_grep", { root = false }), { desc = "Grep (cwd)" })
 -- <c-_> for tmux and zellij can register as <c-/>
 vim.keymap.set("n", "<c-_>", LazyVim.pick("live_grep", { root = false }), { desc = "Grep (cwd)" })

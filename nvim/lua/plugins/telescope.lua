@@ -16,7 +16,7 @@ return {
           require("gruvbox")
 
           -- Then Open telescope themes picker
-          LazyVim.pick("colorscheme", { enable_preview = true })()
+          LazyVim.pick("colorscheme", { enable_preview = true, ignore_builtins = true })()
         end,
         desc = "Colorscheme with preview",
       },
