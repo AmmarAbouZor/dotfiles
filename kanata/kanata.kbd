@@ -3,8 +3,10 @@
 ;; This is for LogiTech ergo keyboard
 ;;  linux-dev /dev/input/by-path/platform-i8042-serio-0-event-kbd:/dev/input/by-id/usb-Logitech_USB_Receiver-if02-event-mouse
   process-unmapped-keys yes
+  log-layer-changes no
   ;; TODO AAZ: Make sure this improve anything here. Default is 5.
-  rapid-event-delay 0
+  rapid-event-delay 5
+  concurrent-tap-hold yes
 )
 
 (defsrc
@@ -16,7 +18,7 @@
 )
 
 (defvar
-  tap-time 0
+  tap-time 200
   hold-time 220
   hold-time-fast 180
 
@@ -70,7 +72,7 @@
 (deflayer nomods
        1    2    3    4    5    6    7    8    9    0    -     =
        q    w    e    r    t    y    u    i    o    p    [     ]
-  esc a    s     d   @f    g    h    j    k    l    ;    '   
+  esc a    s     d   @f    g    h   @j    k    l    ;    '   
   lsft  z    x    c    v    b    n    m    ,    .    / 
                                 @spc 
 )
@@ -80,7 +82,7 @@
 (defalias
   tap (multi
     (layer-switch nomods)
-    (on-idle-fakekey to-base tap 1)
+    (on-idle-fakekey to-base tap 20)
   )
 
   ;; Home row mods
@@ -105,7 +107,7 @@
 )
 
 ;; Combos
-(defchords combo 30
+(defchords combo 40
   (d) (tap-hold-release-keys $tap-time $hold-time-fast (multi d @tap) lsft $left-hand-keys-nhm)
   (f) (tap-hold-release-keys $tap-time $hold-time-fast (multi f @tap) lctl $left-hand-keys-nhm)
   (k) (tap-hold-release-keys $tap-time $hold-time-fast (multi k @tap) rsft $right-hand-keys-nhm)
