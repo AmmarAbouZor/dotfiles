@@ -80,50 +80,45 @@
   to-base (layer-switch base)
 )
 (defalias
-  tap (multi
-    (layer-switch nomods)
-    (on-idle-fakekey to-base tap 20)
-  )
-
   ;; Home row mods
-  a (tap-hold-release-keys $tap-time $hold-time (multi a @tap) lalt $left-hand-keys-nhm)
-  s (tap-hold-release-keys $tap-time $hold-time (multi s @tap) lmet $left-hand-keys-nhm)
+  a (tap-hold-release-keys $tap-time $hold-time a lalt $left-hand-keys-nhm)
+  s (tap-hold-release-keys $tap-time $hold-time s lmet $left-hand-keys-nhm)
   d (chord combo d)
   f (chord combo f)
-  j (tap-hold-release-keys $tap-time $hold-time-fast (multi j @tap) rctl $right-hand-keys-nhm)
+  j (tap-hold-release-keys $tap-time $hold-time-fast j rctl $right-hand-keys-nhm)
   k (chord combo k)
   l (chord combo l)
-  ; (tap-hold-release-keys $tap-time $hold-time (multi ; @tap) ralt $right-hand-keys-nhm)
+  ; (tap-hold-release-keys $tap-time $hold-time ; ralt $right-hand-keys-nhm)
 
-  q (tap-hold-release-keys $tap-time $hold-time (multi q @tap) (multi lalt lsft) $left-hand-keys-nhm)
+  q (tap-hold-release-keys $tap-time $hold-time q (multi lalt lsft) $left-hand-keys-nhm)
 
-  spc (tap-hold-release $tap-time $hold-time (multi spc @tap) (layer-toggle nav-symb))
-  caps (tap-hold-release $tap-time $hold-time (multi esc @tap) (layer-toggle nums))
-  lsft (tap-hold-release $tap-time $hold-time (multi (caps-word 2000) @tap) lsft)
+  spc (tap-hold-release $tap-time $hold-time spc (layer-toggle nav-symb))
+  caps (tap-hold-release $tap-time $hold-time esc (layer-toggle nums))
+  lsft (tap-hold-release $tap-time $hold-time (caps-word 2000) lsft)
 
   ;; Home row mods on nav-symb layer
-  s-plus (tap-hold-release $tap-time $hold-time-fast (multi (multi lsft =) @tap) lsft)
-  c-eql (tap-hold-release $tap-time $hold-time-fast (multi = @tap) lctl)
+  s-plus (tap-hold-release $tap-time $hold-time-fast (multi lsft =) lsft)
+  c-eql (tap-hold-release $tap-time $hold-time-fast = lctl)
 )
 
 ;; Combos
 (defchords combo 40
-  (d) (tap-hold-release-keys $tap-time $hold-time-fast (multi d @tap) lsft $left-hand-keys-nhm)
-  (f) (tap-hold-release-keys $tap-time $hold-time-fast (multi f @tap) lctl $left-hand-keys-nhm)
-  (k) (tap-hold-release-keys $tap-time $hold-time-fast (multi k @tap) rsft $right-hand-keys-nhm)
-  (l) (tap-hold-release-keys $tap-time $hold-time (multi l @tap) rmet $right-hand-keys-nhm)
+  (d) (tap-hold-release-keys $tap-time $hold-time-fast d lsft $left-hand-keys-nhm)
+  (f) (tap-hold-release-keys $tap-time $hold-time-fast f lctl $left-hand-keys-nhm)
+  (k) (tap-hold-release-keys $tap-time $hold-time-fast k rsft $right-hand-keys-nhm)
+  (l) (tap-hold-release-keys $tap-time $hold-time l rmet $right-hand-keys-nhm)
 
   (d f) esc
   (k l) tab
 
   ;; Trying to find solve the problem with f+j
-  ;; (j) (tap-hold-release-keys $tap-time $hold-time-fast (multi j @tap) rctl $right-hand-keys-nhm)
+  ;; (j) (tap-hold-release-keys $tap-time $hold-time-fast j rctl $right-hand-keys-nhm)
   ;; (j k) ret
 
   ;; This caused a lot of problems.
-  ;; (d f) (tap-hold-release $tap-time $hold-time (multi esc @tap) (multi lsft lctl))
-  ;; (j k) (tap-hold-release $tap-time $hold-time (multi ret @tap) (multi rsft rctl))
-  ;; (k l) (tap-hold-release $tap-time $hold-time (multi tab @tap) (multi rsft rmet))
+  ;; (d f) (tap-hold-release $tap-time $hold-time esc (multi lsft lctl))
+  ;; (j k) (tap-hold-release $tap-time $hold-time ret (multi rsft rctl))
+  ;; (k l) (tap-hold-release $tap-time $hold-time tab (multi rsft rmet))
 )
 
 
