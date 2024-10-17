@@ -102,11 +102,16 @@ LazyVim.toggle.map(
 
 -- Gitui
 vim.keymap.set("n", "<leader>gu", function()
-  LazyVim.terminal.open({ "gitui" }, { cwd = LazyVim.root.get(), esc_esc = false, ctrl_hjkl = false })
+  LazyVim.terminal.open(
+    { "gitui" },
+    { cwd = LazyVim.root.get(), esc_esc = false, ctrl_hjkl = false, border = "rounded" }
+  )
 end, { desc = "Gitui (root dir)" })
-vim.keymap.set("n", "<leader>gU", function()
-  LazyVim.terminal.open({ "gitui" }, { esc_esc = false, ctrl_hjkl = false })
-end, { desc = "Gitui (cwd)" })
+
+-- Gitui
+vim.keymap.set("n", "<leader>gg", function()
+  LazyVim.lazygit({ cwd = LazyVim.root.git(), border = "rounded" })
+end, { desc = "Lazygit (Root Dir)" })
 
 vim.keymap.set("n", "<leader>s'", require("telescope.builtin").resume, { desc = "Resume" })
 

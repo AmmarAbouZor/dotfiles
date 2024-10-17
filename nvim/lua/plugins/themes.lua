@@ -1,3 +1,19 @@
+-- *** Reset Unused and snippets marking after changing the color scheme ***
+-- *** Disable cursor line highlighting on transparent backgrounds ***
+vim.api.nvim_create_autocmd("ColorScheme", {
+  group = vim.api.nvim_create_augroup("reset_highlights_on_theme_change", { clear = true }),
+  callback = function()
+    -- *** Remove Unused variables highlight ***
+    vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", { link = "NONE" })
+    -- *** Remove Snippets highlights ***
+    vim.api.nvim_set_hl(0, "SnippetTabstop", { link = "NONE" })
+
+    -- *** Disable cursor line highlighting on transparent backgrounds
+    vim.o.cursorline = vim.api.nvim_get_hl(0, { name = "Normal" }).bg ~= nil
+  end,
+})
+
+-- *** Sonokai Styles ***
 local sonokai_styles = { "default", "atlantis", "andromeda", "shusia", "maia", "espresso" }
 local current_sonokai_style_index = 1
 
@@ -59,7 +75,7 @@ return {
   { "Mofiqul/vscode.nvim" },
   {
     "sainnhe/gruvbox-material",
-    priority = 1000,
+    -- priority = 1000,
     init = function()
       vim.api.nvim_set_var("gruvbox_material_visual", "green background")
       vim.api.nvim_set_var("gruvbox_material_diagnostic_virtual_text", "colored")
@@ -68,6 +84,7 @@ return {
   },
   {
     "ellisonleao/gruvbox.nvim",
+    priority = 1000,
     opts = {
       bold = false,
       -- Enable Transparent expect in neovide.
@@ -136,7 +153,8 @@ return {
     "LazyVim/LazyVim",
     lazy = false,
     opts = {
-      colorscheme = "gruvbox-material",
+      -- colorscheme = "gruvbox-material",
+      colorscheme = "gruvbox",
     },
   },
 }
