@@ -37,6 +37,10 @@ return {
                 snippets = "add_parentheses",
               },
             },
+            -- Disable inactive code info when developing for cross-platform
+            diagnostics = {
+              disabled = { "inactive-code" },
+            },
             cargo = {
               allFeatures = true,
             },
