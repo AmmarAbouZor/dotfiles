@@ -26,6 +26,12 @@ chars = "\u0017"
 key = "Backspace"
 mods = "Control"
 
+# Pass <m-:> through to toggle terminal in NeoVim
+[[keyboard.bindings]]
+chars = "\u001B\u003A"
+key = ":"
+mods = "Alt|Shift"
+
 # [[keyboard.bindings]]
 # action = "ToggleViMode"
 # key = "?"

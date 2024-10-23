@@ -235,10 +235,10 @@ return {
 
 		{ key = "phys:Space", mods = "SHIFT|CTRL", action = act.QuickSelect },
 
-		{ key = "}", mods = "ALT", action = act.ScrollByPage(-1) },
-		{ key = "}", mods = "SHIFT|ALT", action = act.ScrollByPage(-1) },
-		{ key = "{", mods = "ALT", action = act.ScrollByPage(1) },
-		{ key = "{", mods = "SHIFT|ALT", action = act.ScrollByPage(1) },
+		{ key = "UpArrow", mods = "SHIFT|ALT", action = act.ScrollByPage(-1) },
+		{ key = "UpArrow", mods = "ALT", action = act.ScrollByPage(-1) },
+		{ key = "DownArrow", mods = "SHIFT|ALT", action = act.ScrollByPage(1) },
+		{ key = "DownArrow", mods = "ALT", action = act.ScrollByPage(1) },
 
 		{ key = "<", mods = "SHIFT|ALT", action = act.MoveTabRelative(-1) },
 		{ key = ">", mods = "SHIFT|ALT", action = act.MoveTabRelative(1) },
@@ -247,13 +247,8 @@ return {
 		{ key = "L", mods = "SHIFT|ALT", action = act.ActivatePaneDirection("Right") },
 		{ key = "K", mods = "SHIFT|ALT", action = act.ActivatePaneDirection("Up") },
 		{ key = "J", mods = "SHIFT|ALT", action = act.ActivatePaneDirection("Down") },
-		{ key = ":", mods = "SHIFT|ALT", action = act.RotatePanes("Clockwise") },
+		{ key = "{", mods = "SHIFT|ALT", action = act.RotatePanes("Clockwise") },
 		{ key = "B", mods = "SHIFT|ALT", action = act.EmitEvent("toggle-dark-light-theme") },
-
-		{ key = "LeftArrow", mods = "SHIFT|ALT", action = act.AdjustPaneSize({ "Left", 1 }) },
-		{ key = "RightArrow", mods = "SHIFT|ALT", action = act.AdjustPaneSize({ "Right", 1 }) },
-		{ key = "UpArrow", mods = "SHIFT|ALT", action = act.AdjustPaneSize({ "Up", 1 }) },
-		{ key = "DownArrow", mods = "SHIFT|ALT", action = act.AdjustPaneSize({ "Down", 1 }) },
 
 		{ key = "Insert", mods = "SHIFT", action = act.PasteFrom("PrimarySelection") },
 		{ key = "Insert", mods = "CTRL", action = act.CopyTo("PrimarySelection") },
