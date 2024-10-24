@@ -9,8 +9,9 @@ return {
           -- Load all themes
           require("tokyonight")
           require("github-theme")
+          require("kanagawa")
           require("lazy").load({
-            plugins = { "gruvbox-material", "catppuccin", "everforest", "sonokai", "vscode.nvim", "kanagawa" },
+            plugins = { "gruvbox-material", "catppuccin", "everforest", "sonokai", "vscode.nvim" },
           })
           require("rose-pine")
           require("gruvbox")
