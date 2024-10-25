@@ -101,7 +101,7 @@ LazyVim.toggle.map(
 )
 
 -- Gitui
-vim.keymap.set("n", "<leader>gu", function()
+vim.keymap.set("n", "<leader>gi", function()
   LazyVim.terminal.open(
     { "gitui" },
     { cwd = LazyVim.root.get(), esc_esc = false, ctrl_hjkl = false, border = "rounded" }

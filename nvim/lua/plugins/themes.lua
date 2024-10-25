@@ -10,6 +10,17 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
     -- *** Disable cursor line highlighting on transparent backgrounds
     vim.o.cursorline = vim.api.nvim_get_hl(0, { name = "Normal" }).bg ~= nil
+
+    -- Better comments colors
+    local themes = { "gruvbox-material", "everforest", "sonokai" }
+    local current_scheme = vim.g.colors_name
+    if current_scheme and vim.tbl_contains(themes, current_scheme) then
+      if vim.o.background == "light" then
+        vim.api.nvim_set_hl(0, "Comment", { fg = "#686868" })
+      else
+        vim.api.nvim_set_hl(0, "Comment", { fg = "#b2a38f" })
+      end
+    end
   end,
 })
 
@@ -100,6 +111,9 @@ return {
         -- LspReferenceRead = { link = "PmenuSbar" },
         -- LspReferenceText = { link = "PmenuSbar" },
         -- LspReferenceWrite = { link = "PmenuSbar" },
+
+        -- Comments are important
+        Comment = { fg = "#b0a082" },
       },
     },
   },
