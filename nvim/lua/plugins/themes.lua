@@ -67,6 +67,7 @@ return {
     "sainnhe/everforest",
     init = function()
       vim.api.nvim_set_var("everforest_diagnostic_virtual_text", "colored")
+      vim.api.nvim_set_var("everforest_background", "hard")
       -- vim.api.nvim_set_var("everforest_diagnostic_virtual_text", "highlighted")
     end,
   },
@@ -90,6 +91,7 @@ return {
     init = function()
       vim.api.nvim_set_var("gruvbox_material_visual", "green background")
       vim.api.nvim_set_var("gruvbox_material_diagnostic_virtual_text", "colored")
+      vim.api.nvim_set_var("gruvbox_material_background", "hard")
       -- vim.api.nvim_set_var("gruvbox_material_diagnostic_virtual_text", "highlighted")
     end,
   },
