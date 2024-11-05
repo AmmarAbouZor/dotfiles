@@ -1,4 +1,3 @@
-import = ["/home/ammar/.config/alacritty/gruvbox_dark.toml"]
 
 [font]
 size = 13
@@ -43,7 +42,7 @@ mode = "Vi"
 key = "q"
 
 
-[shell]
+[terminal.shell]
 # I start with tmux using the command `alacritty -e usr/bin/tmux`
 # program = "/bin/tmux"
 program = "/bin/fish"
@@ -59,3 +58,8 @@ lines = 45
 [window.padding]
 x = 6
 y = 6
+
+[general]
+import = ["/home/ammar/.config/alacritty/gruvbox_dark.toml"]
+
+[terminal]
