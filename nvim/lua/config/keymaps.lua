@@ -191,3 +191,6 @@ vim.keymap.set("t", "<m-s-;>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
 -- disable <c-/> in terminal
 vim.keymap.set("t", "<c-/>", "<c-/>")
+
+-- Vim normal mode in terminal
+vim.keymap.set("t", "<a-/>", "<c-\\><c-n>")

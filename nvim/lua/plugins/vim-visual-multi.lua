@@ -4,8 +4,12 @@ return {
   event = "VeryLazy",
 
   init = function()
-    vim.cmd("let g:VM_maps = {}")
-    vim.cmd("let g:VM_maps['Find Under'] = '<A-m>'")
-    vim.cmd("let g:VM_maps['Find Subword Under'] = '<A-m>'")
+    -- Disable default mapping and set the needed mapping only
+    vim.cmd([[
+      let VM_default_mappings = 0
+      let g:VM_maps = {}
+      let g:VM_maps['Find Under'] = '<A-m>'
+      let g:VM_maps['Find Subword Under'] = '<A-m>'
+    ]])
   end,
 }

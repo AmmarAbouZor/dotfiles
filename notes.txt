@@ -49,6 +49,10 @@ sudo dnf install fontawesome-fonts
    cmd = nvim -d "$LOCAL" "$MERGED" "$REMOTE" 
 
 
+# Avoid having to enter `set-upstream` on pushes of new branches.
+[push]
+	autoSetupRemote = true
+
 #### This is experimental ##########
 
 ## Diff like that is slower but better for code and indentation.
