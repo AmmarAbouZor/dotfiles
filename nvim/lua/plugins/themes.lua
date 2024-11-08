@@ -44,7 +44,7 @@ local function toggle_background_or_cycle_sonokai()
     -- Print a message indicating the new style
     LazyVim.warn("Sonokai style set to: " .. next_style)
   else
-    LazyVim.toggle("background", { values = { "light", "dark" }, name = "Background" })()
+    Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):toggle()
   end
 end
 

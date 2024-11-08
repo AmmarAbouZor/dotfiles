@@ -89,28 +89,25 @@ vim.keymap.set("c", "<C-BS>", "<C-w>")
 vim.keymap.del("n", "<leader>wm")
 vim.keymap.del("n", "<leader>wd")
 -- toggle maximize
-LazyVim.toggle.map("<C-w>m", LazyVim.toggle.maximize)
+LazyVim.ui.maximize():map("<C-w>m")
 -- remove current buffer
-vim.keymap.set("n", "<leader>w", LazyVim.ui.bufremove, { desc = "Delete current buffer", noremap = true })
--- vim.keymap.set("n", "<leader>wq", LazyVim.ui.bufremove, { desc = "Delete current buffer", noremap = true })
+vim.keymap.set("n", "<leader>w", function()
+  Snacks.bufdelete()
+end, { desc = "Delete current buffer", noremap = true })
 
 -- Switch between <leader>uC and <leader>uc between conceallevel and changing the themes
-LazyVim.toggle.map(
-  "<leader>uC",
-  LazyVim.toggle("conceallevel", { values = { 0, vim.o.conceallevel > 0 and vim.o.conceallevel or 2 } })
-)
+Snacks.toggle
+  .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
+  :map("<leader>uC")
 
 -- Gitui
 vim.keymap.set("n", "<leader>gi", function()
-  LazyVim.terminal.open(
-    { "gitui" },
-    { cwd = LazyVim.root.get(), esc_esc = false, ctrl_hjkl = false, border = "rounded" }
-  )
+  Snacks.terminal({ "gitui" }, { cwd = LazyVim.root.get(), win = { border = "rounded" } })
 end, { desc = "Gitui (root dir)" })
 
--- Gitui
+-- LazyGit
 vim.keymap.set("n", "<leader>gg", function()
-  LazyVim.lazygit({ cwd = LazyVim.root.git(), border = "rounded" })
+  Snacks.lazygit({ cwd = LazyVim.root.git(), win = { border = "rounded" } })
 end, { desc = "Lazygit (Root Dir)" })
 
 vim.keymap.set("n", "<leader>s'", require("telescope.builtin").resume, { desc = "Resume" })
@@ -155,7 +152,9 @@ vim.keymap.set("n", "<leader>bt", function()
   print(vim.bo.filetype)
 end, { desc = "Show buffer type" })
 
-vim.keymap.set("n", "<leader>gy", LazyVim.lazygit.blame_line, { desc = "Git Blame Line" })
+vim.keymap.set("n", "<leader>gy", function()
+  Snacks.git.blame_line()
+end, { desc = "Git Blame Line" })
 
 -- disable Ctrl + U because I don't use it and only hit it by mistake
 vim.keymap.set("i", "<C-u>", "")
@@ -174,20 +173,17 @@ vim.keymap.set("n", "<c-/>", LazyVim.pick("live_grep", { root = false }), { desc
 vim.keymap.set("n", "<c-_>", LazyVim.pick("live_grep", { root = false }), { desc = "Grep (cwd)" })
 
 -- Disable hjkl and esc on toggle terminal + Change keybinding to <m-;> and <m-:>
-vim.keymap.set("n", "<m-;>", function()
-  LazyVim.terminal.open(nil, { esc_esc = false, ctrl_hjkl = false, border = "rounded" })
-end, { desc = "Terminal (Root Dir)" })
-vim.keymap.set("t", "<m-;>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+vim.keymap.set({ "n", "t" }, "<m-;>", function()
+  Snacks.terminal()
+end, { desc = "Toggle Terminal" })
 
-vim.keymap.set("n", "<m-:>", function()
-  LazyVim.terminal.open(nil, { esc_esc = false, ctrl_hjkl = false, border = "rounded" })
-end, { desc = "Terminal (Root Dir)" })
-vim.keymap.set("t", "<m-:>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+vim.keymap.set({ "n", "t" }, "<m-:>", function()
+  Snacks.terminal()
+end, { desc = "Toggle Terminal" })
 
-vim.keymap.set("n", "<m-s-;>", function()
-  LazyVim.terminal.open(nil, { esc_esc = false, ctrl_hjkl = false, border = "rounded" })
-end, { desc = "Terminal (Root Dir)" })
-vim.keymap.set("t", "<m-s-;>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+vim.keymap.set({ "n", "t" }, "<m-s-;>", function()
+  Snacks.terminal()
+end, { desc = "Toggle Terminal" })
 
 -- disable <c-/> in terminal
 vim.keymap.set("t", "<c-/>", "<c-/>")
