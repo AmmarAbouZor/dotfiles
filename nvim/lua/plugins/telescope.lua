@@ -11,7 +11,7 @@ return {
           require("github-theme")
           require("kanagawa")
           require("lazy").load({
-            plugins = { "gruvbox-material", "catppuccin", "everforest", "sonokai", "vscode.nvim" },
+            plugins = { "gruvbox-material", "catppuccin", "everforest", "sonokai", "vscode.nvim", "jellybeans" },
           })
           require("rose-pine")
           require("gruvbox")

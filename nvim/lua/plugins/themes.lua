@@ -85,6 +85,7 @@ return {
     end,
   },
   { "Mofiqul/vscode.nvim" },
+  { "wtfox/jellybeans.nvim" },
   {
     "sainnhe/gruvbox-material",
     -- priority = 1000,
