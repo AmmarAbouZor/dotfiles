@@ -24,30 +24,61 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   end,
 })
 
--- *** Sonokai Styles ***
+--- ************************************** ---
+--- *** Toggle between themes variants *** ---
+--- ************************************** ---
 local sonokai_styles = { "default", "atlantis", "andromeda", "shusia", "maia", "espresso" }
 local current_sonokai_style_index = 1
 
--- Toggle dark and light colors for themes except `sonokai` because it doesn't have light theme
--- but it have many styles. Therefor we will cycle through them in this case.
-local function toggle_background_or_cycle_sonokai()
-  -- If the color scheme is sonokai, then cycle between it's styles
-  if vim.g.colors_name == "sonokai" then
+-- This command switch between the variants of the current theme
+-- if it provides different variant to switch between them
+vim.api.nvim_create_user_command("ThemeVariantSwitch", function()
+  local current_scheme = vim.g.colors_name
+
+  if not current_scheme then
+    error("Can't get current theme")
+  end
+
+  -- Gruvbox material have two variant between background and floating windows.
+  if current_scheme == "gruvbox-material" then
+    local background = vim.g.gruvbox_material_background
+    if not background then
+      error("Can't get current background")
+    end
+
+    if background == "hard" then
+      vim.g.gruvbox_material_background = "medium"
+      vim.g.gruvbox_material_float_style = "dim"
+
+      LazyVim.info("gruvbox background set to medium", { title = "Theme Variant" })
+    else
+      vim.g.gruvbox_material_background = "hard"
+      vim.g.gruvbox_material_float_style = "bright"
+
+      LazyVim.info("gruvbox background set to hard", { title = "Theme Variant" })
+    end
+
+    -- Reapply the color theme to let the changes take effect.
+    vim.cmd("colorscheme gruvbox-material")
+
+  --  Sonokai have multiple styles to switch between them
+  elseif current_scheme == "sonokai" then
     current_sonokai_style_index = current_sonokai_style_index % #sonokai_styles + 1
     local next_style = sonokai_styles[current_sonokai_style_index]
 
-    -- Set the Sonokai style
     vim.g.sonokai_style = next_style
     -- Reapply the color theme to let the changes take effect.
     vim.cmd("colorscheme sonokai")
 
-    -- Print a message indicating the new style
-    LazyVim.warn("Sonokai style set to: " .. next_style)
+    LazyVim.info("Sonokai style set to: " .. next_style, { title = "Theme Variant" })
   else
-    Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):toggle()
+    LazyVim.warn(current_scheme .. " doesn't support themes variants", { title = "Theme Variant" })
   end
-end
+end, {})
 
+--- ***********************************************
+--- *** Enabled themes with this configurations ***
+--- ***********************************************
 return {
   { "projekt0n/github-nvim-theme" },
   {
@@ -66,22 +97,16 @@ return {
   {
     "sainnhe/everforest",
     init = function()
-      vim.api.nvim_set_var("everforest_diagnostic_virtual_text", "colored")
-      vim.api.nvim_set_var("everforest_background", "hard")
-      -- vim.api.nvim_set_var("everforest_diagnostic_virtual_text", "highlighted")
+      vim.g.everforest_diagnostic_virtual_text = "colored"
+      vim.g.everforest_background = "hard"
     end,
   },
   {
     "sainnhe/sonokai",
-    keys = {
-      { "<leader>ub", toggle_background_or_cycle_sonokai, desc = "Theme Light/Dark & Cycle" },
-    },
-
     init = function()
-      vim.api.nvim_set_var("sonokai_style", "default")
+      vim.g.sonokai_style = "default"
 
-      vim.api.nvim_set_var("sonokai_diagnostic_virtual_text", "colored")
-      -- vim.api.nvim_set_var("everforest_diagnostic_virtual_text", "highlighted")
+      vim.g.sonokai_diagnostic_virtual_text = "colored"
     end,
   },
   { "Mofiqul/vscode.nvim" },
@@ -90,10 +115,13 @@ return {
     "sainnhe/gruvbox-material",
     -- priority = 1000,
     init = function()
-      vim.api.nvim_set_var("gruvbox_material_visual", "green background")
-      vim.api.nvim_set_var("gruvbox_material_diagnostic_virtual_text", "colored")
-      vim.api.nvim_set_var("gruvbox_material_background", "hard")
-      -- vim.api.nvim_set_var("gruvbox_material_diagnostic_virtual_text", "highlighted")
+      vim.g.gruvbox_material_visual = "green background"
+      vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
+
+      vim.g.gruvbox_material_background = "medium"
+      vim.g.gruvbox_material_float_style = "dim"
+      -- vim.g.gruvbox_material_background = "hard"
+      -- vim.g.gruvbox_material_float_style = "bright"
     end,
   },
   {

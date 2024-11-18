@@ -5,20 +5,7 @@ return {
     keys = {
       {
         "<leader>uc",
-        function()
-          -- Load all themes
-          require("tokyonight")
-          require("github-theme")
-          require("kanagawa")
-          require("lazy").load({
-            plugins = { "gruvbox-material", "catppuccin", "everforest", "sonokai", "vscode.nvim", "jellybeans" },
-          })
-          require("rose-pine")
-          require("gruvbox")
-
-          -- Then Open telescope themes picker
-          LazyVim.pick("colorscheme", { enable_preview = true, ignore_builtins = true })()
-        end,
+        LazyVim.pick("colorscheme", { enable_preview = true, ignore_builtins = true }),
         desc = "Colorscheme with preview",
       },
 

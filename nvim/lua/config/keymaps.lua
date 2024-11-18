@@ -168,6 +168,9 @@ vim.keymap.set("n", "<leader>gm", "<cmd>G<cr>", { desc = "Git Fugitive" })
 
 vim.keymap.set("n", "<leader>uz", "<cmd>colorscheme default<cr>", { desc = "Reset colorscheme" })
 
+vim.keymap.set("n", "<leader>ux", "<cmd>ThemeVariantSwitch<cr>", { desc = "Switch theme varaint" })
+
+-- Grep search with <ctrl-/>
 vim.keymap.set("n", "<c-/>", LazyVim.pick("live_grep", { root = false }), { desc = "Grep (cwd)" })
 -- <c-_> for tmux and zellij can register as <c-/>
 vim.keymap.set("n", "<c-_>", LazyVim.pick("live_grep", { root = false }), { desc = "Grep (cwd)" })
