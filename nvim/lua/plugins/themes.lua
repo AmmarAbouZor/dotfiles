@@ -11,15 +11,30 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     -- *** Disable cursor line highlighting on transparent backgrounds
     vim.o.cursorline = vim.api.nvim_get_hl(0, { name = "Normal" }).bg ~= nil
 
+    local current_scheme = vim.g.colors_name
+    if not current_scheme then
+      return
+    end
+
     -- Better comments colors
     local themes = { "gruvbox-material", "everforest", "sonokai" }
-    local current_scheme = vim.g.colors_name
-    if current_scheme and vim.tbl_contains(themes, current_scheme) then
+    if vim.tbl_contains(themes, current_scheme) then
       if vim.o.background == "light" then
         vim.api.nvim_set_hl(0, "Comment", { fg = "#686868" })
       else
         vim.api.nvim_set_hl(0, "Comment", { fg = "#b2a38f" })
       end
+    end
+
+    -- Set undercurl manually for base-16 themes
+    if current_scheme:sub(1, 3) == "b16" then
+      vim.cmd([[
+        highlight DiagnosticUnderlineError gui=undercurl
+        highlight DiagnosticUnderlineWarn gui=undercurl
+        highlight DiagnosticUnderlineInfo gui=undercurl
+        highlight DiagnosticUnderlineHint gui=undercurl
+        highlight DiagnosticUnderlineOk gui=undercurl
+      ]])
     end
   end,
 })
@@ -80,7 +95,6 @@ end, {})
 --- *** Enabled themes with this configurations ***
 --- ***********************************************
 return {
-  { "projekt0n/github-nvim-theme" },
   {
     "rebelot/kanagawa.nvim",
     opts = {
@@ -110,7 +124,6 @@ return {
     end,
   },
   { "Mofiqul/vscode.nvim" },
-  { "wtfox/jellybeans.nvim" },
   {
     "sainnhe/gruvbox-material",
     -- priority = 1000,
@@ -194,11 +207,11 @@ return {
       -- end,
     },
   },
+  { "echasnovski/mini.base16", version = false },
   {
     "LazyVim/LazyVim",
     lazy = false,
     opts = {
-      -- colorscheme = "gruvbox-material",
       colorscheme = "gruvbox",
     },
   },
