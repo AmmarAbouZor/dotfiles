@@ -16,9 +16,19 @@ vim.api.nvim_create_autocmd("ColorScheme", {
       return
     end
 
-    -- Better comments colors
+    -- Better comments colors & set floating windows to transparent
     local themes = { "gruvbox-material", "everforest", "sonokai" }
     if vim.tbl_contains(themes, current_scheme) then
+      -- Floating windows to transparent
+      vim.cmd([[
+          highlight NormalFloat guibg=none
+          highlight FloatBorder guibg=none
+          highlight FloatTitle guibg=none
+          highlight FloatFooter guibg=none
+          highlight WinBar guibg=none
+          highlight WinBarNC guibg=none
+        ]])
+
       if vim.o.background == "light" then
         vim.api.nvim_set_hl(0, "Comment", { fg = "#686868" })
       else
@@ -70,25 +80,44 @@ vim.api.nvim_create_user_command("ThemeVariantSwitch", function()
 
   -- Gruvbox material have two variant between background and floating windows.
   if current_scheme == "gruvbox-material" then
+    local transparent = vim.g.gruvbox_material_transparent_background
     local background = vim.g.gruvbox_material_background
-    if not background then
-      error("Can't get current background")
+
+    if not background and not transparent then
+      error("Can't get either current background nor transparent")
     end
 
-    if background == "hard" then
+    if transparent and transparent > 0 then
+      vim.g.gruvbox_material_transparent_background = 0
+      vim.g.gruvbox_material_background = "hard"
+      vim.g.gruvbox_material_float_style = "bright"
+
+      LazyVim.info("gruvbox background set to hard", { title = "Theme Variant" })
+    elseif background == "hard" then
+      vim.g.gruvbox_material_transparent_background = 0
       vim.g.gruvbox_material_background = "medium"
       vim.g.gruvbox_material_float_style = "dim"
 
       LazyVim.info("gruvbox background set to medium", { title = "Theme Variant" })
     else
-      vim.g.gruvbox_material_background = "hard"
-      vim.g.gruvbox_material_float_style = "bright"
+      vim.g.gruvbox_material_transparent_background = 1
 
-      LazyVim.info("gruvbox background set to hard", { title = "Theme Variant" })
+      LazyVim.info("gruvbox background set to transparent", { title = "Theme Variant" })
     end
 
     -- Reapply the color theme to let the changes take effect.
     vim.cmd("colorscheme gruvbox-material")
+  elseif current_scheme == "everforest" then
+    local transparent = vim.g.everforest_transparent_background
+    if transparent and transparent > 0 then
+      vim.g.everforest_transparent_background = 0
+      LazyVim.info("everforest background set to hard", { title = "Theme Variant" })
+    else
+      vim.g.everforest_transparent_background = 2
+      LazyVim.info("everforest background set to transparent", { title = "Theme Variant" })
+    end
+
+    vim.cmd("colorscheme everforest")
 
   --  Sonokai have multiple styles to switch between them
   elseif current_scheme == "sonokai" then
@@ -140,20 +169,23 @@ return {
   { "Mofiqul/vscode.nvim" },
   {
     "sainnhe/gruvbox-material",
-    -- priority = 1000,
+    priority = 1000,
     init = function()
       vim.g.gruvbox_material_visual = "green background"
       vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
 
-      vim.g.gruvbox_material_background = "medium"
-      vim.g.gruvbox_material_float_style = "dim"
+      -- vim.g.gruvbox_material_background = "medium"
+      -- vim.g.gruvbox_material_float_style = "dim"
+      --
       -- vim.g.gruvbox_material_background = "hard"
       -- vim.g.gruvbox_material_float_style = "bright"
+
+      vim.g.gruvbox_material_transparent_background = 1
     end,
   },
   {
     "ellisonleao/gruvbox.nvim",
-    priority = 1000,
+    -- priority = 1000,
     opts = {
       bold = false,
       -- Enable Transparent expect in neovide.
@@ -227,7 +259,7 @@ return {
     "LazyVim/LazyVim",
     lazy = false,
     opts = {
-      colorscheme = "gruvbox",
+      colorscheme = "gruvbox-material",
     },
   },
 }
