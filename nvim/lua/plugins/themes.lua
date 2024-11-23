@@ -43,6 +43,12 @@ vim.api.nvim_create_autocmd("ColorScheme", {
         highlight LineNr guibg=none
         highlight CursorLineFold guibg=none
       ]])
+
+      -- Floating window's title background should match its borders
+      local normal_bg = vim.api.nvim_get_hl(0, { name = "NormalFloat" }).bg
+      if normal_bg then
+        vim.cmd("highlight FloatTitle guibg='" .. string.format("#%06x", normal_bg) .. "'")
+      end
     end
   end,
 })
