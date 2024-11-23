@@ -34,6 +34,14 @@ vim.api.nvim_create_autocmd("ColorScheme", {
         highlight DiagnosticUnderlineInfo gui=undercurl
         highlight DiagnosticUnderlineHint gui=undercurl
         highlight DiagnosticUnderlineOk gui=undercurl
+
+        highlight WinSeparator guibg=none guifg=reset
+
+        highlight LineNrBelow guibg=none
+        highlight LineNrAbove guibg=none
+        highlight CursorLineNr guibg=none
+        highlight LineNr guibg=none
+        highlight CursorLineFold guibg=none
       ]])
     end
   end,
@@ -188,6 +196,7 @@ return {
         return {
           -- This is for the messages at the bottom of the screen
           MsgSeparator = { bg = C.mantle },
+          WinSeparator = { fg = C.surface2 },
 
           -- This removes the black background on the popup window that after the cmp popup is shown
           NormalFloat = {
