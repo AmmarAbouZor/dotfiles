@@ -9,7 +9,8 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     vim.api.nvim_set_hl(0, "SnippetTabstop", { link = "NONE" })
 
     -- *** Disable cursor line highlighting on transparent backgrounds
-    vim.o.cursorline = vim.api.nvim_get_hl(0, { name = "Normal" }).bg ~= nil
+    local transparent = vim.api.nvim_get_hl(0, { name = "Normal" }).bg == nil
+    vim.o.cursorline = not transparent
 
     local current_scheme = vim.g.colors_name
     if not current_scheme then
@@ -19,12 +20,17 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     -- Better comments colors & set floating windows to transparent
     local themes = { "gruvbox-material", "everforest", "sonokai" }
     if vim.tbl_contains(themes, current_scheme) then
-      -- Floating windows to transparent
-      vim.cmd([[
+      if transparent then
+        -- Floating windows to transparent
+        vim.cmd([[
           highlight NormalFloat guibg=none
-          highlight FloatBorder guibg=none
+          highlight FloatBorder guibg=none guifg=reset
           highlight FloatTitle guibg=none
           highlight FloatFooter guibg=none
+        ]])
+      end
+      -- Make window bar transparent
+      vim.cmd([[
           highlight WinBar guibg=none
           highlight WinBarNC guibg=none
         ]])
@@ -52,6 +58,9 @@ vim.api.nvim_create_autocmd("ColorScheme", {
         highlight CursorLineNr guibg=none
         highlight LineNr guibg=none
         highlight CursorLineFold guibg=none
+
+        highlight WinBar guibg=none
+        highlight WinBarNC guibg=none
       ]])
 
       -- Floating window's title background should match its borders
@@ -90,13 +99,11 @@ vim.api.nvim_create_user_command("ThemeVariantSwitch", function()
     if transparent and transparent > 0 then
       vim.g.gruvbox_material_transparent_background = 0
       vim.g.gruvbox_material_background = "hard"
-      vim.g.gruvbox_material_float_style = "bright"
 
       LazyVim.info("gruvbox background set to hard", { title = "Theme Variant" })
     elseif background == "hard" then
       vim.g.gruvbox_material_transparent_background = 0
       vim.g.gruvbox_material_background = "medium"
-      vim.g.gruvbox_material_float_style = "dim"
 
       LazyVim.info("gruvbox background set to medium", { title = "Theme Variant" })
     else
@@ -156,6 +163,7 @@ return {
     init = function()
       vim.g.everforest_diagnostic_virtual_text = "colored"
       vim.g.everforest_background = "hard"
+      vim.g.everforest_current_word = "grey background"
     end,
   },
   {
@@ -171,15 +179,15 @@ return {
     "sainnhe/gruvbox-material",
     priority = 1000,
     init = function()
-      vim.g.gruvbox_material_visual = "green background"
       vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
+      vim.g.gruvbox_material_float_style = "dim"
+      vim.g.gruvbox_material_current_word = "grey background"
+
+      -- vim.g.gruvbox_material_visual = "grey background"
+      -- vim.g.gruvbox_material_visual = "green background"
 
       -- vim.g.gruvbox_material_background = "medium"
-      -- vim.g.gruvbox_material_float_style = "dim"
-      --
       -- vim.g.gruvbox_material_background = "hard"
-      -- vim.g.gruvbox_material_float_style = "bright"
-
       vim.g.gruvbox_material_transparent_background = 1
     end,
   },

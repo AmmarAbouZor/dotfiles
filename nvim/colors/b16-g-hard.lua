@@ -46,4 +46,4 @@ require("mini.base16").setup({
 comment = palette["base04"]
 vim.api.nvim_set_hl(0, "Comment", { fg = comment, italic = true })
 
-vim.g.colors_name = "b16-gruvbox-hard"
+vim.g.colors_name = "b16-g-hard"
