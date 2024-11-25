@@ -36,9 +36,9 @@ vim.api.nvim_create_autocmd("ColorScheme", {
         ]])
 
       if vim.o.background == "light" then
-        vim.api.nvim_set_hl(0, "Comment", { fg = "#686868" })
+        vim.cmd("highlight Comment guifg='#686868'")
       else
-        vim.api.nvim_set_hl(0, "Comment", { fg = "#b2a38f" })
+        vim.cmd("highlight Comment guifg='#b2a38f'")
       end
     end
 
