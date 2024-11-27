@@ -71,6 +71,13 @@ return {
     experimental = {
       ghost_text = false,
     },
+    window = {
+      -- Documentation pop-up highlight identical to completion pop-up with a border
+      documentation = {
+        winhighlight = "Normal:Pmenu,FloatBorder:Pmenu",
+        border = "single",
+      },
+    },
 
     preselect = cmp.PreselectMode.None,
 
