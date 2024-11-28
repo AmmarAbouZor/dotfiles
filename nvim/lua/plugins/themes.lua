@@ -8,9 +8,15 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     -- *** Remove Snippets highlights ***
     vim.api.nvim_set_hl(0, "SnippetTabstop", { link = "NONE" })
 
-    -- *** Disable cursor line highlighting on transparent backgrounds
+    -- *** Disable cursor line background highlighting on transparent backgrounds
     local transparent = vim.api.nvim_get_hl(0, { name = "Normal" }).bg == nil
-    vim.o.cursorline = not transparent
+    if transparent then
+      vim.cmd([[
+          highlight CursorLine guibg=none
+          highlight CursorLineNr guibg=none
+          hi! link NeoTreeCursorLine ColorColumn
+        ]])
+    end
 
     local current_scheme = vim.g.colors_name
     if not current_scheme then
