@@ -67,6 +67,10 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
         highlight WinBar guibg=none
         highlight WinBarNC guibg=none
+
+        highlight GitSignsAdd guibg=none
+        highlight GitSignsChange guibg=none
+        highlight GitSignsDelete guibg=none
       ]])
 
       -- Floating window's title background should match its borders
