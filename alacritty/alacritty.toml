@@ -49,7 +49,7 @@ program = "/bin/fish"
 
 [window]
 decorations = "none"
-opacity = 0.95
+opacity = 0.96
 
 [window.dimensions]
 columns = 110

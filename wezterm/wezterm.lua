@@ -62,13 +62,11 @@ end)
 
 return {
 	default_prog = { "/usr/bin/fish" },
-	-- color_scheme = "Catppuccin Mocha",
-	-- color_scheme = "Catppuccin Latte",
 	-- color_scheme = "Gruvbox (Gogh)", -- Light theme
 	-- color_scheme = "Gruvbox Material (Gogh)",
-	color_scheme = "Gruvbox Dark (Gogh)",
-	-- color_scheme = "Gruvbox dark, soft (base16)",
-	-- color_scheme = "Gruvbox dark, pale (base16)",
+	-- color_scheme = "Gruvbox Dark (Gogh)",
+	-- color_scheme = "GruvboxDarkHard",
+	color_scheme = "Gruvbox dark, hard (base16)",
 	window_background_opacity = 0.95,
 	window_decorations = "RESIZE",
 	enable_tab_bar = true,
@@ -85,7 +83,7 @@ return {
 	term = "wezterm",
 	integrated_title_buttons = { "Maximize", "Close" },
 	warn_about_missing_glyphs = false,
-	window_padding = { bottom = 0 },
+	window_padding = { bottom = 2, top = 5, left = 5, right = 2 },
 
 	-- TODO: Check if disabling hinting has an impact on the performance
 	-- freetype_load_target = "Light",
