@@ -48,7 +48,18 @@ vim.api.nvim_create_autocmd("ColorScheme", {
       end
     end
 
-    -- Set undercurl manually for base-16 themes
+    -- Set under-curl for default themes
+    if current_scheme == "default" then
+      vim.cmd([[
+        highlight DiagnosticUnderlineError gui=undercurl
+        highlight DiagnosticUnderlineWarn gui=undercurl
+        highlight DiagnosticUnderlineInfo gui=undercurl
+        highlight DiagnosticUnderlineHint gui=undercurl
+        highlight DiagnosticUnderlineOk gui=undercurl
+      ]])
+    end
+
+    -- Tweaks for base-16 themes
     if current_scheme:sub(1, 3) == "b16" then
       vim.cmd([[
         highlight DiagnosticUnderlineError gui=undercurl
