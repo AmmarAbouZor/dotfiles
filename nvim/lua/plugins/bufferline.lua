@@ -13,5 +13,25 @@ return {
       { "<leader>k5", function() require("bufferline").go_to(5, true) end, desc = "GoTo Fifth Buffer" },
       { "<leader>k0", function() require("bufferline").go_to(-1, true) end, desc = "GoTo Last Buffer" },
     },
+    opts = {
+      options = {
+        custom_filter = function(buf, _)
+          -- Ignore file tree buffers
+          if vim.bo[buf].filetype == "neo-tree" then
+            return false
+          end
+
+          -- Directory buffers appears after restoring the session and
+          -- they should be ignored.
+          local buf_name = vim.api.nvim_buf_get_name(buf)
+          local state = vim.uv.fs_stat(buf_name)
+          if state and state.type == "directory" then
+            return false
+          end
+
+          return true
+        end,
+      },
+    },
   },
 }
