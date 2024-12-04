@@ -46,6 +46,10 @@ vim.api.nvim_create_autocmd("ColorScheme", {
       else
         vim.cmd("highlight Comment guifg='#b2a38f'")
       end
+
+      if current_scheme == "sonokai" then
+        vim.cmd.highlight("WinSeparator guifg=gray")
+      end
     end
 
     -- Set under-curl for default themes
@@ -96,9 +100,6 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 --- ************************************** ---
 --- *** Toggle between themes variants *** ---
 --- ************************************** ---
-local sonokai_styles = { "default", "atlantis", "andromeda", "shusia", "maia", "espresso" }
-local current_sonokai_style_index = 1
-
 -- This command switch between the variants of the current theme
 -- if it provides different variant to switch between them
 vim.api.nvim_create_user_command("ThemeVariantSwitch", function()
@@ -149,14 +150,18 @@ vim.api.nvim_create_user_command("ThemeVariantSwitch", function()
 
   --  Sonokai have multiple styles to switch between them
   elseif current_scheme == "sonokai" then
-    current_sonokai_style_index = current_sonokai_style_index % #sonokai_styles + 1
-    local next_style = sonokai_styles[current_sonokai_style_index]
+    local transparent = vim.g.sonokai_transparent_background
 
-    vim.g.sonokai_style = next_style
+    if transparent and transparent > 0 then
+      vim.g.sonokai_transparent_background = 0
+      LazyVim.info("sonokai background set to solid", { title = "Theme Variant" })
+    else
+      vim.g.sonokai_transparent_background = 2
+      LazyVim.info("everforest background set to transparent", { title = "Theme Variant" })
+    end
+
     -- Reapply the color theme to let the changes take effect.
     vim.cmd("colorscheme sonokai")
-
-    LazyVim.info("Sonokai style set to: " .. next_style, { title = "Theme Variant" })
   else
     LazyVim.warn(current_scheme .. " doesn't support themes variants", { title = "Theme Variant" })
   end
@@ -185,12 +190,15 @@ return {
       vim.g.everforest_diagnostic_virtual_text = "colored"
       vim.g.everforest_background = "hard"
       vim.g.everforest_current_word = "grey background"
+      vim.g.everforest_transparent_background = 2
     end,
   },
   {
     "sainnhe/sonokai",
     init = function()
       vim.g.sonokai_style = "default"
+      vim.g.sonokai_current_word = "grey background"
+      vim.g.sonokai_transparent_background = 2
 
       vim.g.sonokai_diagnostic_virtual_text = "colored"
     end,
