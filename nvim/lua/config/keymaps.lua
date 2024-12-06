@@ -161,6 +161,17 @@ vim.keymap.set("i", "<C-u>", "")
 
 -- Save current document without auto formatting or any other autocmds
 vim.keymap.set({ "i", "n" }, "<C-S-s>", "<cmd>noa w<cr>", { desc = "Save without auto-format" })
+vim.keymap.set("n", "<leader>fs", "<cmd>noa w<cr>", { desc = "Save without auto-format" })
+
+-- *** Neovim Development ***
+vim.keymap.del("n", "<leader>.")
+vim.keymap.set("n", "<leader>.s", "<cmd>source %<cr>", { desc = "Source current file" })
+vim.keymap.set("n", "<leader>..", ":.lua<cr>", { desc = "Source current line" })
+vim.keymap.set("v", "<leader>..", ":lua<cr>", { desc = "Source current selection" })
+-- stylua: ignore
+vim.keymap.set("n", "<leader>..", function() Snacks.scratch() end, { desc = "Toggle Scratch Buffer" })
+-- stylua: ignore
+vim.keymap.set("n", "<leader>.b", function() Snacks.scratch.select() end, { desc = "Select Scratch Buffer" })
 
 vim.keymap.set("n", "z<space>", "zt", { desc = "Top this line" })
 
