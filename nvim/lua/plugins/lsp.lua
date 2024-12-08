@@ -65,6 +65,18 @@ return {
       solargraph = {
         mason = false,
       },
+
+      -- This code disables the placeholders on functions
+      -- vtsls = {
+      --   settings = {
+      --     typescript = {
+      --       suggest = {
+      --         completeFunctionCalls = false,
+      --       },
+      --     },
+      --   },
+      -- },
+
       -- I'm not using golang at the momment
       -- gopls = {
       --   settings = {

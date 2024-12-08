@@ -1,6 +1,11 @@
 return {
   "folke/snacks.nvim",
   opts = {
+    words = {
+      enabled = false,
+      -- modes = { "n" }, -- modes to show references
+      -- debounce = 150, -- time in ms to wait before updating
+    },
     notifier = { enabled = false },
     terminal = {
       win = {
