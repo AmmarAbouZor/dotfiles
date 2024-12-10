@@ -63,6 +63,20 @@ vim.api.nvim_create_autocmd("ColorScheme", {
       ]])
     end
 
+    -- Set under-curl for randomhue themes
+    if current_scheme == "randomhue" then
+      vim.cmd([[
+        highlight DiagnosticUnderlineError gui=undercurl
+        highlight DiagnosticUnderlineWarn gui=undercurl
+        highlight DiagnosticUnderlineInfo gui=undercurl
+        highlight DiagnosticUnderlineHint gui=undercurl
+        highlight DiagnosticUnderlineOk gui=undercurl
+
+        highlight WinBar guibg=none gui=bold
+        highlight WinBarNC guibg=none
+      ]])
+    end
+
     -- Tweaks for base-16 themes
     if current_scheme:sub(1, 3) == "b16" then
       vim.cmd([[
@@ -168,6 +182,9 @@ vim.api.nvim_create_user_command("ThemeVariantSwitch", function()
 
     -- Reapply the color theme to let the changes take effect.
     vim.cmd("colorscheme sonokai")
+  elseif current_scheme == "randomhue" then
+    -- This will apply other color accent
+    vim.cmd("colorscheme randomhue")
   else
     LazyVim.warn(current_scheme .. " doesn't support themes variants", { title = "Theme Variant" })
   end
@@ -236,14 +253,14 @@ return {
       -- Override the bold gold highlighting for word under cursor and its matches.
       overrides = {
         -- This is lighter option on highlighting. With that we can recognize the highlighting on cursor line
-        LspReferenceRead = { link = "CursorLine" },
-        LspReferenceText = { link = "CursorLine" },
-        LspReferenceWrite = { link = "CursorLine" },
+        -- LspReferenceRead = { link = "CursorLine" },
+        -- LspReferenceText = { link = "CursorLine" },
+        -- LspReferenceWrite = { link = "CursorLine" },
         --
         -- This is heavier one, but we can recognize the highlighting under the cursor.
-        -- LspReferenceRead = { link = "PmenuSbar" },
-        -- LspReferenceText = { link = "PmenuSbar" },
-        -- LspReferenceWrite = { link = "PmenuSbar" },
+        LspReferenceRead = { link = "PmenuSbar" },
+        LspReferenceText = { link = "PmenuSbar" },
+        LspReferenceWrite = { link = "PmenuSbar" },
 
         -- Comments are important
         Comment = { fg = "#b0a082" },
@@ -292,6 +309,10 @@ return {
     },
   },
   { "echasnovski/mini.base16", version = false },
+  {
+    "echasnovski/mini.hues",
+    version = false,
+  },
   {
     "LazyVim/LazyVim",
     lazy = false,

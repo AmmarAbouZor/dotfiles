@@ -169,7 +169,7 @@ vim.keymap.set("n", "<leader>.s", "<cmd>source %<cr>", { desc = "Source current 
 vim.keymap.set("n", "<leader>..", ":.lua<cr>", { desc = "Source current line" })
 vim.keymap.set("v", "<leader>..", ":lua<cr>", { desc = "Source current selection" })
 -- stylua: ignore
-vim.keymap.set("n", "<leader>..", function() Snacks.scratch() end, { desc = "Toggle Scratch Buffer" })
+vim.keymap.set("n", "<leader>.x", function() Snacks.scratch() end, { desc = "Toggle Scratch Buffer" })
 -- stylua: ignore
 vim.keymap.set("n", "<leader>.b", function() Snacks.scratch.select() end, { desc = "Select Scratch Buffer" })
 
