@@ -69,25 +69,10 @@ map_MiniPairs("<C-j>", "v:lua.MiniPairs.cr()")
 
 vim.keymap.set("c", "<C-BS>", "<C-w>")
 
--- delete registered keybindings with <leader>w from LazyVim because I delete the current buffer with <leader>w
--- NOTE: For now I'm removing the keys manually to improve startup time since I'm checking every update on LazyVim
--- and can eliminate the keys manually But this function can remove the keys automatically if needed
---
--- local function remove_leader_w_mappings()
---   local mappings = vim.api.nvim_get_keymap("n")
---   local leader = vim.g.mapleader or " "
---
---   for _, mapping in ipairs(mappings) do
---     -- Check if the lhs (left-hand side of the mapping) starts with <leader>w
---     if mapping.lhs:match("^" .. leader .. "w") then
---       vim.api.nvim_del_keymap("n", mapping.lhs)
---     end
---   end
--- end
--- remove_leader_w_mappings()
-
+-- Delete registered keybindings with <leader>w from LazyVim because I delete the current buffer with <leader>w
 vim.keymap.del("n", "<leader>wm")
 vim.keymap.del("n", "<leader>wd")
+
 -- toggle maximize
 LazyVim.ui.maximize():map("<C-w>m")
 -- remove current buffer
@@ -99,6 +84,9 @@ end, { desc = "Delete current buffer", noremap = true })
 Snacks.toggle
   .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
   :map("<leader>uC")
+
+-- toggle Snacks words
+Snacks.toggle.words():map("<leader>uv")
 
 -- Gitui
 vim.keymap.set("n", "<leader>gi", function()

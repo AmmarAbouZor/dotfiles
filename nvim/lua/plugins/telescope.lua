@@ -62,6 +62,9 @@ return {
             prompt_position = "top",
           },
         },
+        extensions = {
+          fzf = {},
+        },
         mappings = {
           n = {
             ["x"] = function(...)
