@@ -252,18 +252,15 @@ return {
       transparent_mode = not vim.g.neovide,
       -- Override the bold gold highlighting for word under cursor and its matches.
       overrides = {
-        -- This is lighter option on highlighting. With that we can recognize the highlighting on cursor line
-        -- LspReferenceRead = { link = "CursorLine" },
-        -- LspReferenceText = { link = "CursorLine" },
-        -- LspReferenceWrite = { link = "CursorLine" },
-        --
-        -- This is heavier one, but we can recognize the highlighting under the cursor.
         LspReferenceRead = { link = "PmenuSbar" },
         LspReferenceText = { link = "PmenuSbar" },
         LspReferenceWrite = { link = "PmenuSbar" },
 
         -- Comments are important
         Comment = { fg = "#b0a082" },
+
+        WinBar = { bg = "", fg = "fg", bold = true },
+        WinBarNC = { bg = "", fg = "#a89984" },
       },
     },
   },
