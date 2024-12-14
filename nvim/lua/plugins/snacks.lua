@@ -5,21 +5,39 @@ return {
       pattern = "VeryLazy",
       callback = function()
         --- Logs a debug message with "DEBUG: " prepended, using `Snacks.debug.inspect`.
-        vim.debug = function(...)
+        _G.dd = function(...)
           Snacks.debug.inspect("DEBUG: " .. ...)
         end
+        vim.debug = _G.dd
       end,
     })
   end,
 
+  keys = {
+    { "<leader>uD", false },
+    { "<leader>z", false },
+    { "<leader>Z", false },
+    { "<leader>ua", false },
+    { "<leader>uS", false },
+    { "<leader>S", false },
+  },
+
   opts = {
+    notifier = { enabled = false },
+    dim = { enabled = false },
+    zen = { enabled = false },
+    animate = { enabled = false },
+    scroll = { enabled = false },
     words = {
       -- Snacks can't be disabled by default if we want to toggle it later.
       enabled = false,
       modes = { "n" }, -- modes to show references
       -- debounce = 150, -- time in ms to wait before updating
     },
-    notifier = { enabled = false },
+    indent = {
+      animate = { enabled = false },
+      scope = { enabled = false },
+    },
     terminal = {
       win = {
         -- Disable default navigations with <C-..>

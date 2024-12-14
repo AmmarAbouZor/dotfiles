@@ -74,7 +74,7 @@ vim.keymap.del("n", "<leader>wm")
 vim.keymap.del("n", "<leader>wd")
 
 -- toggle maximize
-LazyVim.ui.maximize():map("<C-w>m")
+Snacks.toggle.zoom():map("<C-w>m")
 -- remove current buffer
 vim.keymap.set("n", "<leader>w", function()
   Snacks.bufdelete()
