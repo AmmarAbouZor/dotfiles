@@ -43,6 +43,8 @@ return {
             },
             cargo = {
               allFeatures = true,
+              -- Fix hanging in macros error
+              loadOutDirsFromCheck = true,
             },
             procMacro = {
               enable = true,
@@ -51,6 +53,20 @@ return {
                 ["async-trait"] = { "async_trait" },
                 ["napi-derive"] = { "napi" },
                 ["async-recursion"] = { "async_recursion" },
+              },
+            },
+            -- Rust analyzer search all directories.
+            files = {
+              excludeDirs = {
+                ".direnv",
+                ".git",
+                ".github",
+                ".gitlab",
+                "bin",
+                "node_modules",
+                "target",
+                "venv",
+                ".venv",
               },
             },
           },
