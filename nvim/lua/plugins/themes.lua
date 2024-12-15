@@ -8,6 +8,9 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     -- *** Remove Snippets highlights ***
     vim.api.nvim_set_hl(0, "SnippetTabstop", { link = "NONE" })
 
+    -- *** Blink description text color ***
+    vim.cmd("hi! link BlinkCmpLabelDetail PmenuExtra")
+
     -- *** Disable cursor line background highlighting on transparent backgrounds
     local transparent = vim.api.nvim_get_hl(0, { name = "Normal" }).bg == nil
     if transparent then

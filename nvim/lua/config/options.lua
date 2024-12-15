@@ -3,7 +3,6 @@
 -- Add any additional options here
 
 vim.g.lazyvim_picker = "telescope"
-vim.g.lazyvim_cmp = "nvim-cmp"
 
 local opt = vim.opt
 
