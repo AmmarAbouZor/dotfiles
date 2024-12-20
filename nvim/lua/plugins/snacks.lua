@@ -23,11 +23,23 @@ return {
   },
 
   opts = {
+    -- Disabled
     notifier = { enabled = false },
     dim = { enabled = false },
     zen = { enabled = false },
     animate = { enabled = false },
     scroll = { enabled = false },
+
+    scratch = {
+      ft = "lua",
+      filekey = {
+        name = true,
+        ft = true,
+        cwd = false, -- use current working directory
+        branch = false, -- use current branch name
+        count = false, -- use vim.v.count1
+      },
+    },
     words = {
       -- Snacks can't be disabled by default if we want to toggle it later.
       enabled = false,

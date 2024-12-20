@@ -48,16 +48,20 @@ return {
 
     keymap = {
       ["<C-y>"] = { "select_and_accept" },
-      ["<C-j>"] = { "accept" },
-      ["<C-m>"] = { "accept" },
-      ["<C-c>"] = { "hide" },
+      -- I remapped CR keys in keymaps to resolve conflicts with mini.pairs
+      -- ["<C-j>"] = { "accept", "fallback" },
+      -- ["<C-m>"] = { "accept", "fallback" },
+      -- ["<CR>"] = { "accept", "fallback" },
+      ["<C-c>"] = { "hide", "fallback" },
       ["<Up>"] = { "select_prev", "fallback" },
       ["<Down>"] = { "select_next", "fallback" },
       ["<C-e>"] = {
         function(_)
           vim.api.nvim_input("<End>")
         end,
+        "fallback",
       },
+
       ["<Tab>"] = {
         function(cmp)
           if cmp.snippet_active() then

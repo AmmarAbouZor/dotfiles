@@ -10,6 +10,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
     -- *** Blink description text color ***
     vim.cmd("hi! link BlinkCmpLabelDetail PmenuExtra")
+    vim.cmd("hi! link BlinkCmpDocSeparator PmenuExtra")
 
     -- *** Disable cursor line background highlighting on transparent backgrounds
     local transparent = vim.api.nvim_get_hl(0, { name = "Normal" }).bg == nil
@@ -188,6 +189,23 @@ vim.api.nvim_create_user_command("ThemeVariantSwitch", function()
   elseif current_scheme == "randomhue" then
     -- This will apply other color accent
     vim.cmd("colorscheme randomhue")
+  elseif current_scheme == "gruvbox" then
+    local gruvbox = require("gruvbox")
+
+    if gruvbox.config.transparent_mode then
+      gruvbox.config.transparent_mode = false
+      gruvbox.config.contrast = "hard"
+      LazyVim.info("Gruvbox backgound set to hard")
+    elseif gruvbox.config.contrast == "hard" then
+      gruvbox.config.contrast = ""
+      LazyVim.info("Gruvbox backgound set to medium")
+    else
+      gruvbox.config.transparent_mode = true
+      LazyVim.info("Gruvbox backgound set to transparent")
+    end
+    -- Apply changes.
+    gruvbox.load()
+    vim.cmd("colorscheme gruvbox")
   else
     LazyVim.warn(current_scheme .. " doesn't support themes variants", { title = "Theme Variant" })
   end

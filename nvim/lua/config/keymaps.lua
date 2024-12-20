@@ -64,8 +64,17 @@ end
 map_MiniPairs("<C-h>", "v:lua.MiniPairs.bs()")
 map_MiniPairs("<C-w>", 'v:lua.MiniPairs.bs("\23")')
 map_MiniPairs("<C-BS>", 'v:lua.MiniPairs.bs("\23")')
--- Ctrl-j
-map_MiniPairs("<C-j>", "v:lua.MiniPairs.cr()")
+
+-- fix mini-pairs with blink
+-- mini-pairs still doesn't have support for blink.
+for _, key in ipairs({ "<CR>", "<C-m>", "<C-j>" }) do
+  vim.keymap.set("i", key, function()
+    -- If no cmp is available then proceed with mini.pairs
+    if not require("blink-cmp").accept() then
+      return require("mini.pairs").cr()
+    end
+  end, { expr = true, desc = "Accept Cmp Or MiniPairs.cr()", noremap = true })
+end
 
 vim.keymap.set("c", "<C-BS>", "<C-w>")
 
@@ -85,12 +94,36 @@ Snacks.toggle
   .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
   :map("<leader>uC")
 
--- toggle Snacks words
-Snacks.toggle.words():map("<leader>uv")
+-- toggle Snacks words with enabling/disabling their keybindings
+Snacks.toggle
+  .new({
+    id = "words",
+    name = "LSP Words",
+    get = function()
+      return Snacks.words.enabled
+    end,
+    set = function(state)
+      if state then
+        Snacks.words.enable()
+
+        vim.keymap.set("n", "]]", function()
+          Snacks.words.jump(1, true)
+        end)
+        vim.keymap.set("n", "[[", function()
+          Snacks.words.jump(-1, true)
+        end)
+      else
+        Snacks.words.disable()
+        vim.keymap.del("n", "]]")
+        vim.keymap.del("n", "[[")
+      end
+    end,
+  })
+  :map("<leader>uv")
 
 -- Gitui
 vim.keymap.set("n", "<leader>gi", function()
-  Snacks.terminal({ "gitui" }, { cwd = LazyVim.root.get(), win = { border = "rounded" } })
+  Snacks.terminal({ "gitui" }, { cwd = LazyVim.root.get(), win = { border = "rounded", relative = "editor" } })
 end, { desc = "Gitui (root dir)" })
 
 -- LazyGit
@@ -153,9 +186,31 @@ vim.keymap.set("n", "<leader>fs", "<cmd>noa w<cr>", { desc = "Save without auto-
 
 -- *** Neovim Development ***
 vim.keymap.del("n", "<leader>.")
-vim.keymap.set("n", "<leader>.s", "<cmd>source %<cr>", { desc = "Source current file" })
-vim.keymap.set("n", "<leader>..", ":.lua<cr>", { desc = "Source current line" })
-vim.keymap.set("v", "<leader>..", ":lua<cr>", { desc = "Source current selection" })
+
+vim.keymap.set("n", "<leader>.s", function()
+  if vim.bo.ft == "lua" or vim.bo.ft == "vim" then
+    -- vim.cmd([[source %]])
+    vim.api.nvim_input(":source %<cr>")
+  else
+    LazyVim.warn("Current file can't be sourced")
+    return ""
+  end
+end, { desc = "Source current file" })
+
+vim.keymap.set("n", "<leader>..", function()
+  if vim.bo.ft == "lua" then
+    vim.cmd([[:.lua]])
+  else
+    LazyVim.warn("Current file type isn't lua")
+  end
+end, { desc = "Source current line" })
+vim.keymap.set("v", "<leader>..", function()
+  if vim.bo.ft == "lua" then
+    vim.api.nvim_input(":lua<cr>")
+  else
+    LazyVim.warn("Current file type isn't lua")
+  end
+end, { desc = "Source current selection" })
 -- stylua: ignore
 vim.keymap.set("n", "<leader>.x", function() Snacks.scratch() end, { desc = "Toggle Scratch Buffer" })
 -- stylua: ignore
