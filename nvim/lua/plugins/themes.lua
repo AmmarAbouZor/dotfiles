@@ -297,22 +297,15 @@ return {
       -- I have the workaround applied in kitty theme and don't need it here.
       kitty = false,
 
-      integrations = {
-        cmp = true,
-        aerial = true,
-        indent_blankline = false,
-        fidget = true,
-        harpoon = true,
-        neotree = true,
-        dashboard = true,
-        which_key = true,
-      },
-
       custom_highlights = function(C)
         return {
           -- This is for the messages at the bottom of the screen
           MsgSeparator = { bg = C.mantle },
           WinSeparator = { fg = C.surface2 },
+
+          FloatBorder = { bg = C.mantle },
+          FloatTitle = { bg = C.mantle },
+          FloatFooter = { bg = C.mantle },
         }
       end,
 
@@ -327,6 +320,7 @@ return {
     },
   },
   { "echasnovski/mini.base16", version = false },
+  { "tjdevries/colorbuddy.nvim" },
   {
     "echasnovski/mini.hues",
     version = false,

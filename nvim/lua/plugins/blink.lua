@@ -11,10 +11,15 @@ return {
 
     sources = {
       providers = {
+        lsp = {
+          -- Default configurations sets buffer to be a fall back for lsp.
+          -- This will activate buffer again and below we set the offset to a lower value
+          -- to ensure lsp result will be shown before.
+          fallbacks = {},
+        },
         buffer = {
           min_keyword_length = 3, -- Minimum number of characters in the keyword to trigger the provider
           -- Keep buffer active but with lower priority so it doesn't mix up with LSP suggestions.
-          fallback_for = {},
           score_offset = -10,
         },
       },

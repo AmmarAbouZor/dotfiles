@@ -29,6 +29,7 @@ return {
     zen = { enabled = false },
     animate = { enabled = false },
     scroll = { enabled = false },
+    input = { enabled = false },
 
     scratch = {
       ft = "lua",

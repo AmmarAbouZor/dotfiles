@@ -99,7 +99,7 @@ return {
 	-- font = wezterm.font("fira code", { weight = "Medium" }),
 	-- font = wezterm.font("fira code"),
 	font = wezterm.font_with_fallback({
-		"fira code Retina",
+		"fira code Medium",
 		{ family = "Symbols Nerd Font Mono Regular", scale = 0.85 },
 	}),
 	-- font = wezterm.font("Sf mono"),
