@@ -8,15 +8,17 @@
 --  command = "normal zx zR",
 -- )
 
--- close fugitive buffers with <q>
+-- close some special buffers with <q>
 vim.api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("Close_fugitive_q", { clear = true }),
+  group = vim.api.nvim_create_augroup("Close_with_q_extra", { clear = true }),
   pattern = {
+    -- fugitive
     "fugitive",
     "fugitiveblame",
     "fugitivediff",
-    -- TODO: This could do some problems since I still don't know which other git buffers are
     "git",
+
+    -- Oil
     "oil",
   },
   callback = function(event)
@@ -78,5 +80,18 @@ vim.api.nvim_create_autocmd("FileType", {
   },
   callback = function()
     vim.opt_local.conceallevel = 0
+  end,
+})
+
+-- Disable mini-pairs on text and git files.
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("disable_mini_pairs_on_ft", { clear = true }),
+  pattern = {
+    "gitcommit",
+    "text",
+    "markdown",
+  },
+  callback = function(event)
+    vim.g.minipairs_disable = true
   end,
 })
