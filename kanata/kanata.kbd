@@ -57,7 +57,7 @@
        f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11   f12
       S-`  S-2   S-3  S-4  S-5  S-6  S-7  S-8  S-9  S-0    S-[    S-]
   spc S-1   -   @s-plus  @c-eql  S--  left  down  up  rght   S-\  ` 
-   _     _    _    tab    _    cmps    bspc   ret   S-,   S-.    \ 
+   _     _   del   esc   tab   cmps    bspc   ret   S-,   S-.    \ 
                                 spc
 )
 
@@ -83,11 +83,11 @@
   ;; Home row mods
   a (tap-hold-release-keys $tap-time $hold-time a lalt $left-hand-keys-nhm)
   s (tap-hold-release-keys $tap-time $hold-time s lmet $left-hand-keys-nhm)
-  d (chord combo d)
-  f (chord combo f)
+  d (tap-hold-release-keys $tap-time $hold-time-fast d lsft $left-hand-keys-nhm)
+  f (tap-hold-release-keys $tap-time $hold-time-fast f lctl $left-hand-keys-nhm)
   j (tap-hold-release-keys $tap-time $hold-time-fast j rctl $right-hand-keys-nhm)
-  k (chord combo k)
-  l (chord combo l)
+  k (tap-hold-release-keys $tap-time $hold-time-fast k rsft $right-hand-keys-nhm)
+  l (tap-hold-release-keys $tap-time $hold-time l rmet $right-hand-keys-nhm)
   ; (tap-hold-release-keys $tap-time $hold-time ; ralt $right-hand-keys-nhm)
 
   q (tap-hold-release-keys $tap-time $hold-time q (multi lalt lsft) $left-hand-keys-nhm)
@@ -100,27 +100,6 @@
   s-plus (tap-hold-release $tap-time $hold-time-fast (multi lsft =) lsft)
   c-eql (tap-hold-release $tap-time $hold-time-fast = lctl)
 )
-
-;; Combos
-(defchords combo 40
-  (d) (tap-hold-release-keys $tap-time $hold-time-fast d lsft $left-hand-keys-nhm)
-  (f) (tap-hold-release-keys $tap-time $hold-time-fast f lctl $left-hand-keys-nhm)
-  (k) (tap-hold-release-keys $tap-time $hold-time-fast k rsft $right-hand-keys-nhm)
-  (l) (tap-hold-release-keys $tap-time $hold-time l rmet $right-hand-keys-nhm)
-
-  (d f) esc
-  (k l) tab
-
-  ;; Trying to find solve the problem with f+j
-  ;; (j) (tap-hold-release-keys $tap-time $hold-time-fast j rctl $right-hand-keys-nhm)
-  ;; (j k) ret
-
-  ;; This caused a lot of problems.
-  ;; (d f) (tap-hold-release $tap-time $hold-time esc (multi lsft lctl))
-  ;; (j k) (tap-hold-release $tap-time $hold-time ret (multi rsft rctl))
-  ;; (k l) (tap-hold-release $tap-time $hold-time tab (multi rsft rmet))
-)
-
 
 #|
 (deflayer layers
