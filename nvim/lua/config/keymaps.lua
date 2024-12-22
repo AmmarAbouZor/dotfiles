@@ -94,32 +94,15 @@ Snacks.toggle
   .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
   :map("<leader>uC")
 
--- toggle Snacks words with enabling/disabling their keybindings
-Snacks.toggle
-  .new({
-    id = "words",
-    name = "LSP Words",
-    get = function()
-      return Snacks.words.enabled
-    end,
-    set = function(state)
-      if state then
-        Snacks.words.enable()
+-- Snacks Words:
+Snacks.toggle.words():map("<leader>uv")
 
-        vim.keymap.set("n", "]]", function()
-          Snacks.words.jump(1, true)
-        end)
-        vim.keymap.set("n", "[[", function()
-          Snacks.words.jump(-1, true)
-        end)
-      else
-        Snacks.words.disable()
-        vim.keymap.del("n", "]]")
-        vim.keymap.del("n", "[[")
-      end
-    end,
-  })
-  :map("<leader>uv")
+vim.keymap.set("n", "]r", function()
+  Snacks.words.jump(1, false)
+end, { desc = "Next reference (Words)" })
+vim.keymap.set("n", "[r", function()
+  Snacks.words.jump(-1, false)
+end, { desc = "Next reference (Words)" })
 
 -- Gitui
 vim.keymap.set("n", "<leader>gi", function()
