@@ -34,7 +34,8 @@ vim.keymap.set("n", "<C-q>", "<C-^>")
 vim.keymap.set("!", "<C-a>", "<Home>")
 
 -- move-end-of-line
-vim.keymap.set("!", "<C-e>", "<End>", { noremap = true })
+-- This is set in blink configurations
+-- vim.keymap.set("!", "<C-e>", "<End>", { noremap = true })
 
 -- backward-word
 vim.keymap.set("i", "<M-b>", "<C-Left>")
@@ -166,6 +167,10 @@ vim.keymap.set("i", "<C-u>", "")
 -- Save current document without auto formatting or any other autocmds
 vim.keymap.set({ "i", "n" }, "<C-S-s>", "<cmd>noa w<cr>", { desc = "Save without auto-format" })
 vim.keymap.set("n", "<leader>fs", "<cmd>noa w<cr>", { desc = "Save without auto-format" })
+
+-- Save current file without sending escape in insert mode.
+vim.keymap.set("i", "<C-s>", "<cmd>w<CR><Esc>", { desc = "Save file" })
+vim.keymap.set("n", "<C-s>", "<cmd>w<CR>", { desc = "Save file" })
 
 -- *** Neovim Development ***
 vim.keymap.del("n", "<leader>.")

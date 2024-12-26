@@ -55,11 +55,15 @@ return {
     },
     opts = {
       defaults = {
-        layout_strategy = "horizontal",
+        layout_strategy = "flex",
         sorting_strategy = "ascending",
         layout_config = {
           horizontal = {
             prompt_position = "top",
+          },
+          vertical = {
+            prompt_position = "top",
+            mirror = true,
           },
         },
         extensions = {
