@@ -138,7 +138,13 @@ vim.keymap.set("n", "<A-k>", function()
   require("mini.move").move_line("up")
 end)
 
-vim.keymap.set({ "n", "x" }, "<C-c>", "<cmd>normal gcc<cr>", { desc = "Comment current line" })
+-- This use gc to toggle comment current line
+-- vim.keymap.del("n", "gcc")
+-- vim.keymap.del("n", "gco")
+-- vim.keymap.del("n", "gcO")
+-- vim.keymap.set("n", "gc", function()
+--   return require("vim._comment").operator() .. "_"
+-- end, { expr = true, desc = "Comment current line" })
 
 -- Apply CSpell
 vim.keymap.set("n", "<leader>uq", function()
