@@ -32,6 +32,8 @@ keybind = clear
 # Set <c-m> and <c-i> to <CR> and <Tab>
 keybind = ctrl+m=text:\x0D
 keybind = ctrl+i=text:\x09
+# Map Ctrl+Backspace to <C-w>
+keybind = ctrl+backspace=text:\x17
 
 keybind = shift+alt+y=new_tab
 keybind = alt+shift+p=next_tab
@@ -99,5 +101,5 @@ keybind = ctrl+shift+i=inspector:toggle
 keybind = alt+shift+,=move_tab:-1
 keybind = alt+shift+.=move_tab:1
 
-#TODO AAZ: This still not working.
-keybind = alt+shift+i=toggle_quick_terminal
+# Ghossty still doesn't support go to last active tab.
+keybind = alt+shift+i=next_tab

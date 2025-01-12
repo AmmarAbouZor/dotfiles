@@ -252,6 +252,11 @@ return {
 		{ key = "Insert", mods = "CTRL", action = act.CopyTo("PrimarySelection") },
 		{ key = "Copy", mods = "NONE", action = act.CopyTo("Clipboard") },
 		{ key = "Paste", mods = "NONE", action = act.PasteFrom("Clipboard") },
+
+		-- Override some keys.
+		{ key = "Backspace", mods = "CTRL", action = act.SendKey({ key = "w", mods = "CTRL" }) },
+		{ key = "m", mods = "CTRL", action = act.SendKey({ key = "Enter" }) },
+		{ key = "i", mods = "CTRL", action = act.SendKey({ key = "Tab" }) },
 	},
 
 	key_tables = {
