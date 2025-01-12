@@ -138,16 +138,11 @@ vim.keymap.set("n", "<A-k>", function()
   require("mini.move").move_line("up")
 end)
 
--- -- This use gc to toggle comment current line
--- vim.keymap.del("n", "gcc")
--- vim.keymap.del("n", "gco")
--- vim.keymap.del("n", "gcO")
--- vim.keymap.set("n", "gc", function()
---   return require("vim._comment").operator() .. "_"
--- end, { expr = true, desc = "Comment current line" })
+-- Use <C-l> to leave insert and visual mode.
+-- vim.keymap.set({ "i", "v" }, "<C-l>", "<Esc>")
 
--- Default <C-c> in insert skips some features causing various issues.
-vim.keymap.set("", "<C-c>", "<Esc>", { desc = "Exit insert mode fully" })
+-- Comment out with <C-c>
+vim.keymap.set({ "n", "x" }, "<C-c>", "<cmd>normal gcc<cr>", { desc = "Comment current line" })
 
 -- Apply CSpell
 vim.keymap.set("n", "<leader>uq", function()

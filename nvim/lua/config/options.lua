@@ -17,6 +17,9 @@ opt.jumpoptions = "stack"
 opt.undofile = false
 opt.timeoutlen = 600
 
+-- Moves the cursor to the start of line after G or <C-d>...
+opt.startofline = true
+
 -- Remember to activate the autocmd for text files if you decide to activate spell by default.
 opt.spell = true
 

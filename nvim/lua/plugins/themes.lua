@@ -181,7 +181,7 @@ vim.api.nvim_create_user_command("ThemeVariantSwitch", function()
       LazyVim.info("sonokai background set to solid", { title = "Theme Variant" })
     else
       vim.g.sonokai_transparent_background = 2
-      LazyVim.info("everforest background set to transparent", { title = "Theme Variant" })
+      LazyVim.info("sonokai background set to transparent", { title = "Theme Variant" })
     end
 
     -- Reapply the color theme to let the changes take effect.

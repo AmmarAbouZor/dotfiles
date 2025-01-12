@@ -65,14 +65,14 @@ return {
       -- ["<C-j>"] = { "accept", "fallback" },
       -- ["<C-m>"] = { "accept", "fallback" },
       -- ["<CR>"] = { "accept", "fallback" },
-      -- ["<C-c>"] = { "hide", "fallback" },
+      ["<C-c>"] = { "hide", "fallback" },
       ["<Up>"] = { "select_prev", "fallback" },
       ["<Down>"] = { "select_next", "fallback" },
 
       ["<C-e>"] = {
-        function(cmp)
-          return cmp.hide()
-        end,
+        -- function(cmp)
+        --   return cmp.hide()
+        -- end,
         function(_)
           vim.api.nvim_input("<End>")
           return true
