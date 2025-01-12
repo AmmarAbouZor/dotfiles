@@ -38,7 +38,7 @@ return {
         desc = "Diffview Refresh",
       },
       {
-        "<leader>gl",
+        "<leader>gL",
         "<cmd>DiffviewFileHistory<cr>",
         mode = "n",
         desc = "DiffView Git Log",
