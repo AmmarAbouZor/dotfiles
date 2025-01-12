@@ -2,8 +2,8 @@
 font-family = fira code
 font-style = Medium
 # For now this seems to have not effect.
-# font-synthetic-style = true
-font-style-italic = Retina 
+font-synthetic-style = true
+font-style-italic = Retina
 font-size = 13
 adjust-underline-position = 1
 
@@ -18,6 +18,10 @@ cursor-invert-fg-bg = true
 background-opacity = 0.96
 window-padding-x =4
 window-padding-y =4,0
+
+# Start window in full screen mode by setting the values to high values.
+window-height = 10000
+window-width = 10000
 
 mouse-hide-while-typing = true
 
