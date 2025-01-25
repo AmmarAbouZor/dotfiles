@@ -61,14 +61,14 @@ wezterm.on("spawn_win_according_to_theme", function(window, pane)
 end)
 
 return {
-	default_prog = { "/usr/bin/fish" },
+	default_prog = { "fish" },
 	-- color_scheme = "Gruvbox (Gogh)", -- Light theme
 	-- color_scheme = "Gruvbox Material (Gogh)",
 	-- color_scheme = "Gruvbox Dark (Gogh)",
 	-- color_scheme = "GruvboxDarkHard",
 	color_scheme = "Gruvbox dark, hard (base16)",
 	window_background_opacity = 0.95,
-	window_decorations = "RESIZE",
+	window_decorations = "NONE",
 	enable_tab_bar = true,
 	hide_tab_bar_if_only_one_tab = true,
 	enable_scroll_bar = false,
@@ -99,7 +99,7 @@ return {
 	-- font = wezterm.font("fira code", { weight = "Medium" }),
 	-- font = wezterm.font("fira code"),
 	font = wezterm.font_with_fallback({
-		"fira code Medium",
+		{ family = "Fira Code" },
 		{ family = "Symbols Nerd Font Mono Regular", scale = 0.85 },
 	}),
 	-- font = wezterm.font("Sf mono"),

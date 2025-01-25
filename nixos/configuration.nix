@@ -13,6 +13,8 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  # NixOS backups aren't cleaned from grub with the garabage collector.
+  boot.loader.grub.configurationLimit = 10;
 
   # Use latest linux kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -21,11 +23,6 @@
   hardware.enableAllFirmware = true;
 
   networking.hostName = "ammar-laptop"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -48,41 +45,34 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  environment.gnome.excludePackages = (with pkgs; [
-    atomix # puzzle game
-    cheese # webcam tool
-    epiphany # web browser
-    # evince # document viewer
-    geary # email reader
-    # gedit # text editor
-    gnome-characters
-    gnome-music
-    # gnome-photos
-    # gnome-terminal
-    # gnome-tour
-    hitori # sudoku game
-    iagno # go game
-    tali # poker game
-    totem # video player
-  ]);
-
   # Configure keymap in X11
   services.xserver.xkb = {
-    layout = "us";
+    layout = "us,de,ara";
     variant = "";
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.ammar = {
+    isNormalUser = true;
+    description = "ammar";
+    extraGroups = [ "networkmanager" "wheel" "video"];
+  };
 
-  # Enable OpenGL
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
+  # Control brightness
+  programs.light.enable = true;
+
+  # Automate garbage collection:
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 15d";
+  };
+
+  ### Graphics & NVIDIA ###
+   # Enable OpenGL
   hardware.graphics = {
     enable = true;
     # Hardware acceleration drivers.
@@ -92,60 +82,59 @@
     ];
   };
 
-  ## Nvidia stuff: ##
-  # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
-
-  hardware.nvidia = {
-
-    # Modesetting is required.
-    modesetting.enable = true;
-
-    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-    # Enable this if you have graphical corruption issues or application crashes after waking
-    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
-    # of just the bare essentials.
-    powerManagement.enable = false;
-
-    # Fine-grained power management. Turns off GPU when not in use.
-    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = false;
-
-    # Use the NVidia open source kernel module (not to be confused with the
-    # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of 
-    # supported GPUs is at: 
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
-    # Only available from driver 515.43.04+
-    # Currently alpha-quality/buggy, so false is currently the recommended setting.
-    open = false;
-
-    # Enable the Nvidia settings menu,
-	# accessible via `nvidia-settings`.
-    nvidiaSettings = true;
-
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
-
-
-  hardware.nvidia.prime = {
-    # Make sure to use the correct Bus ID values for your system!
-    intelBusId = "PCI:0:2:0";
-    nvidiaBusId = "PCI:1:0:0";
-
-    # Set the mode to sync
-    sync.enable = true;
-
-    # Offload mode will activate nvidia explicitly only.
-    # offload = {
-    #   enable = true;
-    #   enableOffloadCmd = true;
-    # };
-  };
+	#  ## Nvidia stuff: ##
+	#  # Load nvidia driver for Xorg and Wayland
+	#  services.xserver.videoDrivers = ["nvidia"];
+	#
+	#  hardware.nvidia = {
+	#    # Modesetting is required.
+	#    modesetting.enable = true;
+	#
+	#    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+	#    # Enable this if you have graphical corruption issues or application crashes after waking
+	#    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
+	#    # of just the bare essentials.
+	#    powerManagement.enable = false;
+	#
+	#    # Fine-grained power management. Turns off GPU when not in use.
+	#    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
+	#    powerManagement.finegrained = false;
+	#
+	#    # Use the NVidia open source kernel module (not to be confused with the
+	#    # independent third-party "nouveau" open source driver).
+	#    # Support is limited to the Turing and later architectures. Full list of 
+	#    # supported GPUs is at: 
+	#    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
+	#    # Only available from driver 515.43.04+
+	#    # Currently alpha-quality/buggy, so false is currently the recommended setting.
+	#    open = false;
+	#
+	#    # Enable the Nvidia settings menu,
+	# # accessible via `nvidia-settings`.
+	#    nvidiaSettings = true;
+	#
+	#    # Optionally, you may need to select the appropriate driver version for your specific GPU.
+	#    package = config.boot.kernelPackages.nvidiaPackages.stable;
+	#  };
+	#
+	#  hardware.nvidia.prime = {
+	#    # Make sure to use the correct Bus ID values for your system!
+	#    intelBusId = "PCI:0:2:0";
+	#    nvidiaBusId = "PCI:1:0:0";
+	#
+	#    # Set the mode to sync
+	#    # sync.enable = true;
+	#
+	#    # Offload mode will activate nvidia explicitly only.
+	#    offload = {
+	#      enable = true;
+	#      enableOffloadCmd = true;
+	#    };
+	#  };
 
   #####################################################
 
+  # Signal to electron apps to use wayland
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
   };
@@ -166,82 +155,154 @@
     #media-session.enable = true;
   };
 
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.ammar = {
-    isNormalUser = true;
-    description = "ammar";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
-  };
-
-  # Automate garbage collection:
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 15d";
-  };
-
-  # Install firefox.
   programs.firefox.enable = true;
-
   programs.git.enable = true;
+
+  # Enable the OpenSSH daemon.
+  services.openssh.enable = true;
+  # Start ssh agent on start.
+  programs.ssh.startAgent = true;
+
+  # Firmware updates. We need to run `fwupdmgr update` to get them.
+  services.fwupd.enable = true;
 
   # This solves script files starting with `#!/usr/bin/bash`
   services.envfs.enable = true;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  ## Sway ##
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
+  services.gnome.gnome-keyring.enable = true;
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
+  services.greetd = {
+    enable = true;
+    # settings = rec {
+    # Autologin
+    # initial_session = {
+    #     command = "${pkgs.sway}/bin/sway";
+    #     user = "simon";
+    #   };
+    #   default_session = initial_session;
+    # }; 
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time -r --cmd sway";
+        user = "greeter";
+      };
+    };
+  };
+
+  security.pam.services.greetd.enableGnomeKeyring = true;
+  security.polkit.enable = true;
+  ## TODO AAZ: Enable gnome polkit agent
+
+  ## Gnome needed services & tools:
+  programs.dconf.enable = true;
+
+  ##########################
+  ## Thunar ##
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs.xfce; [
+      thunar-archive-plugin
+      thunar-volman
+    ];
+  };
+
+  programs.xfconf.enable = true;
+  services.gvfs.enable = true;
+  services.tumbler.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-   gcc
-   clang
-   vim 
-   neovim
-   fish
-   foot
-   alacritty
-   kitty
-   ghostty
-   wezterm
-   google-chrome
-   fastfetch
-   yazi
-   tmux  
-   fzf
-   eza
-   bat
-   fd
-   dust
-   gimp
-   zathura
-   helix
-   obsidian
-   python39
-   gnome-tweaks
-   ripgrep
-   htop
-   btop
-   p7zip
-   tealdeer
-   zoxide
-   rustup
+    ## Sway ##
+    grim # Takes screenschots of the windows
+    slurp # Define regions to be used grim to take specific screenshots
+    wl-clipboard
+    mako
+    kanshi
+    xdg-user-dirs
+    networkmanagerapplet
+    waybar
+    adwaita-icon-theme
+    gnome-themes-extra
+    hicolor-icon-theme
+    glib  # Enable gsettings.
+    nwg-look  # Gtk-3 control
+    pavucontrol # Audio input GUI
+    feh  # Image preview
+    autotiling
+    wlsunset # Dark light
+    playerctl # Control 
+    wofi 
+    #######
+    gcc
+    clang
+    python39
+    rustup
+    lua-language-server
+    stylua
+    shfmt
+    nodePackages.cspell
+    #######
+    vim 
+    neovim  
+    wget
+    fish
+    fzf
+    yazi
+    helix
+    tmux
+    fzf
+    fd
+    fastfetch
+    bat
+    dust
+    eza
+    ripgrep
+    htop
+    btop
+    tealdeer
+    zoxide
+    p7zip
+    lazygit
+    gitui
+    delta
+    bottom
+    jq
+    ################
+    foot
+    alacritty
+    kitty
+    ghostty
+    wezterm
+    google-chrome
+    gimp
+    obsidian
+    zathura
+    xournalpp
   ];
 
   fonts.packages = with pkgs; [
-  (pkgs.nerdfonts.override {fonts = [ "NerdFontsSymbolsOnly" "FiraCode"];})
-  noto-fonts
-  liberation_ttf
-  fira-code
-  fira-code-symbols
-];
+    (pkgs.nerdfonts.override {fonts = [ "NerdFontsSymbolsOnly" "FiraCode" ];})
+    noto-fonts
+    liberation_ttf
+    fira
+    fira-code
+    fira-code-symbols
+    ubuntu-sans
+    dejavu_fonts
+    roboto
+    font-awesome
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -253,17 +314,6 @@
 
   # List services that you want to enable:
 
-  # Firmware updates. We need to run `fwupdmgr update` to get them.
-  services.fwupd.enable = true;
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

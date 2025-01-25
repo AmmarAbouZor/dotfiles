@@ -1,0 +1,47 @@
+/* Gruvbox Material Dark color scheme */
+window {
+    margin: 0px;
+    border: 2px solid #3c3836;
+    background-color: #282828;
+    font-family: "Fira Code", "Font Awesome 5 Free";
+    font-size: 14px;
+}
+
+#input {
+    margin: 5px;
+    border: 2px solid #3c3836;
+    background-color: #3c3836;
+    color: #ebdbb2;
+}
+
+#inner-box {
+    margin: 5px;
+    border: none;
+    background-color: #282828;
+}
+
+#outer-box {
+    margin: 5px;
+    border: none;
+    background-color: #282828;
+}
+
+#scroll {
+    margin: 0px;
+    border: none;
+}
+
+#text {
+    margin: 5px;
+    border: none;
+    color: #ebdbb2;
+}
+
+#entry:selected {
+    background-color: #458588;
+    color: #282828;
+}
+
+#text:selected {
+    color: #282828;
+}

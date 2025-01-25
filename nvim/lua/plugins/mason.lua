@@ -1,12 +1,20 @@
 return {
-  "williamboman/mason.nvim",
-  opts = {
-    ensure_installed = {
-      "stylua",
-      "shfmt",
-      -- "gopls",
-      -- "pyright",
-      -- "black",
+  {
+    "williamboman/mason.nvim",
+    -- Mason doesn't work well with NixOS, besides installing LSPs with nix is more simple.
+    enabled = false,
+    opts = {
+      ensure_installed = {
+        -- "stylua",
+        -- "shfmt",
+        -- "gopls",
+        -- "pyright",
+        -- "black",
+      },
     },
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    enabled = false,
   },
 }

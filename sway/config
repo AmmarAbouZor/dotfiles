@@ -1,103 +1,60 @@
-include catppuccin-mocha
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
-
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
+# Logo + Alt Keys used a lot in my current setup.
+set $modalt Mod4+Mod1
 # Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
-set $term alacritty
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-# output * bg /usr/share/backgrounds/default.png fill
-output * bg ~/Pictures/Wallpapers/Tokio_1.png fill
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
+# Wallpaper
+output * bg ~/Pictures/Wallpapers/3a.jpg fill
+
+# Display resolutions. I need to set this with live systemd service.
 # You can get the names of your outputs by running: swaymsg -t get_outputs
+# I'm configuring display output with `kanshi`
+# output HDMI-A-1 resolution 2560x1440 position 0,0
+# output eDP-1 resolution 1920x1080 position 2560,0
+
+# Kanshi
+exec kanshi 
+
 
 ### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-         # timeout 300 'swaylock -f -e -i $HOME/.config/i3/flatppuccin.png' \
-         # timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         # before-sleep 'swaylock -f -e -i $HOME/.config/i3/flatppuccin.png'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-
 # just suspend after 900 seconds without locking
 exec swayidle \
         timeout 900 'systemctl suspend' \
         resume 'swaymsg "output * dpms on"'
 
 ### Input configuration
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
-input "1133:16520:Logitech_ERGO_K860" {
-    xkb_layout us,de,ar
-    xkb_variant ,nodeadkeys
-    # xkb_options grp:alt_shift_toggle
-    xkb_numlock enabled
-    # caps lock control
-    xkb_options ctrl:nocaps
- }
- 
 input "13364:785:Keychron_Keychron_V1" {
-    xkb_layout us,de,ar
+    xkb_layout us,de,ara
     xkb_variant ,nodeadkeys
-    # xkb_options grp:alt_shift_toggle
-    xkb_numlock enabled
- }
-
-input "13364:480:Keychron_Keychron_Q11" {
-    xkb_layout us,de,ar
-    xkb_variant ,nodeadkeys
-    # xkb_options grp:alt_shift_toggle
-    xkb_numlock enabled
- }
+}
 
 input "1:1:AT_Translated_Set_2_keyboard" {
-    xkb_layout us,de,ar
+    xkb_layout us,de,ara
     xkb_variant ,nodeadkeys
     # xkb_options grp:alt_shift_toggle
     xkb_numlock enabled
-    # caps lock control
-    xkb_options ctrl:nocaps
- }
+}
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
 
 ### Key bindings
 #
 # Basics:
 #
-    # Start a terminal
-    # bindsym $mod+Return exec $term
-
     # Kill focused window
-    bindsym $mod+Shift+q kill
+    bindsym $modalt+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+Return exec wofi --show drun
+    bindsym $modalt+Return exec wmenu-run
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -106,11 +63,19 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     # mouse button for dragging.
     floating_modifier $mod normal
 
-    # Reload the configuration file
-    bindsym $mod+Shift+c reload
+#
+# My preferred apps:
+#
+    bindsym $modalt+Semicolon exec foot
+    bindsym $modalt+L exec foot --override=shell=tmux
+    bindsym $modalt+K exec alacritty -e tmux
+    bindsym $modalt+Y exec alacritty 
+    bindsym $modalt+J exec kitty
+    bindsym $modalt+H exec wezterm
+    bindsym $modalt+O exec ghostty
+    bindsym $modalt+I exec firefox
+    bindsym $modalt+U exec google-chrome-stable
 
-    # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 #
 # Moving around:
 #
@@ -138,10 +103,11 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 #
 # Workspaces:
 #
-    bindsym $mod+Ctrl+$left workspace prev
-    bindsym $mod+Ctrl+$right workspace next
-    bindsym $mod+Ctrl+Left workspace prev
-    bindsym $mod+Ctrl+Right workspace next
+
+    bindsym $mod+p exec ~/.config/sway/switch-workspace.sh prev
+    bindsym $mod+n exec ~/.config/sway/switch-workspace.sh next
+    bindsym $mod+Shift+p exec ~/.config/sway/switch-workspace.sh prev move
+    bindsym $mod+Shift+n exec ~/.config/sway/switch-workspace.sh next move
     # Switch to workspace
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
@@ -154,18 +120,16 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+9 workspace number 9
     bindsym $mod+0 workspace number 10
     # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1, workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2, workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3, workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4, workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5, workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6, workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7,, workspace number 7,
-    bindsym $mod+Shift+8 move container to workspace number 8, workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9, workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10, workspace number 10
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
+    bindsym $mod+Shift+1 move container to workspace number 1; workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2; workspace number 1
+    bindsym $mod+Shift+3 move container to workspace number 3; workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4; workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5; workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6; workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7; workspace number 7
+    bindsym $mod+Shift+8 move container to workspace number 8; workspace number 8
+    bindsym $mod+Shift+9 move container to workspace number 9; workspace number 9
+    bindsym $mod+Shift+0 move container to workspace number 10; workspace number 10
 #
 # Layout stuff:
 #
@@ -181,10 +145,10 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
+    bindsym $mod+m fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+g floating toggle
 
     # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle
@@ -192,17 +156,15 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     # Move focus to the parent container
     bindsym $mod+a focus parent
 #
-# Scratchpad:
+# Scratchpad: 
+# I've disabled it because it doesn't match my other machine.
 #
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
-
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+m move scratchpad
+    # bindsym $mod+Shift+minus move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+m scratchpad show
+    # bindsym $mod+minus scratchpad show
 #
 # Resizing containers:
 #
@@ -226,111 +188,67 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym $modalt+r mode "resize"
+
+#
+# Utilities:
+#
+    # Special keys to adjust volume via PulseAudio
+    bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+    bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+
+    # Play/Pause
+    bindsym --locked XF86AudioPlay exec playerctl play-pause
+    # Next Track
+    bindsym --locked XF86AudioNext exec playerctl next
+    # Previous Track
+    bindsym --locked XF86AudioPrev exec playerctl previous
+
+    # Special keys to adjust brightness via brightnessctl
+    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    # Special key to take a screenshot with grim
+    bindsym Print exec grim
 
 # Status Bar:
 bar swaybar_command waybar
 
-include /etc/sway/config.d/*
-
-
-# Start XDG autostart .desktop files using dex. See also
-# https://wiki.archlinux.org/index.php/XDG_Autostart
-exec dex-autostart --autostart --environment sway
-
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- swaylock -f -e -i $HOME/.config/i3/flatppuccin.png
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
+# Network applet tray
 exec  nm-applet --indicator
 
-# I don't use the bluetooth currently
-# Bluetooth Monitor
-# exec blueman-applet
+# Night light with the latitude and longitude.
+exec wlsunset -l 48.1351 -L 11.5820 -t 5000
 
-# redshift for wayland
-exec  gammastep
-# This was taken from folke
-# exec pgrep gammastep || gammastep-indicator 
+# Auto-tiling
+# exec_always --no-startup-id autotiling 
 
-# keyoard volume keys
-bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+# Start XDG autostart .desktop files using dex. Usually inside .config/autostart
+# exec dex-autostart --autostart --environment sway
 
-#autotiling
-exec_always --no-startup-id ~/.config/i3/autotiling 
-
-#my keybindings
-bindsym $mod+Return  exec --no-startup-id "rofi -show drun"
-bindsym $mod+Shift+Return  exec --no-startup-id "rofi -show run"
-bindsym $mod+i  exec --no-startup-id "alacritty"
-bindsym $mod+u  exec --no-startup-id "kitty"
-bindsym $mod+o  exec --no-startup-id "foot"
-bindsym $mod+t  exec --no-startup-id "flatpak run org.wezfurlong.wezterm"
-bindsym $mod+p  exec --no-startup-id "neovide"
-bindsym $mod+shift+p  exec --no-startup-id "neovide --multigrid"
-bindsym $mod+n  exec --no-startup-id "google-chrome"
-bindsym $mod+y  exec --no-startup-id "firefox"
-bindsym $mod+Delete  exec --no-startup-id "rofi -show power-menu -modi power-menu:rofi-power-menu"
-bindsym $mod+Home  exec --no-startup-id "systemctl suspend"
-bindsym $mod+Escape  exec --no-startup-id "swaylock -f -e -i $HOME/.config/i3/flatppuccin.png"
-bindsym $mod+Shift+w  exec --no-startup-id 'swaymsg "output * dpms on"'
-
-bindsym $mod+shift+o  exec --no-startup-id "foot --title='foot_scratchpad'"
-bindsym $mod+shift+i  exec --no-startup-id "alacritty --title='alacritty_scratchpad'"
-
-for_window [title="foot_scratchpad"] {
-   move scratchpad
-   scratchpad show
-}
-for_window [title="alacritty_scratchpad"] {
-   move scratchpad
-   scratchpad show
-}
-
-# Gnome Theme
+# GTK Theme
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
     gsettings set $gnome-schema gtk-theme 'Adwaita-dark'
     gsettings set $gnome-schema icon-theme 'Adwaita-dark'
-    gsettings set $gnome-schema cursor-theme 'Adwaita-dark'
-    gsettings set $gnome-schema font-name 'sf pro 12'
+    gsettings set $gnome-schema cursor-theme 'Adwaita'
+    gsettings set $gnome-schema color-scheme 'prefer-dark'
 }
 
+
 # Themes
-default_border pixel 2
+default_border pixel 1
 
-gaps inner 4
-gaps outer 1
+hide_edge_borders smart
 
-# Default
-# target                 title     bg    text   indicator  border
-# client.focused           $pink     $base $text  $rosewater $pink
-# client.focused_inactive  $mauve    $base $text  $rosewater $mauve
-# client.unfocused         $mauve    $base $text  $rosewater $mauve
-# client.urgent            $peach    $base $peach $overlay0  $peach
-# client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
-# client.background        $base
+# gaps inner 1
+# gaps outer 1
+# smart_gaps on
 
-# my settings from i3
-# target                 title     bg    text   indicator  border
-client.focused           $lavender $base $text  $lavender  $lavender
-client.focused_inactive  $surface1 $base $subtext1  $surface1  $surface1
-client.unfocused         $surface1 $base $subtext1  $surface1  $surface1
-client.urgent            $peach    $base $peach $peach     $peach
-client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
-client.background        $base
+client.focused          #282828 #c5a46b #282828 #c5a46b  
+client.focused_inactive #282828 #504945 #282828 #504945  
+client.unfocused        #282828 #3c3836 #282828 #3c3836   
+client.urgent           #282828 #fb4934 #282828 #fb4934    
 
-
-#################################################################
-## Layout Rules
-#################################################################
-for_window [app_id="nm-connection-editor"] floating enable 
-for_window [app_id="blueman-manager"] floating enable,  resize set width 40 ppt height 30 ppt
+include /etc/sway/config.d/*

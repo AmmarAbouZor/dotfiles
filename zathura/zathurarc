@@ -5,6 +5,7 @@ set recolor true
 
 set font "Fira Code; 12"
 
+set selection-clipboard clipboard
 
 map [normal] d scroll half-down
 map [normal] u scroll half-up

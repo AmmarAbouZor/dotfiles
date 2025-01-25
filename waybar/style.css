@@ -1,251 +1,49 @@
+/* Gruvbox Dark theme for Waybar */
 * {
-	border: none;
-	border-radius: 10;
-  font-family: FontAwesome, sf pro, sf mono, Roboto, Helvetica, Arial, sans-serif ;
-	font-size: 15px;
-	min-height: 15px;
+    font-family: FontAwesome, Fira Sans, Roboto, Arial, sans-serif;
+    font-weight: 500; /* Semi-bold */
+    font-size: 16px;  /* Increase font size */
 }
 
-window#waybar {
-	background: transparent;
+/* General background color for all parts */
+#waybar {
+    background-color: #282828; /* Gruvbox Dark background */
+    color: #ebdbb2; /* Gruvbox light text color */
+    padding: 0 0px;
+    border-bottom: 2px solid #504945; /* Gruvbox medium gray for a subtle border */
+    border-radius: 0; /* Remove rounding if needed */
 }
 
-window#waybar.hidden {
-	opacity: 0.2;
+/* Specific adjustments for modules */
+#waybar .module {
+    padding: 0px 10px;
+    color: #ebdbb2;
 }
 
-#window {
-	margin-top: 6px;
-	padding-left: 10px;
-	padding-right: 10px;
-	border-radius: 10px;
-	transition: none;
-	color: black;
-	background: #ABE9B3;
+#waybar .module:hover {
+    background-color: #3c3836; /* Slightly lighter background for hover */
+    color: #d79921; /* Gruvbox yellow for hover text */
 }
 
-window#waybar.empty #window {
-  background-color: transparent;
+/* Active workspace indicator */
+#waybar #workspaces button.focused {
+    color: #ebdbb2; /* Gruvbox Foreground */
+    /*border-bottom: 2px solid #ebdbb2; */
 }
 
-#mode{
-	margin-top: 6px;
-	margin-right: 8px;
-	padding-left: 8px;
-	padding-right: 8px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	transition: none;
-	color: #161320;
-	background: #DDB6F2;
+/* Inactive workspaces */
+#waybar #workspaces button {
+    padding: 0px 10px;
+    color: #7c6f64; /* Gruvbox medium gray */
+    border-radius: 0
 }
 
-#scratchpad {
-	margin-top: 6px;
-	margin-left: 8px;
-	padding-left: 8px;
-	padding-right: 8px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	transition: none;
-	color: #161320;
-	background: #DDB6F2;
+#waybar #workspaces button:hover {
+    background-color: #3c3836; /* Slightly lighter background for hover */
+    color: #d79921; /* Gruvbox yellow for hover text */
 }
 
-#pulseaudio {
-	margin-top: 6px;
-	margin-left: 8px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	transition: none;
-	color: #1A1826;
-	background: #FAE3B0;
-}
-
-#battery {
-	margin-top: 6px;
-	margin-left: 8px;
-	padding-left: 10px;
-	padding-right: 7px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	transition: none;
-	color: #161320;
-	background: #B5E8E0;
-}
-
-#battery.charging, #battery.plugged {
-	color: #161320;
-    background-color: #B5E8E0;
-}
-
-#battery.critical:not(.charging) {
-    background-color: #B5E8E0;
-    color: #161320;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-@keyframes blink {
-    to {
-        background-color: #BF616A;
-        color: #B5E8E0;
-    }
-}
-
-#clock {
-	margin-top: 6px;
-	margin-left: 0px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-bottom: 0px;
-	border-radius: 10px 0px 0px 10px;
-	transition: none;
-	color: #161320;
-	background: #ABE9B3;
-}
-
-#idle_inhibitor{
-	margin-top: 6px;
-	margin-left: 0px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-bottom: 0px;
-	border-radius: 0px 10px 10px 0px;
-	transition: none;
-	color: #161320;
-	background: #ABE9B3;
-}
-
-#memory {
-	margin-top: 6px;
-	margin-left: 8px;
-	padding-left: 10px;
-	margin-bottom: 0px;
-	padding-right: 10px;
-	border-radius: 10px;
-	transition: none;
-	color: #161320;
-	background: #DDB6F2;
-}
-
-#cpu {
-	margin-top: 6px;
-	margin-left: 8px;
-	padding-left: 10px;
-	margin-bottom: 0px;
-	padding-right: 10px;
-	border-radius: 10px;
-	transition: none;
-	color: #161320;
-	background: #96CDFB;
-}
-
-#tray {
-	margin-top: 6px;
-	margin-left: 8px;
-	padding-left: 10px;
-	margin-bottom: 0px;
-	padding-right: 10px;
-	border-radius: 10px;
-	transition: none;
-	color: #B5E8E0;
-	background: #161320;
-}
-
-#custom-launcher {
-	font-size: 24px;
-	margin-top: 6px;
-	margin-left: 8px;
-	padding-left: 10px;
-	padding-right: 5px;
-	border-radius: 10px;
-	transition: none;
-  color: #F28FAD;
-  background: #161320;
-}
-
-#custom-power {
-	font-size: 17px;
-	margin-top: 6px;
-	margin-left: 8px;
-	margin-right: 8px;
-	padding-left: 7px;
-	padding-right: 7px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	transition: none;
-	color: #161320;
-	background: #F28FAD;
-}
-
-#workspaces {
-	margin-top: 6px;
-	font-size: 20px;
-	margin-left: 8px;
-	margin-right: 8px;
-	padding-left: 0px;
-	padding-right: 0px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-  transition: none;
-  background: #96CDFB;
-}
-
-#workspaces button {
-    transition: none;
-    color: #383c4a;
-    background: transparent;
-    padding: 5px;
-    padding-left: 6px;
-    padding-right: 6px;
-    font-size: 20px;
-}
-
-#workspaces button.persistent {
-    color: #7c818c;
-}
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-#workspaces button:hover {
-    transition: none;
-    box-shadow: inherit;
-    text-shadow: inherit;
-    border-radius: inherit;
-    color: #383c4a;
-    background: #ABE9B3;
-}
-
-#workspaces button.focused {
-    color: black;
-    font-weight: bold;
-}
-
-#language {
-	margin-top: 6px;
-	margin-left: 8px;
-	padding-left: 4px;
-	margin-bottom: 0px;
-	padding-right: 8px;
-	border-radius: 10px;
-	transition: none;
-	color: #161320;
-	background: #bd93f9;
-}
-
-#disk {
-	margin-top: 6px;
-	margin-left: 8px;
-	padding-left: 8px;
-	margin-bottom: 0px;
-	padding-right: 8px;
-	border-radius: 10px;
-	transition: none;
-	color: #161320;
-	background: #ABE9B3;
+/* Urgent workspace indicator */
+#waybar #workspaces button.urgent {
+    color: #fb4934; /* Gruvbox red */
 }
