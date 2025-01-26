@@ -244,6 +244,9 @@
   services.gvfs.enable = true;
   services.tumbler.enable = true;
 
+  ## Qmk
+  hardware.keyboard.qmk.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -276,6 +279,7 @@
     stylua
     shfmt
     nodePackages.cspell
+    qmk
     #######
     vim 
     neovim  
@@ -302,6 +306,8 @@
     delta
     bottom
     jq
+    poppler_utils  # Pdf utilities
+    ghostscript  # Pdf compress
     ################
     foot
     alacritty
