@@ -161,7 +161,17 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   # Start ssh agent on start.
-  programs.ssh.startAgent = true;
+  # programs.ssh.startAgent = true;
+
+  # gnupg has support to persist the password in the password manager.
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+    settings = {
+      default-cache-ttl = 2592000;
+      max-cache-ttl = 2592000;
+    };
+  };
 
   # Firmware updates. We need to run `fwupdmgr update` to get them.
   services.fwupd.enable = true;
@@ -201,7 +211,21 @@
 
   security.pam.services.greetd.enableGnomeKeyring = true;
   security.polkit.enable = true;
-  ## TODO AAZ: Enable gnome polkit agent
+  systemd.user.services = {
+    polkit-gnome-authentication-agent-1 = {
+      description = "polkit-gnome-authentication-agent-1";
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
+          Type = "simple";
+          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+          Restart = "on-failure";
+          RestartSec = 1;
+          TimeoutStopSec = 10;
+        };
+    };
+  };
 
   ## Gnome needed services & tools:
   programs.dconf.enable = true;
@@ -304,16 +328,11 @@
     font-awesome
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
+  # TODO: Check if we need to keep this.
+  # This should improve the performance according to nix wiki.
+  security.pam.loginLimits = [
+    { domain = "@users"; item = "rtprio"; type = "-"; value = 1; }
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
