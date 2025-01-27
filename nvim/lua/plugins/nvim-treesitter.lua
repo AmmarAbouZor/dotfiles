@@ -20,6 +20,7 @@ return {
         "javascript",
         "typescript",
         "fish",
+        "nix",
       })
 
       opts.indent = {

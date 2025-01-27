@@ -81,6 +81,9 @@ return {
       solargraph = {
         mason = false,
       },
+      nixd = {
+        mason = false,
+      },
 
       -- This code disables the placeholders on functions
       -- vtsls = {
