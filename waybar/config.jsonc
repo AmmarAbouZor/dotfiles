@@ -14,10 +14,9 @@
     "modules-right": [
         "idle_inhibitor",
         "pulseaudio",
-        "network",
+        // "network",
         // "cpu",
         // "memory",
-        // "backlight",
         "sway/language",
         "battery",
         "tray",
@@ -91,14 +90,14 @@
         "format-alt": "{time} {icon}",
         "format-icons": ["", "", "", "", ""]
     },
-    "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
+    // "network": {
+    //     "format-wifi": "",
+    //     "format-ethernet": "",
+    //     "tooltip-format": "{ifname} via {gwaddr} ",
+    //     "format-linked": "{ifname} (No IP) ",
+    //     "format-disconnected": "Disconnected ⚠",
+    //     "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    // },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon}  {format_source}",

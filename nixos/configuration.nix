@@ -55,7 +55,8 @@
   users.users.ammar = {
     isNormalUser = true;
     description = "ammar";
-    extraGroups = [ "networkmanager" "wheel" "video"];
+    # 'input' & 'uinput' are for kanata
+    extraGroups = [ "networkmanager" "wheel" "video" "input" "uinput"];
   };
 
   # Allow unfree packages
@@ -247,6 +248,9 @@
   ## Qmk
   hardware.keyboard.qmk.enable = true;
 
+  ## For kanata
+  hardware.uinput.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -308,6 +312,7 @@
     jq
     poppler_utils  # Pdf utilities
     ghostscript  # Pdf compress
+    kanata
     ################
     foot
     alacritty

@@ -75,6 +75,8 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $modalt+O exec ghostty
     bindsym $modalt+I exec firefox
     bindsym $modalt+U exec google-chrome-stable
+    bindsym $mod+KP_5 exec kanata
+    bindsym $mod+KP_Begin exec kanata
 
 #
 # Moving around:
