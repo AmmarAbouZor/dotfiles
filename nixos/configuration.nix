@@ -243,6 +243,11 @@
   ## For kanata
   hardware.uinput.enable = true;
 
+  environment.variables = {
+    ## Open-ssl with rust development
+    PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -278,6 +283,10 @@
     qmk
     nixfmt-classic
     nixd
+    ## Packages needed for rust development
+    pkg-config # Locate packages like openssl, sqlite
+    openssl
+    sqlite
     #######
     vim
     neovim
