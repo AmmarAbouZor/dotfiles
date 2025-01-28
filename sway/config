@@ -2,8 +2,8 @@
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
-# Logo + Alt Keys used a lot in my current setup.
-set $modalt Mod4+Mod1
+# Logo + Ctrl Keys used a lot in my current setup.
+set $modctrl Mod4+Ctrl
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -50,11 +50,11 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 # Basics:
 #
     # Kill focused window
-    bindsym $modalt+q kill
+    bindsym $modctrl+q kill
 
     # Start your launcher
     bindsym $mod+Return exec wofi --show drun
-    bindsym $modalt+Return exec wmenu-run
+    bindsym $modctrl+Return exec wmenu-run
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -66,15 +66,15 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 #
 # My preferred apps:
 #
-    bindsym $modalt+Semicolon exec foot
-    bindsym $modalt+L exec foot --override=shell=tmux
-    bindsym $modalt+K exec alacritty -e tmux
-    bindsym $modalt+Y exec alacritty 
-    bindsym $modalt+J exec kitty
-    bindsym $modalt+H exec wezterm
-    bindsym $modalt+O exec ghostty
-    bindsym $modalt+I exec firefox
-    bindsym $modalt+U exec google-chrome-stable
+    bindsym $modctrl+Semicolon exec foot
+    bindsym $modctrl+L exec foot --override=shell=tmux
+    bindsym $modctrl+K exec alacritty -e tmux
+    bindsym $modctrl+Y exec alacritty 
+    bindsym $modctrl+J exec kitty
+    bindsym $modctrl+H exec wezterm
+    bindsym $modctrl+O exec ghostty
+    bindsym $modctrl+I exec firefox
+    bindsym $modctrl+U exec google-chrome-stable
     bindsym $mod+KP_5 exec kanata
     bindsym $mod+KP_Begin exec kanata
 
@@ -190,7 +190,7 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $modalt+r mode "resize"
+bindsym $modctrl+r mode "resize"
 
 #
 # Utilities:
