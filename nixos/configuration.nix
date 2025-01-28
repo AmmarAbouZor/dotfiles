@@ -274,6 +274,7 @@
     #######
     gcc
     clang
+    clang-tools
     python39
     rustup
     lua-language-server
