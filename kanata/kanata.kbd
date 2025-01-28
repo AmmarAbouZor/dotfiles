@@ -50,13 +50,13 @@
        @q    w    e    r    t    y    u    i    o    p    [     ]
   @caps @a  @s   @d   @f    g    h   @j   @k   @l   @;    '
   @lsft  z    x    c    v    b    n    m    ,    .    /
-                               @spc
+                               spc
 )
 
 (deflayer nav-symb
        f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11   f12
       S-`  S-2   S-3  S-4  S-5  S-6  S-7  S-8  S-9  S-0    S-[    S-]
-  spc S-1   -   @s-plus  @c-eql  S--  left  down  up  rght   S-\  ` 
+  spc S-1   @c-mins   @s-plus  =  S--  left  down  up  rght   S-\  ` 
    _     _   del   esc   tab   cmps    bspc   ret   S-,   S-.    \ 
                                 spc
 )
@@ -74,31 +74,30 @@
        q    w    e    r    t    y    u    i    o    p    [     ]
   esc a    s     d   @f    g    h   @j    k    l    ;    '   
   lsft  z    x    c    v    b    n    m    ,    .    / 
-                                @spc 
+                                spc 
 )
 (deffakekeys
   to-base (layer-switch base)
 )
 (defalias
   ;; Home row mods
-  a (tap-hold-release-keys $tap-time $hold-time a lalt $left-hand-keys-nhm)
-  s (tap-hold-release-keys $tap-time $hold-time s lmet $left-hand-keys-nhm)
+  a (tap-hold-release-keys $tap-time $hold-time a lmet $left-hand-keys-nhm)
+  s (tap-hold-release-keys $tap-time $hold-time s lctl $left-hand-keys-nhm)
   d (tap-hold-release-keys $tap-time $hold-time-fast d lsft $left-hand-keys-nhm)
-  f (tap-hold-release-keys $tap-time $hold-time-fast f lctl $left-hand-keys-nhm)
-  j (tap-hold-release-keys $tap-time $hold-time-fast j rctl $right-hand-keys-nhm)
+  f (tap-hold-release-keys $tap-time $hold-time-fast f (layer-toggle nav-symb) $left-hand-keys-nhm)
+  j (tap-hold-release-keys $tap-time $hold-time-fast j (layer-toggle nav-symb) $right-hand-keys-nhm)
   k (tap-hold-release-keys $tap-time $hold-time-fast k rsft $right-hand-keys-nhm)
-  l (tap-hold-release-keys $tap-time $hold-time l rmet $right-hand-keys-nhm)
-  ; (tap-hold-release-keys $tap-time $hold-time ; ralt $right-hand-keys-nhm)
+  l (tap-hold-release-keys $tap-time $hold-time l rctl $right-hand-keys-nhm)
+  ; (tap-hold-release-keys $tap-time $hold-time ; rmet $right-hand-keys-nhm)
 
   q (tap-hold-release-keys $tap-time $hold-time q (multi lalt lsft) $left-hand-keys-nhm)
 
-  spc (tap-hold-release $tap-time $hold-time spc (layer-toggle nav-symb))
   caps (tap-hold-release $tap-time $hold-time esc (layer-toggle nums))
   lsft (tap-hold-release $tap-time $hold-time (caps-word 2000) lsft)
 
   ;; Home row mods on nav-symb layer
   s-plus (tap-hold-release $tap-time $hold-time-fast (multi lsft =) lsft)
-  c-eql (tap-hold-release $tap-time $hold-time-fast = lctl)
+  c-mins (tap-hold-release $tap-time $hold-time-fast - lctl)
 )
 
 #|
