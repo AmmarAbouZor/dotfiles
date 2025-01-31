@@ -153,21 +153,6 @@
   programs.firefox.enable = true;
   programs.git.enable = true;
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  # Start ssh agent on start.
-  # programs.ssh.startAgent = true;
-
-  # gnupg has support to persist the password in the password manager.
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-    settings = {
-      default-cache-ttl = 2592000;
-      max-cache-ttl = 2592000;
-    };
-  };
-
   # Firmware updates. We need to run `fwupdmgr update` to get them.
   services.fwupd.enable = true;
 
@@ -178,6 +163,12 @@
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
+    # Enable the built-in ssh-agent in keyring ignoring stderr output which will complain
+    # about having the daemon already started.
+    extraSessionCommands = ''
+      eval $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh 2> /dev/null);
+      export SSH_AUTH_SOCK
+    '';
   };
   services.gnome.gnome-keyring.enable = true;
   xdg.portal = {
