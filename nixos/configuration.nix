@@ -235,6 +235,7 @@
   hardware.uinput.enable = true;
 
   environment.variables = {
+    EDITOR = "nvim";
     ## Open-ssl with rust development
     PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
   };
@@ -266,7 +267,7 @@
     gcc
     clang
     clang-tools
-    python39
+    python3
     rustup
     lua-language-server
     stylua
@@ -308,6 +309,7 @@
     poppler_utils # Pdf utilities
     ghostscript # Pdf compress
     kanata
+    cmatrix
     ################
     foot
     alacritty
@@ -319,6 +321,7 @@
     obsidian
     zathura
     xournalpp
+    neovide
   ];
 
   fonts.packages = with pkgs; [

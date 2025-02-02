@@ -221,7 +221,7 @@ bar swaybar_command waybar
 exec  nm-applet --indicator
 
 # Night light with the latitude and longitude.
-exec wlsunset -l 48.1351 -L 11.5820 -t 5000
+exec wlsunset -l 48.1351 -L 11.5820 -t 4500
 
 # Auto-tiling
 # exec_always --no-startup-id autotiling 

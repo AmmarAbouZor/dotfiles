@@ -1,19 +1,7 @@
-
 [font]
 size = 13
-
-[font.bold_italic]
-family = "Fira Code SemiBold"
-
-[font.italic]
-family = "Fira Code Medium"
-
-[font.bold]
-style = "SemiBold"
-
-[font.normal]
-family = "Fira Code"
-style = "Medium"
+normal = { family = "Fira Code", style = "Medium" }
+bold = { style = "SemiBold" }
 
 [[keyboard.bindings]]
 action = "SpawnNewInstance"
