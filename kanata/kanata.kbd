@@ -18,30 +18,34 @@
 )
 
 (defvar
-  tap-time 200
-  hold-time 220
-  hold-time-fast 180
+  tap-time 0
+  hold-time 200
+  hold-time-fast 140
 
   left-hand-keys (
     q w e r t
     a s d f g
     z x c v b
+       spc
   )
   right-hand-keys (
     y u i o p
     h j k l ;
     n m , . /
+       spc
   )
 
   left-hand-keys-nhm (
     q w e r t
             g
     z x c v b
+       spc
   )
   right-hand-keys-nhm (
     y u i o p
     h        
     n m , . /
+       spc
   )
 )
 
