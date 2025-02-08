@@ -12,6 +12,9 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     vim.cmd("hi! link BlinkCmpLabelDetail PmenuExtra")
     vim.cmd("hi! link BlinkCmpDocSeparator PmenuExtra")
 
+    -- *** Link Picker directory highlighting to comments ***
+    vim.cmd("hi! link SnacksPickerDir Comment")
+
     -- *** Disable cursor line background highlighting on transparent backgrounds
     local transparent = vim.api.nvim_get_hl(0, { name = "Normal" }).bg == nil
     if transparent then

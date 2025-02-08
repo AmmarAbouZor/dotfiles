@@ -120,8 +120,6 @@ vim.keymap.set("n", "<leader>gD", function()
   Snacks.picker.git_diff()
 end, { desc = "Git diff (hunks)" })
 
-vim.keymap.set("n", "<leader>s'", require("telescope.builtin").resume, { desc = "Resume" })
-
 -- Helix
 vim.keymap.set({ "n", "x" }, "gh", "^")
 vim.keymap.set({ "n", "x" }, "gl", "$")

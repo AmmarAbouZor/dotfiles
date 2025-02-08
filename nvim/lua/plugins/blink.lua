@@ -9,14 +9,6 @@ return {
     --   },
     -- },
 
-    -- Disable auto completion in dressing input pop-ups
-    enabled = function()
-      return vim.bo.filetype ~= "DressingInput"
-        -- defaults from blink.
-        and vim.bo.buftype ~= "prompt"
-        and vim.b.completion ~= false
-    end,
-
     sources = {
       providers = {
         lsp = {
