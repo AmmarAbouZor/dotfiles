@@ -20,6 +20,22 @@ return {
     { "<leader>ua", false },
     { "<leader>uS", false },
     { "<leader>S", false },
+    {
+      "<leader>fe",
+      function()
+        Snacks.explorer({ auto_close = true })
+      end,
+      desc = "Explorer Snacks (cwd)",
+    },
+    {
+      "<leader>fE",
+      function()
+        Snacks.explorer({ cwd = LazyVim.root(), auto_close = true })
+      end,
+      desc = "Explorer Snacks (root dir)",
+    },
+    { "<leader>e", "<leader>fe", desc = "Explorer Snacks (cwd)", remap = true },
+    { "<leader>E", "<leader>fE", desc = "Explorer Snacks (root dir)", remap = true },
   },
 
   opts = {
