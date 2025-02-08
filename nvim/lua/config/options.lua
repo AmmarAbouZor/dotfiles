@@ -17,6 +17,8 @@ opt.jumpoptions = "stack"
 opt.undofile = false
 opt.timeoutlen = 600
 
+opt.relativenumber = false
+
 -- Moves the cursor to the start of line after G or <C-d>...
 opt.startofline = true
 
