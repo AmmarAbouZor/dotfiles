@@ -37,6 +37,35 @@ else
   end
 end
 
+-- Ignore some built-in color themes.
+local builtin_themes = {
+  "*/colors/blue.vim",
+  "*/colors/darkblue.vim",
+  "*/colors/delek.vim",
+  "*/colors/desert.vim",
+  "*/colors/elflord.vim",
+  "*/colors/evening.vim",
+  "*/colors/habamax.vim",
+  "*/colors/industry.vim",
+  "*/colors/koehler.vim",
+  "*/colors/lunaperche.vim",
+  "*/colors/morning.vim",
+  "*/colors/murphy.vim",
+  "*/colors/pablo.vim",
+  "*/colors/peachpuff.vim",
+  "*/colors/ron.vim",
+  "*/colors/shine.vim",
+  "*/colors/slate.vim",
+  "*/colors/sorbet.vim",
+  "*/colors/torte.vim",
+  "*/colors/vim.lua",
+  "*/colors/wildcharm.vim",
+  "*/colors/zaibatsu.vim",
+  "*/colors/zellner.vim",
+}
+
+vim.opt.wildignore:append(builtin_themes)
+
 opt.winbar = "%=%m %f"
 
 local border = "rounded"
