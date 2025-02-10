@@ -4,7 +4,9 @@
 
 { config, pkgs, ... }:
 
-{
+let unstable = import <nixpkgs-unstable> { };
+
+in {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
@@ -282,12 +284,11 @@
     sqlite
     #######
     vim
-    neovim
+    unstable.neovim
     wget
     fish
-    fzf
     yazi
-    helix
+    unstable.helix
     tmux
     fzf
     fd
@@ -308,20 +309,20 @@
     jq
     poppler_utils # Pdf utilities
     ghostscript # Pdf compress
-    kanata
+    unstable.kanata
     cmatrix
     ################
-    foot
-    alacritty
-    kitty
-    ghostty
-    wezterm
+    unstable.foot
+    unstable.alacritty
+    unstable.kitty
+    unstable.ghostty
+    unstable.wezterm
     google-chrome
     gimp
     obsidian
     zathura
     xournalpp
-    neovide
+    unstable.neovide
   ];
 
   fonts.packages = with pkgs; [
@@ -335,6 +336,7 @@
     dejavu_fonts
     roboto
     font-awesome
+    inter
   ];
 
   # TODO: Check if we need to keep this.
