@@ -3,6 +3,13 @@
 vim.api.nvim_create_autocmd("ColorScheme", {
   group = vim.api.nvim_create_augroup("reset_highlights_on_theme_change", { clear = true }),
   callback = function()
+    -- *** Sets theme environment variable to share it with the built-in terminal.
+    if vim.o.background == "light" then
+      vim.env.NVIM_THEME = "light"
+    else
+      vim.env.NVIM_THEME = "dark"
+    end
+
     -- *** Remove Unused variables highlight ***
     vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", { link = "NONE" })
     -- *** Remove Snippets highlights ***
@@ -49,13 +56,22 @@ vim.api.nvim_create_autocmd("ColorScheme", {
         ]])
 
       if vim.o.background == "light" then
-        vim.cmd("highlight Comment guifg='#686868'")
+        vim.cmd("highlight Comment guifg='#606853'")
       else
         vim.cmd("highlight Comment guifg='#b2a38f'")
       end
 
       if current_scheme == "sonokai" then
         vim.cmd.highlight("WinSeparator guifg=gray")
+      end
+    end
+
+    -- Comments on original gruvbox
+    if current_scheme == "gruvbox" then
+      if vim.o.background == "light" then
+        vim.cmd("highlight Comment guifg='#606853'")
+      else
+        vim.cmd("highlight Comment guifg='#b0a082'")
       end
     end
 
@@ -280,9 +296,6 @@ return {
         LspReferenceRead = { link = "PmenuSbar" },
         LspReferenceText = { link = "PmenuSbar" },
         LspReferenceWrite = { link = "PmenuSbar" },
-
-        -- Comments are important
-        Comment = { fg = "#b0a082" },
 
         WinBar = { bg = "", fg = "fg", bold = true },
         WinBarNC = { bg = "", fg = "#a89984" },

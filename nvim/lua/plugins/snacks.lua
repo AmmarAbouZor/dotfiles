@@ -42,7 +42,7 @@ return {
 
       { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep (Open Buffers)" },
       { "<leader>ff", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
-      { "<leader><space>", function () Snacks.picker.files() end, desc = "Find Files (cwd)" },
+      { "<leader><space>", function () Snacks.picker.files({hidden = true}) end, desc = "Find Files (cwd)" },
     },
 
     opts = {
