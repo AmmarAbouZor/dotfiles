@@ -40,6 +40,9 @@ return {
       -- Grep word allowing to fuzzy find buffers 
       { "<leader>s/", function() Snacks.picker.grep_word({ search = vim.fn.input("Grep > ") }) end, mode = "n", desc = "Grep word"},
 
+      -- Use aerial for document symbols. This is repeated below in LSP section. 
+      { "<leader>ss", function() require("aerial").snacks_picker() end, desc = "Document Symbols" },
+
       { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep (Open Buffers)" },
       { "<leader>ff", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
       { "<leader><space>", function () Snacks.picker.files({hidden = true}) end, desc = "Find Files (cwd)" },
@@ -121,6 +124,8 @@ return {
       vim.list_extend(Keys, {
         -- I need to override this to add include_current because lazyvim override it in its default configurations.
         { "gr", function() Snacks.picker.lsp_references({ include_current = true }) end, nowait = true, desc = "References" },
+        -- Use aerial for document symbols.
+        { "<leader>ss", function() require("aerial").snacks_picker() end, desc = "Document Symbols" },
       })
     end,
   },
