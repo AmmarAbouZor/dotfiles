@@ -337,11 +337,7 @@ return {
     },
   },
   { "echasnovski/mini.base16", version = false },
-  { "tjdevries/colorbuddy.nvim" },
-  {
-    "echasnovski/mini.hues",
-    version = false,
-  },
+  { "armannikoyan/rusty" },
   {
     "LazyVim/LazyVim",
     lazy = false,
