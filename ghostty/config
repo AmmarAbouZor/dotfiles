@@ -1,9 +1,10 @@
 ### Fonts ### 
-font-family = fira code
+# font-family = fira code
+font-family = FiraCodeNerdFont
 font-style = Medium
 # For now this seems to have not effect.
 font-synthetic-style = true
-font-style-italic = Medium
+# font-style-italic = Medium
 font-size = 13
 adjust-underline-position = 1
 

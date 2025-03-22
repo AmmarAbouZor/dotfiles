@@ -30,12 +30,12 @@ enable = true
 [editor.indent-guides]
 render = true
 
-[editor.whitespace.render]
-newline = "all"
+# [editor.whitespace.render]
+# newline = "all"
 
-[editor.whitespace.characters]
-# newline = "⏎"
-newline = "↲"
+# [editor.whitespace.characters]
+# # newline = "⏎"
+# newline = "↲"
 
 [keys.normal]
 C-s = ":w"
