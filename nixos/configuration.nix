@@ -286,7 +286,7 @@ in {
     vim
     unstable.neovim
     wget
-    fish
+    unstable.fish
     yazi
     unstable.helix
     tmux
