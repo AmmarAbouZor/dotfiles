@@ -3,7 +3,7 @@
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Logo + Ctrl Keys used a lot in my current setup.
-set $modctrl Mod4+Ctrl
+set $modctrl Mod4+Alt
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -35,10 +35,10 @@ input "13364:785:Keychron_Keychron_V1" {
     xkb_variant ,nodeadkeys
 }
 
-input "1:1:AT_Translated_Set_2_keyboard" {
+input * {
     xkb_layout us,de,ara
     xkb_variant ,nodeadkeys
-    # xkb_options grp:alt_shift_toggle
+    xkb_options shift:both_capslock_cancel,ctrl:lctrl_meta,ctrl:nocaps,altwin:swap_lalt_lwin
     xkb_numlock enabled
 }
 #
@@ -50,7 +50,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 # Basics:
 #
     # Kill focused window
-    bindsym $modctrl+q kill
+    bindsym $mod+q kill
 
     # Start your launcher
     bindsym $mod+Return exec wofi --show drun

@@ -284,7 +284,7 @@ in {
     sqlite
     #######
     vim
-    unstable.neovim
+    neovim
     wget
     unstable.fish
     yazi
@@ -311,6 +311,7 @@ in {
     ghostscript # Pdf compress
     unstable.kanata
     cmatrix
+    evtest
     ################
     unstable.foot
     unstable.alacritty
