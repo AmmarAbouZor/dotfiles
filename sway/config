@@ -67,6 +67,7 @@ input * {
 # My preferred apps:
 #
     bindsym $modctrl+Semicolon exec foot
+    bindsym $mod+Semicolon exec foot
     bindsym $modctrl+L exec foot --override=shell=tmux
     bindsym $modctrl+K exec alacritty -e tmux
     bindsym $modctrl+Y exec alacritty 
@@ -74,7 +75,9 @@ input * {
     bindsym $modctrl+H exec wezterm
     bindsym $modctrl+O exec ghostty
     bindsym $modctrl+I exec firefox
+    bindsym $mod+I exec firefox
     bindsym $modctrl+U exec google-chrome-stable
+    bindsym $mod+U exec google-chrome-stable
     bindsym $mod+KP_5 exec kanata
     bindsym $mod+KP_Begin exec kanata
 

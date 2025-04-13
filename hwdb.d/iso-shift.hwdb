@@ -1,0 +1,11 @@
+#############################
+### Map `<>` key to shift ###
+#############################
+
+# Built in device:
+evdev:atkbd:*
+ KEYBOARD_KEY_56=leftshift
+
+# Ohter keyboards:
+evdev:name:Logitech ERGO K860:*
+ KEYBOARD_KEY_70064=leftshift

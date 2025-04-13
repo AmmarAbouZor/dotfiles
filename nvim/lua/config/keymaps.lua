@@ -219,6 +219,8 @@ vim.keymap.set("n", "<leader>uz", "<cmd>colorscheme default<cr>", { desc = "Rese
 
 vim.keymap.set("n", "<leader>ux", "<cmd>ThemeVariantSwitch<cr>", { desc = "Switch theme varaint" })
 
+vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true, desc = "Exit insert mode with jk" })
+
 -- Grep search with <ctrl-/>
 vim.keymap.set("n", "<c-/>", LazyVim.pick("live_grep", { root = false }), { desc = "Grep (cwd)" })
 -- <c-_> for tmux and zellij can register as <c-/>
