@@ -221,26 +221,12 @@ vim.keymap.set("n", "<leader>ux", "<cmd>ThemeVariantSwitch<cr>", { desc = "Switc
 
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true, desc = "Exit insert mode with jk" })
 
--- Grep search with <ctrl-/>
-vim.keymap.set("n", "<c-/>", LazyVim.pick("live_grep", { root = false }), { desc = "Grep (cwd)" })
--- <c-_> for tmux and zellij can register as <c-/>
-vim.keymap.set("n", "<c-_>", LazyVim.pick("live_grep", { root = false }), { desc = "Grep (cwd)" })
-
--- Disable hjkl and esc on toggle terminal + Change keybinding to <m-;> and <m-:>
-vim.keymap.set({ "n", "t" }, "<m-;>", function()
+vim.keymap.set({ "n", "t" }, "<c-/>", function()
   Snacks.terminal()
 end, { desc = "Toggle Terminal" })
 
-vim.keymap.set({ "n", "t" }, "<m-:>", function()
-  Snacks.terminal()
-end, { desc = "Toggle Terminal" })
-
-vim.keymap.set({ "n", "t" }, "<m-s-;>", function()
-  Snacks.terminal()
-end, { desc = "Toggle Terminal" })
-
--- disable <c-/> in terminal
-vim.keymap.set("t", "<c-/>", "<c-/>")
+-- Grep search with <space>/
+vim.keymap.set("n", "<leader>/", LazyVim.pick("live_grep", { root = false }), { desc = "Grep (cwd)" })
 
 -- Vim normal mode in terminal
 vim.keymap.set("t", "<a-/>", "<c-\\><c-n>")

@@ -60,6 +60,14 @@ wezterm.on("spawn_win_according_to_theme", function(window, pane)
 	end
 end)
 
+-- Show the last part of the title since it will be most likely the current directory name
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+	local title = tab.active_pane.title
+	return {
+		{ Text = "  " .. string.sub(title, -16) .. "  " },
+	}
+end)
+
 return {
 	default_prog = { "fish" },
 	-- color_scheme = "Gruvbox (Gogh)", -- Light theme
@@ -80,35 +88,19 @@ return {
 	show_new_tab_button_in_tab_bar = false,
 	use_fancy_tab_bar = false,
 	tab_bar_at_bottom = true,
+	tab_max_width = 20,
 	term = "wezterm",
 	integrated_title_buttons = { "Maximize", "Close" },
 	warn_about_missing_glyphs = false,
 	window_padding = { bottom = 2, top = 5, left = 5, right = 2 },
 
-	-- TODO: Check if disabling hinting has an impact on the performance
-	-- freetype_load_target = "Light",
-	-- freetype_load_flags = "NO_HINTING",
-	-- freetype_load_flags = "NO_AUTOHINT",
-	-- freetype_load_flags = "FORCE_AUTOHINT",
-
-	-- front_end = "OpenGL",
-	-- front_end = "WebGpu",
-	-- webgpu_power_preference = "HighPerformance",
-
-	-- font = wezterm.font("Monaco"),
-	-- font = wezterm.font("fira code", { weight = "Medium" }),
-	-- font = wezterm.font("fira code"),
 	font = wezterm.font_with_fallback({
 		{ family = "Fira Code" },
 		{ family = "Symbols Nerd Font Mono Regular", scale = 0.85 },
 	}),
-	-- font = wezterm.font("Sf mono"),
-	-- font = wezterm.font("roboto mono"),
-	-- font = wezterm.font("JetBrains mono", { weight = "Medium" }),
-	-- font = wezterm.font("DejaVu sans mono"),
 	font_size = 13,
 	-- font_size = 12.7,
-	-- line_height = 1.05,
+	line_height = 1.05,
 	default_cursor_style = "SteadyBlock",
 	-- TODO: Check the best fps for my computer
 	-- max_fps = 30,
@@ -163,38 +155,39 @@ return {
 	},
 
 	disable_default_key_bindings = true,
+	leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 1000 },
 	keys = {
 		-- Panes
-		{ key = '"', mods = "ALT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-		{ key = '"', mods = "SHIFT|ALT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-		{ key = "|", mods = "ALT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-		{ key = "|", mods = "SHIFT|ALT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+		{ key = "'", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+		{ key = "|", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 
-		{ key = "_", mods = "ALT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-		{ key = "_", mods = "SHIFT|ALT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+		{ key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 
 		-- Taps
-		{ key = "T", mods = "ALT", action = act.EmitEvent("spawn_tab_according_to_theme") },
-		{ key = "T", mods = "SHIFT|ALT", action = act.EmitEvent("spawn_tab_according_to_theme") },
-		{ key = "Enter", mods = "SHIFT|ALT", action = act.EmitEvent("spawn_win_according_to_theme") },
-		{ key = "y", mods = "SHIFT|ALT", action = act.EmitEvent("spawn_tab_according_to_theme") },
-		{ key = "Y", mods = "SHIFT|ALT", action = act.EmitEvent("spawn_tab_according_to_theme") },
+		{ key = "t", mods = "LEADER", action = act.EmitEvent("spawn_tab_according_to_theme") },
+		{ key = "Enter", mods = "LEADER", action = act.EmitEvent("spawn_win_according_to_theme") },
+		{ key = "y", mods = "LEADER", action = act.EmitEvent("spawn_tab_according_to_theme") },
 
-		{ key = "p", mods = "SHIFT|ALT", action = act.ActivateTabRelative(1) },
-		{ key = "P", mods = "SHIFT|ALT", action = act.ActivateTabRelative(1) },
-		{ key = "n", mods = "SHIFT|ALT", action = act.ActivateTabRelative(-1) },
-		{ key = "N", mods = "SHIFT|ALT", action = act.ActivateTabRelative(-1) },
+		{ key = "p", mods = "LEADER", action = act.ActivateTabRelative(1) },
+		{ key = "n", mods = "LEADER", action = act.ActivateTabRelative(-1) },
 
 		{ key = "1", mods = "ALT", action = act.ActivateTab(0) },
 		{ key = "2", mods = "ALT", action = act.ActivateTab(1) },
 		{ key = "3", mods = "ALT", action = act.ActivateTab(2) },
 		{ key = "4", mods = "ALT", action = act.ActivateTab(3) },
 		{ key = "5", mods = "ALT", action = act.ActivateTab(4) },
-		{ key = "6", mods = "ALT", action = act.ActivateTab(5) },
+		{ key = "6", mods = "ALT", action = act.ActivateTab(6) },
 
-		{ key = "q", mods = "ALT", action = act.ActivateLastTab },
-		{ key = "Space", mods = "SHIFT|ALT", action = act.ActivateLastTab },
-		{ key = "i", mods = "SHIFT|ALT", action = act.ActivateLastTab },
+		{ key = "1", mods = "LEADER", action = act.ActivateTab(0) },
+		{ key = "2", mods = "LEADER", action = act.ActivateTab(1) },
+		{ key = "3", mods = "LEADER", action = act.ActivateTab(2) },
+		{ key = "4", mods = "LEADER", action = act.ActivateTab(3) },
+		{ key = "5", mods = "LEADER", action = act.ActivateTab(4) },
+		{ key = "6", mods = "LEADER", action = act.ActivateTab(6) },
+
+		{ key = "q", mods = "LEADER", action = act.ActivateLastTab },
+		{ key = "Space", mods = "LEADER", action = act.ActivateLastTab },
+		{ key = "i", mods = "LEADER", action = act.ActivateLastTab },
 
 		-- Font size
 		{ key = ")", mods = "CTRL", action = act.ResetFontSize },
@@ -222,31 +215,26 @@ return {
 		{ key = "V", mods = "SHIFT|CTRL", action = act.PasteFrom("Clipboard") },
 		{ key = "V", mods = "SHIFT|ALT", action = act.PasteFrom("Clipboard") },
 
-		{ key = "W", mods = "ALT", action = act.CloseCurrentTab({ confirm = true }) },
-		{ key = "W", mods = "SHIFT|ALT", action = act.CloseCurrentTab({ confirm = true }) },
+		{ key = "w", mods = "LEADER", action = act.CloseCurrentTab({ confirm = true }) },
 
-		{ key = "?", mods = "ALT", action = act.ActivateCopyMode },
-		{ key = "?", mods = "SHIFT|ALT", action = act.ActivateCopyMode },
+		{ key = "/", mods = "LEADER", action = act.ActivateCopyMode },
 
-		{ key = "M", mods = "ALT", action = act.TogglePaneZoomState },
-		{ key = "M", mods = "SHIFT|ALT", action = act.TogglePaneZoomState },
+		{ key = "m", mods = "LEADER", action = act.TogglePaneZoomState },
 
 		{ key = "phys:Space", mods = "SHIFT|CTRL", action = act.QuickSelect },
 
-		{ key = "UpArrow", mods = "SHIFT|ALT", action = act.ScrollByPage(-1) },
-		{ key = "UpArrow", mods = "ALT", action = act.ScrollByPage(-1) },
-		{ key = "DownArrow", mods = "SHIFT|ALT", action = act.ScrollByPage(1) },
-		{ key = "DownArrow", mods = "ALT", action = act.ScrollByPage(1) },
+		{ key = "UpArrow", mods = "LEADER", action = act.ScrollByPage(-1) },
+		{ key = "DownArrow", mods = "LEADER", action = act.ScrollByPage(1) },
 
-		{ key = "<", mods = "SHIFT|ALT", action = act.MoveTabRelative(-1) },
-		{ key = ">", mods = "SHIFT|ALT", action = act.MoveTabRelative(1) },
+		{ key = ",", mods = "LEADER", action = act.MoveTabRelative(-1) },
+		{ key = ".", mods = "LEADER", action = act.MoveTabRelative(1) },
 
-		{ key = "H", mods = "SHIFT|ALT", action = act.ActivatePaneDirection("Left") },
-		{ key = "L", mods = "SHIFT|ALT", action = act.ActivatePaneDirection("Right") },
-		{ key = "K", mods = "SHIFT|ALT", action = act.ActivatePaneDirection("Up") },
-		{ key = "J", mods = "SHIFT|ALT", action = act.ActivatePaneDirection("Down") },
-		{ key = "{", mods = "SHIFT|ALT", action = act.RotatePanes("Clockwise") },
-		{ key = "B", mods = "SHIFT|ALT", action = act.EmitEvent("toggle-dark-light-theme") },
+		{ key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
+		{ key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
+		{ key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
+		{ key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
+		{ key = "[", mods = "LEADER", action = act.RotatePanes("Clockwise") },
+		{ key = "b", mods = "LEADER", action = act.EmitEvent("toggle-dark-light-theme") },
 
 		{ key = "Insert", mods = "SHIFT", action = act.PasteFrom("PrimarySelection") },
 		{ key = "Insert", mods = "CTRL", action = act.CopyTo("PrimarySelection") },
