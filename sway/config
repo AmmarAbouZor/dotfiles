@@ -38,7 +38,7 @@ input "13364:785:Keychron_Keychron_V1" {
 input * {
     xkb_layout us,de,ara
     xkb_variant ,nodeadkeys
-    xkb_options shift:both_capslock_cancel,ctrl:lctrl_meta,ctrl:nocaps,altwin:swap_lalt_lwin
+    xkb_options shift:both_capslock,ctrl:lctrl_meta,ctrl:nocaps,altwin:swap_lalt_lwin
     xkb_numlock enabled
 }
 #
