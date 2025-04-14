@@ -229,6 +229,22 @@ in {
   services.gvfs.enable = true;
   services.tumbler.enable = true;
 
+  # Custom configurations for keyboards:
+  # - Map right alt to right shift
+  # - Map `<>` key to shift on ISO keyboards.
+  services.udev.extraHwdb = ''
+    evdev:atkbd:*
+     KEYBOARD_KEY_56=leftshift
+     KEYBOARD_KEY_b8=rightshift
+
+    evdev:name:Logitech ERGO K860:*
+     KEYBOARD_KEY_70064=leftshift
+     KEYBOARD_KEY_700e6=rightshift
+
+    evdev:name:Keychron Keychron B1 Pro Keyboard:*
+     KEYBOARD_KEY_700e6=rightshift
+  '';
+
   ## Qmk
   hardware.keyboard.qmk.enable = true;
 
