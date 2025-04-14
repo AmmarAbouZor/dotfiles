@@ -78,8 +78,6 @@ input * {
     bindsym $mod+I exec firefox
     bindsym $modctrl+U exec google-chrome-stable
     bindsym $mod+U exec google-chrome-stable
-    bindsym $mod+KP_5 exec kanata
-    bindsym $mod+KP_Begin exec kanata
 
 #
 # Moving around:

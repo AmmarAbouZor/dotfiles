@@ -56,8 +56,7 @@ in {
   users.users.ammar = {
     isNormalUser = true;
     description = "ammar";
-    # 'input' & 'uinput' are for kanata
-    extraGroups = [ "networkmanager" "wheel" "video" "input" "uinput" ];
+    extraGroups = [ "networkmanager" "wheel" "video" ];
   };
 
   # Allow unfree packages
@@ -233,9 +232,6 @@ in {
   ## Qmk
   hardware.keyboard.qmk.enable = true;
 
-  ## For kanata
-  hardware.uinput.enable = true;
-
   environment.variables = {
     EDITOR = "nvim";
     ## Open-ssl with rust development
@@ -309,7 +305,6 @@ in {
     jq
     poppler_utils # Pdf utilities
     ghostscript # Pdf compress
-    unstable.kanata
     cmatrix
     evtest
     ################
