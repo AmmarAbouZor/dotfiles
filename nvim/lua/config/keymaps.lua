@@ -122,19 +122,19 @@ vim.keymap.set({ "n", "x" }, "gh", "^")
 vim.keymap.set({ "n", "x" }, "gl", "$")
 
 -- Mini Move must overwrite lazyvim default bindings
-vim.keymap.set("v", "<A-j>", function()
+vim.keymap.set("v", "<C-Down>", function()
   require("mini.move").move_selection("down")
 end)
 
-vim.keymap.set("v", "<A-k>", function()
+vim.keymap.set("v", "<C-Up>", function()
   require("mini.move").move_selection("up")
 end)
 
-vim.keymap.set("n", "<A-j>", function()
+vim.keymap.set("n", "<C-Down>", function()
   require("mini.move").move_line("down")
 end)
 
-vim.keymap.set("n", "<A-k>", function()
+vim.keymap.set("n", "<C-Up>", function()
   require("mini.move").move_line("up")
 end)
 
@@ -217,6 +217,7 @@ vim.keymap.set("n", "<leader>uz", "<cmd>colorscheme default<cr>", { desc = "Rese
 vim.keymap.set("n", "<leader>ux", "<cmd>ThemeVariantSwitch<cr>", { desc = "Switch theme varaint" })
 
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true, desc = "Exit insert mode with jk" })
+vim.keymap.set("i", "jj", "<Esc>", { noremap = true, silent = true, desc = "Exit insert mode with jj" })
 
 vim.keymap.set({ "n", "t" }, "<c-/>", function()
   Snacks.terminal()

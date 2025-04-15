@@ -70,7 +70,11 @@ C-k = "signature_help"
 C-e = "goto_line_end_newline"
 C-a = "goto_line_start"
 C-backspace = "delete_word_backward"
-j = { k = "normal_mode" } # Maps `jk` to exit insert mode
+
+# Exit insert mode with `jk` and `jj`
+[keys.insert.j]
+k = "normal_mode"
+j = "normal_mode" 
 
 [keys.select]
 C-y = ":fmt"

@@ -31,5 +31,7 @@ return {
     { "<leader>r", "<cmd>AerialToggle<cr>", desc = "Aerial (Symbols)" },
     { "<M-p>", "<cmd>AerialPrev<cr>", desc = "Previous Symbol" },
     { "<M-n>", "<cmd>AerialNext<cr>", desc = "Next Symbol" },
+    { "[<space>", "<cmd>AerialPrev<cr>", desc = "Previous Symbol" },
+    { "]<space>", "<cmd>AerialNext<cr>", desc = "Next Symbol" },
   },
 }
