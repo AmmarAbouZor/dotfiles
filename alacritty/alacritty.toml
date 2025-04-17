@@ -24,6 +24,13 @@ mods = "Alt|Shift"
 # key = "?"
 # mods = "Alt|Shift"
 
+# HACK: TMUX doesn't handle <C-;>, so I remapped it to <C-\> 
+# So I can use the keybinding to map the toggle terminal in neovim.
+[[keyboard.bindings]]
+chars = "\u001c"
+key = ";"
+mods = "Control"
+
 [[keyboard.bindings]]
 action = "ToggleViMode"
 mode = "Vi"

@@ -3,7 +3,7 @@
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Logo + Ctrl Keys used a lot in my current setup.
-set $modctrl Mod4+Alt
+set $modctrl Mod4+Ctrl
 # Home row direction keys, like vim
 set $left h
 set $down j

@@ -219,12 +219,24 @@ vim.keymap.set("n", "<leader>ux", "<cmd>ThemeVariantSwitch<cr>", { desc = "Switc
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true, desc = "Exit insert mode with jk" })
 vim.keymap.set("i", "jj", "<Esc>", { noremap = true, silent = true, desc = "Exit insert mode with jj" })
 
-vim.keymap.set({ "n", "t" }, "<c-/>", function()
-  Snacks.terminal()
-end, { desc = "Toggle Terminal" })
-
 -- Grep search with <space>/
 vim.keymap.set("n", "<leader>/", LazyVim.pick("live_grep", { root = false }), { desc = "Grep (cwd)" })
 
+-- Terminal
+vim.keymap.set({ "n", "t" }, "<c-;>", function()
+  Snacks.terminal()
+end, { desc = "Toggle Terminal" })
+
+-- Hack: Tmux doesn't pass `<c-;>` through. As workaround I remapped <C-;> to <C-\>
+-- in foot and alacrity and added the additional keybinding here.
+vim.keymap.set({ "n", "t" }, "<c-\\>", function()
+  Snacks.terminal()
+end, { desc = "Toggle Terminal" })
+
+-- Disable `<C-/>` From LazyVim
+vim.keymap.del("n", "<c-/>")
+vim.keymap.del("n", "<c-_>")
+
 -- Vim normal mode in terminal
-vim.keymap.set("t", "<a-/>", "<c-\\><c-n>")
+vim.keymap.set("t", "<c-/>", "<c-\\><c-n>")
+vim.keymap.set("t", "<c-_>", "<c-\\><c-n>")
