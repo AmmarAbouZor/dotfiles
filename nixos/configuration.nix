@@ -235,14 +235,9 @@ in {
   services.udev.extraHwdb = ''
     evdev:atkbd:*
      KEYBOARD_KEY_56=leftshift
-     KEYBOARD_KEY_b8=rightshift
 
     evdev:name:Logitech ERGO K860:*
      KEYBOARD_KEY_70064=leftshift
-     KEYBOARD_KEY_700e6=rightshift
-
-    evdev:name:Keychron Keychron B1 Pro Keyboard:*
-     KEYBOARD_KEY_700e6=rightshift
   '';
 
   ## Qmk
@@ -299,7 +294,7 @@ in {
     neovim
     wget
     unstable.fish
-    yazi
+    unstable.yazi
     unstable.helix
     tmux
     fzf
