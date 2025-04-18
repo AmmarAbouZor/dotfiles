@@ -112,6 +112,10 @@ vim.keymap.set("n", "<leader>gg", function()
   Snacks.lazygit({ cwd = LazyVim.root.git(), win = { border = "rounded" } })
 end, { desc = "Lazygit (Root Dir)" })
 
+vim.keymap.set("n", "<leader>gl", function()
+  Snacks.lazygit({ args = { "log" } })
+end, { desc = "Lazygit Logs" })
+
 -- Git diffs in picker.
 vim.keymap.set("n", "<leader>gD", function()
   Snacks.picker.git_diff()
