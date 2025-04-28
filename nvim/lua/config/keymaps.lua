@@ -220,8 +220,14 @@ vim.keymap.set("n", "<leader>uz", "<cmd>colorscheme default<cr>", { desc = "Rese
 
 vim.keymap.set("n", "<leader>ux", "<cmd>ThemeVariantSwitch<cr>", { desc = "Switch theme varaint" })
 
-vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true, desc = "Exit insert mode with jk" })
-vim.keymap.set("i", "jj", "<Esc>", { noremap = true, silent = true, desc = "Exit insert mode with jj" })
+-- vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true, desc = "Exit insert mode with jk" })
+-- vim.keymap.set("i", "jj", "<Esc>", { noremap = true, silent = true, desc = "Exit insert mode with jj" })
+vim.keymap.set("i", "<c-l>", "<Esc>", { noremap = true, silent = true, desc = "Exit insert mode with <Ctrl-l>" })
+
+--- --- Grep search with <ctrl-/>
+vim.keymap.set("n", "<c-/>", LazyVim.pick("live_grep", { root = false }), { desc = "Grep (cwd)" })
+--- <c-_> for tmux and zellij can register as <c-/>
+vim.keymap.set("n", "<c-_>", LazyVim.pick("live_grep", { root = false }), { desc = "Grep (cwd)" })
 
 -- Grep search with <space>/
 vim.keymap.set("n", "<leader>/", LazyVim.pick("live_grep", { root = false }), { desc = "Grep (cwd)" })
@@ -236,10 +242,6 @@ end, { desc = "Toggle Terminal" })
 vim.keymap.set({ "n", "t" }, "<c-\\>", function()
   Snacks.terminal()
 end, { desc = "Toggle Terminal" })
-
--- Disable `<C-/>` From LazyVim
-vim.keymap.del("n", "<c-/>")
-vim.keymap.del("n", "<c-_>")
 
 -- Vim normal mode in terminal
 vim.keymap.set("t", "<c-/>", "<c-\\><c-n>")

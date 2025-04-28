@@ -55,15 +55,15 @@ vim.keymap.set("n", "<leader>tO", function()
   insert_comment_newline(true, my_todo)
 end, { noremap = true, silent = true, desc = "Insert TODO comment on new line above" })
 
--- Map for adding TODO comment AT CURSOR position (renamed from <leader>z)
-vim.keymap.set("n", "<leader>tz", function()
+-- Map for adding TODO comment AT CURSOR position
+vim.keymap.set("n", "<leader>tp", function()
   insert_comment_at_cursor(my_todo)
 end, { noremap = true, silent = true, desc = "Insert TODO comment at cursor" })
 
 vim.keymap.set(
   "n",
   "<leader>tt",
-  "i" .. my_todo,
+  "a" .. my_todo,
   { noremap = true, silent = true, desc = "Insert TODO text at cursor" }
 )
 

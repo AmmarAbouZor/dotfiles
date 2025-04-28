@@ -29,16 +29,10 @@ exec swayidle \
         timeout 900 'systemctl suspend' \
         resume 'swaymsg "output * dpms on"'
 
-### Input configuration
-input "13364:785:Keychron_Keychron_V1" {
-    xkb_layout us,de,ara
-    xkb_variant ,nodeadkeys
-}
-
 input * {
     xkb_layout us,de,ara
     xkb_variant ,nodeadkeys
-    xkb_options shift:both_capslock,ctrl:lctrl_meta,ctrl:nocaps,altwin:swap_lalt_lwin
+    xkb_options shift:both_capslock,ctrl:nocaps,altwin:swap_lalt_lwin
     xkb_numlock enabled
 }
 #
