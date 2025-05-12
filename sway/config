@@ -143,6 +143,7 @@ input * {
 
     # Make the current focus fullscreen
     bindsym $mod+m fullscreen
+    bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+g floating toggle

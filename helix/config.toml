@@ -70,11 +70,13 @@ C-k = "signature_help"
 C-e = "goto_line_end_newline"
 C-a = "goto_line_start"
 C-backspace = "delete_word_backward"
+C-l = "normal_mode" 
+'C-[' = "normal_mode" 
 
-# Exit insert mode with `jk` and `jj`
-[keys.insert.j]
-k = "normal_mode"
-j = "normal_mode" 
+# # Exit insert mode with `jk` and `jj`
+# [keys.insert.j]
+# k = "normal_mode"
+# j = "normal_mode" 
 
 [keys.select]
 C-y = ":fmt"
