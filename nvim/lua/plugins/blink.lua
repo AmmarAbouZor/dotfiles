@@ -4,9 +4,6 @@ return {
     -- There is not keybinding to toggle signature help yet.
     -- signature = {
     --   enabled = true,
-    --   window = {
-    --     border = "rounded",
-    --   },
     -- },
 
     sources = {
@@ -33,10 +30,10 @@ return {
         window = {
           winblend = 10,
           winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:BlinkCmpDocCursorLine,Search:None",
-          border = "single",
         },
       },
       menu = {
+        border = "none",
         winblend = 10,
         draw = {
           components = {

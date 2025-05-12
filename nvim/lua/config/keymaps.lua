@@ -104,12 +104,12 @@ end, { desc = "Next reference (Words)" })
 
 -- Gitui
 vim.keymap.set("n", "<leader>gi", function()
-  Snacks.terminal({ "gitui" }, { cwd = LazyVim.root.get(), win = { border = "rounded", relative = "editor" } })
+  Snacks.terminal({ "gitui" }, { cwd = LazyVim.root.get() })
 end, { desc = "Gitui (root dir)" })
 
 -- LazyGit
 vim.keymap.set("n", "<leader>gg", function()
-  Snacks.lazygit({ cwd = LazyVim.root.git(), win = { border = "rounded" } })
+  Snacks.lazygit({ cwd = LazyVim.root.git() })
 end, { desc = "Lazygit (Root Dir)" })
 
 vim.keymap.set("n", "<leader>gl", function()

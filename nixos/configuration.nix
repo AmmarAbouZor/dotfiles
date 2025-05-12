@@ -291,7 +291,7 @@ in {
     sqlite
     #######
     vim
-    neovim
+    unstable.neovim
     wget
     unstable.fish
     unstable.yazi

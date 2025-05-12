@@ -1,6 +1,6 @@
 return {
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     -- Mason doesn't work well with NixOS, besides installing LSPs with nix is more simple.
     enabled = false,
     opts = {
@@ -14,7 +14,7 @@ return {
     },
   },
   {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     enabled = false,
   },
 }

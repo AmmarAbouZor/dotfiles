@@ -60,6 +60,7 @@ local builtin_themes = {
   "*/colors/torte.vim",
   "*/colors/vim.lua",
   "*/colors/wildcharm.vim",
+  "*/colors/unokai.vim",
   "*/colors/zaibatsu.vim",
   "*/colors/zellner.vim",
 }
@@ -68,19 +69,7 @@ vim.opt.wildignore:append(builtin_themes)
 
 opt.winbar = "%=%m %f"
 
-local border = "rounded"
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = border,
-})
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = border,
-})
-
-vim.diagnostic.config({
-  float = { border = border },
-})
+vim.o.winborder = "rounded"
 
 -- This prevent add offset when scrolling so the cursor doesn't get to the top or the bottom of the view
 opt.scrolloff = 7
