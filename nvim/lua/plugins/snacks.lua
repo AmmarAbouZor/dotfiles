@@ -22,6 +22,7 @@ return {
       { "<leader>ua", false },
       { "<leader>uS", false },
       { "<leader>S", false },
+      { "<leader>gd", false },
 
       -- *** File explorer ***
       { "<leader>fe", function() Snacks.explorer({ auto_close = true }) end, desc = "Explorer Snacks (cwd)"},
@@ -55,6 +56,25 @@ return {
       zen = { enabled = false },
       animate = { enabled = false },
       scroll = { enabled = false },
+
+      picker = {
+        win = {
+          -- input window
+          input = {
+            keys = {
+              ["<c-m>"] = { "confirm", mode = { "n", "i" } },
+              ["<a-CR>"] = { { "pick_win", "jump" }, mode = { "n", "i" } },
+            },
+          },
+          -- result list window
+          list = {
+            keys = {
+              ["<c-m>"] = { "confirm", mode = { "n", "i" } },
+              ["<a-CR>"] = { { "pick_win", "jump" }, mode = { "n", "i" } },
+            },
+          },
+        },
+      },
 
       scratch = {
         ft = "lua",
