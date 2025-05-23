@@ -23,6 +23,13 @@ window-padding-y =4,0
 window-height = 10000
 window-width = 10000
 
+# Copy to clipboard notification doesn't disappear currently.
+# Keep track on issue https://github.com/ghostty-org/ghostty/issues/4800
+app-notifications = no-clipboard-copy
+
+# Avoid underline links when Ctrl is pressed.
+link-url = false
+
 mouse-hide-while-typing = true
 
 copy-on-select = clipboard
@@ -36,6 +43,7 @@ keybind = ctrl+i=text:\x09
 keybind = ctrl+backspace=text:\x17
 
 keybind = ctrl+space>y=new_tab
+keybind = ctrl+space>t=new_tab
 keybind = ctrl+space>p=next_tab
 
 
