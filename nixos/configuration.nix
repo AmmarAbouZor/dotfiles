@@ -23,6 +23,9 @@ in {
   # Enable all hardware.
   hardware.enableAllFirmware = true;
 
+  # Disable power key from forcing the system to shutdown.
+  services.logind.powerKey = "ignore";
+
   networking.hostName = "ammar-laptop"; # Define your hostname.
 
   # Enable networking
@@ -232,12 +235,26 @@ in {
   # Custom configurations for keyboards:
   # - Map right alt to right shift
   # - Map `<>` key to shift on ISO keyboards.
+  # - Return HHKB layout to normal:
+  #   * Fn + Esc => Grave 
+  #   * Backslash & Grave => Backspace.
+  #   * Backspace => Backslash.
+  #   * Fn + F => Play/Stop media.
+  #   * Right Meta => Menu / Compose
   services.udev.extraHwdb = ''
     evdev:atkbd:*
      KEYBOARD_KEY_56=leftshift
 
     evdev:name:Logitech ERGO K860:*
      KEYBOARD_KEY_70064=leftshift
+
+    evdev:name:Topre Corporation HHKB Professional:*
+     KEYBOARD_KEY_70066=grave
+     KEYBOARD_KEY_7002a=backslash
+     KEYBOARD_KEY_70031=backspace
+     KEYBOARD_KEY_70035=backspace
+     KEYBOARD_KEY_7006f=playpause
+     KEYBOARD_KEY_700e7=compose
   '';
 
   ## Qmk
