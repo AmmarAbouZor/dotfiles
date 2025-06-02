@@ -23,6 +23,7 @@ return {
       { "<leader>uS", false },
       { "<leader>S", false },
       { "<leader>gd", false },
+      { "<leader>uC", false },
 
       -- *** File explorer ***
       { "<leader>fe", function() Snacks.explorer({ auto_close = true }) end, desc = "Explorer Snacks (cwd)"},

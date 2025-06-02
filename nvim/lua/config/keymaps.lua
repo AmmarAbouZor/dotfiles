@@ -87,6 +87,11 @@ vim.keymap.set("n", "<leader>w", function()
   Snacks.bufdelete()
 end, { desc = "Delete current buffer", noremap = true })
 
+-- toggle Conceal
+Snacks.toggle
+  .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2, name = "Conceal Level" })
+  :map("<leader>uC")
+
 -- Switch between <leader>uC and <leader>uc between conceallevel and changing the themes
 Snacks.toggle
   .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
@@ -223,6 +228,10 @@ vim.keymap.set("n", "<leader>ux", "<cmd>ThemeVariantSwitch<cr>", { desc = "Switc
 -- vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true, desc = "Exit insert mode with jk" })
 -- vim.keymap.set("i", "jj", "<Esc>", { noremap = true, silent = true, desc = "Exit insert mode with jj" })
 vim.keymap.set("i", "<c-l>", "<Esc>", { noremap = true, silent = true, desc = "Exit insert mode with <Ctrl-l>" })
+vim.keymap.set("i", "<c-;>", "<Esc>", { noremap = true, silent = true, desc = "Exit insert mode with <Ctrl-l>" })
+-- Hack: Tmux doesn't pass `<c-;>` through. As workaround I remapped <C-;> to <C-\>
+-- in foot and alacrity and added the additional keybinding here.
+vim.keymap.set("i", "<c-\\>", "<Esc>", { noremap = true, silent = true, desc = "Exit insert mode with <Ctrl-l>" })
 
 --- --- Grep search with <ctrl-/>
 vim.keymap.set("n", "<c-/>", LazyVim.pick("live_grep", { root = false }), { desc = "Grep (cwd)" })
