@@ -10,10 +10,10 @@ vim.api.nvim_create_autocmd("ColorScheme", {
       vim.env.NVIM_THEME = "dark"
     end
 
-    -- *** Remove Unused variables highlight ***
-    vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", { link = "NONE" })
-    -- *** Remove Snippets highlights ***
-    vim.api.nvim_set_hl(0, "SnippetTabstop", { link = "NONE" })
+    -- *** Remove Unused variables special highlight ***
+    vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", { link = "TEXT" })
+    -- *** Remove Snippets special highlight ***
+    vim.api.nvim_set_hl(0, "SnippetTabstop", { link = "TEXT" })
 
     -- *** Blink description text color ***
     vim.cmd("hi! link BlinkCmpLabelDetail PmenuExtra")
@@ -72,6 +72,14 @@ vim.api.nvim_create_autocmd("ColorScheme", {
         vim.cmd("highlight Comment guifg='#606853'")
       else
         vim.cmd("highlight Comment guifg='#b0a082'")
+      end
+    end
+
+    -- Comments on kanagawa-paper
+    if current_scheme == "kanagawa-paper" then
+      if vim.o.background == "dark" then
+        vim.cmd("highlight Comment guifg='#b2a38f'")
+      else
       end
     end
 
@@ -338,6 +346,13 @@ return {
   },
   { "echasnovski/mini.base16", version = false },
   { "armannikoyan/rusty" },
+  {
+    "thesimonho/kanagawa-paper.nvim",
+    opts = {
+      cache = true,
+      diag_background = false,
+    },
+  },
   {
     "LazyVim/LazyVim",
     lazy = false,
