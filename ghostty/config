@@ -123,3 +123,4 @@ keybind = ctrl+space>.=move_tab:1
 
 # Ghossty still doesn't support go to last active tab.
 keybind = ctrl+space>i=next_tab
+keybind = alt+q=next_tab

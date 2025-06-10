@@ -191,6 +191,7 @@ return {
 		{ key = "q", mods = "LEADER", action = act.ActivateLastTab },
 		{ key = "Space", mods = "LEADER", action = act.ActivateLastTab },
 		{ key = "i", mods = "LEADER", action = act.ActivateLastTab },
+		{ key = "q", mods = "ALT", action = act.ActivateLastTab },
 
 		-- Font size
 		{ key = ")", mods = "CTRL", action = act.ResetFontSize },
