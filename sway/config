@@ -87,6 +87,9 @@ input * {
     bindsym $mod+Up focus up
     bindsym $mod+Right focus right
 
+    # Replicate my keybinding on gnome.
+    bindsym Mod1+tab focus next
+
     # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
     bindsym $mod+Shift+$down move down
