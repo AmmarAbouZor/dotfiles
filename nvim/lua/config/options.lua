@@ -25,6 +25,9 @@ opt.startofline = true
 -- Remember to activate the autocmd for text files if you decide to activate spell by default.
 opt.spell = true
 
+-- Avoid text shifting on line 10 after updating to neovim 0.11
+opt.numberwidth = 5
+
 -- Enable spell check on plain buffers only if they are given as CLI arguments
 if vim.fn.argc(-1) == 0 then
   opt.spelloptions:append("noplainbuffer")

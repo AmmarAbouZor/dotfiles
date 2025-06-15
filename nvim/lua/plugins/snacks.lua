@@ -41,6 +41,8 @@ return {
       { "<leader>sD", function() Snacks.picker.diagnostics_buffer({sort = { fields = { "severity", "is_current", "is_cwd", "file", "lnum", },},}) end, desc = "Buffer Diagnostics" },
       -- Grep word allowing to fuzzy find buffers 
       { "<leader>s/", function() Snacks.picker.grep_word({ search = vim.fn.input("Grep > ") }) end, mode = "n", desc = "Grep word"},
+      -- Picker of all available pickers
+      { "<leader>sp", function() Snacks.picker.pickers() end, mode = "n", desc = "Search pickers"},
 
       -- Use aerial for document symbols. This is repeated below in LSP section. 
       { "<leader>ss", function() require("aerial").snacks_picker() end, desc = "Document Symbols" },

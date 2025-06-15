@@ -66,12 +66,18 @@ vim.api.nvim_create_autocmd("ColorScheme", {
       end
     end
 
-    -- Comments on original gruvbox
+    -- Comments & Picker on original gruvbox
     if current_scheme == "gruvbox" then
       if vim.o.background == "light" then
         vim.cmd("highlight Comment guifg='#606853'")
       else
         vim.cmd("highlight Comment guifg='#b0a082'")
+
+        -- Snacks picker default to cursor line which is disabled in transparent mode.
+        if transparent then
+          vim.cmd("highlight SnacksPickerCursorLine guibg='#3C3836'")
+          vim.cmd("highlight SnacksPickerListCursorLine guibg='#3C3836'")
+        end
       end
     end
 
