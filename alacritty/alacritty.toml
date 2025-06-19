@@ -46,6 +46,7 @@ program = "/bin/fish"
 decorations = "none"
 opacity = 0.96
 startup_mode = "Maximized"
+dynamic_padding = true
 
 [window.dimensions]
 columns = 110

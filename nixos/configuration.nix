@@ -341,6 +341,8 @@ in {
     unstable.kitty
     unstable.ghostty
     unstable.wezterm
+    unstable.zed-editor
+    tui-journal
     google-chrome
     gimp
     obsidian
