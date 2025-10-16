@@ -40,6 +40,14 @@ input * {
     xkb_options ctrl:nocaps,altwin:swap_lalt_lwin
     xkb_numlock enabled
 }
+
+# Enable tap on the touchpad
+input "type:touchpad" {
+    tap enabled
+    # multi-finger tapping
+    # 1 finger = left click, 2 fingers = right click, 3 fingers = middle click
+    tap_button_map lrm
+}
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
