@@ -28,18 +28,6 @@ opt.spell = true
 -- Avoid text shifting on line 10 after updating to neovim 0.11
 opt.numberwidth = 5
 
--- Enable spell check on plain buffers only if they are given as CLI arguments
-if vim.fn.argc(-1) == 0 then
-  opt.spelloptions:append("noplainbuffer")
-else
-  --- index for argv is provided => only one item will be returned
-  ---@diagnostic disable-next-line: param-type-mismatch
-  local stats = vim.uv.fs_stat(vim.fn.argv(0))
-  if stats and stats.type == "directory" then
-    opt.spelloptions:append("noplainbuffer")
-  end
-end
-
 -- Ignore some built-in color themes.
 local builtin_themes = {
   "*/colors/blue.vim",

@@ -302,9 +302,11 @@ in {
     qmk
     nixfmt-classic
     nixd
+    nodejs
     ## Packages needed for rust development
     pkg-config # Locate packages like openssl, sqlite
     openssl
+    openssl.dev
     sqlite
     #######
     vim
